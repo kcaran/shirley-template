@@ -1,10 +1,10 @@
-$fa-font-path: '~fork-awesome/fonts';
+$fa-font-path: "../fork-awesome/fonts";
 
-@import '~fork-awesome/scss/fork-awesome';
-@import '~purecss/build/pure.css';
-@import '~purecss/build/grids-responsive.css';
-@import '~pure-extras/css/pure-extras.css';
-@import '~awesomplete/awesomplete.css';
+@import "fork-awesome";
+@import "pure-min";
+@import "grids-responsive-min";
+@import "pure-extras";
+@import "awesomplete";
 
 $white: #fff;
 $black: #000;
