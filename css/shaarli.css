@@ -3968,19 +3968,13 @@ body,
 .anchor:target {
   padding-top: 40px; }
 
-.shaarli-menu {
-  position: fixed;
-  top: 0;
-  transition: max-height .5s;
-  z-index: 999;
+#shaarli-menu {
   background: var(--main-color);
-  width: 100%;
-  max-height: 45px;
-  overflow: hidden;
-  -webkit-font-smoothing: antialiased; }
-  .shaarli-menu.open {
-    transition: max-height .75s;
-    max-height: 500px; }
+  width: 100%; }
+
+.shaarli-menu {
+  margin: auto;
+  width: 1140px; }
 
 .pure-menu-item {
   height: 45px; }
@@ -4036,34 +4030,33 @@ body,
   text-align: right; }
 
 .linkcount {
+  color: #f5f5f5;
+  font-size: .8em;
+  line-height: 45px;
+  text-align: right;
+  font-style: italic; }
+
+.searchform-block input[type="text"] {
+  border: medium none currentColor;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 1px rgba(0, 0, 0, 0.298) inset;
+  background: #f5f5f5;
+  padding: 0 12px;
+  width: 200px;
+  height: 30px;
   color: #252525;
-  font-size: .8em; }
+  margin-right: 16px; }
+  .searchform-block input[type="text"]::-webkit-input-placeholder {
+    color: #797979; }
 
-@media screen and (min-width: 64em) {
-  .linkcount {
-    position: absolute;
-    right: 5px; } }
-
-.searchform-block {
-  width: 100%;
-  text-align: center; }
-  .searchform-block input[type='text'] {
-    border: medium none currentColor;
-    border-radius: 2px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 1px rgba(0, 0, 0, 0.298) inset;
-    background: #f5f5f5;
-    padding: 0 5px;
-    width: 260px;
-    height: 30px;
-    color: #252525; }
-    .searchform-block input[type='text']::-webkit-input-placeholder {
-      color: #797979; }
-  .searchform-block button {
-    border: 0;
-    border-radius: 2px;
-    background-color: var(--main-color);
-    padding: 4px 8px 6px;
-    color: #f5f5f5; }
+.searchform-block button {
+  border: 0;
+  background-color: var(--main-color);
+  padding: 0;
+  color: #f5f5f5;
+  position: relative;
+  top: 3px;
+  font-size: 22px; }
 
 @media screen and (max-width: 64em) {
   .searchform {
@@ -4107,10 +4100,12 @@ body,
   visibility: hidden;
   z-index: 999;
   background: var(--main-color);
-  padding: 5px 0;
+  padding: 16px 0 4px;
   width: 100%;
   height: 30px;
-  text-align: center; }
+  text-align: center;
+  top: 0;
+  right: 0; }
   .subheader-form input[type='text']::-webkit-input-placeholder, .subheader-form input[type='password']::-webkit-input-placeholder {
     color: #252525; }
   .subheader-form[type='submit'] {
@@ -4162,7 +4157,8 @@ body,
 .container {
   position: relative;
   z-index: 2;
-  margin-top: 45px; }
+  margin: auto;
+  width: 1140px; }
 
 .toolbar-plugin {
   margin: 5px 0;
@@ -4194,8 +4190,9 @@ body,
 
 .linklist-filters {
   margin: 5px 0;
-  color: #252525;
-  font-size: .9em; }
+  display: inline-block;
+  position: absolute;
+  right: 0; }
   .linklist-filters a {
     display: inline-block;
     margin: 3px 0;
@@ -4212,40 +4209,46 @@ body,
     color: #f5f5f5; }
 
 .linklist-pages {
-  margin: 5px 0;
-  text-align: center;
-  color: #252525; }
+  display: inline-block;
+  line-height: 40px; }
   .linklist-pages a {
+    color: #f5f5f5;
     text-decoration: none;
-    color: #252525; }
+    font-size: 20px;
+    line-height: 40px;
+    position: relative;
+    top: 2px;
+    left: 8px; }
     .linklist-pages a:hover {
       color: #fff; }
 
-.linksperpage a, .linksperpage input[type='text'] {
+.linklist-paging {
+  position: relative;
+  color: #f5f5f5; }
+
+.linksperpage a, .linksperpage input[type="text"] {
   display: inline-block;
   width: 20px;
   text-align: center; }
 
 .linksperpage {
-  margin: 5px 0;
-  text-align: right;
-  color: #252525;
-  font-size: .9em; }
-  .linksperpage form {
-    display: inline; }
+  display: inline-block; }
   .linksperpage a {
     background: #f5f5f5;
     padding: 5px;
     text-decoration: none;
     color: #252525; }
-  .linksperpage input[type='text'] {
-    margin: 0;
+  .linksperpage label {
+    margin-right: 8px; }
+  .linksperpage input[type="text"] {
+    margin: 0 6px 0 16px;
     border: medium none currentColor;
     background: #f5f5f5;
-    padding: 4px 5px 3px 8px;
-    height: 20px;
+    padding: 0;
+    height: 27px;
     color: #252525;
-    font-size: .8em; }
+    width: 48px;
+    border-radius: 4px; }
 
 .linklist-item {
   position: relative;

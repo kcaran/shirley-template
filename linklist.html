@@ -6,35 +6,7 @@
 <body>
 {include="page.header"}
 
-<div class="linkcount pure-u-0 pure-u-lg-visible">
-  {if="!empty($linkcount)"}
-  <span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
-  {if="$privateLinkcount>0"}
-  <br><span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
-  {/if}
-  {/if}
-</div>
-
 <input type="hidden" name="token" value="{$token}">
-<div id="search-linklist" class="searchform-block search-linklist">
-
-  <form method="GET" class="pure-form searchform" name="searchform">
-    <input type="text" name="searchterm" class="searchterm" aria-label="{'Search text'|t}" placeholder="{'Search text'|t}"
-           {if="!empty($search_term)"}
-           value="{$search_term}"
-           {/if}
-    >
-    <input type="text" name="searchtags" class="searchtags" aria-label="{'Filter by tag'|t}" placeholder="{'Filter by tag'|t}"
-           {if="!empty($search_tags)"}
-           value="{$search_tags}"
-           {/if}
-    autocomplete="off" data-multiple data-autofirst data-minChars="1"
-    data-list="{loop="$tags"}{$key}, {/loop}"
-    >
-    <button type="submit" class="search-button" aria-label="{'Search'|t}"><i class="fa fa-search" aria-hidden="true"></i></button>
-  </form>
-</div>
-
 {loop="$plugins_header.fields_toolbar"}
   <form
     {loop="$value.attr"}
@@ -55,17 +27,6 @@
   <div id="link-count-block" class="pure-g link-count-block">
     <div class="pure-u-lg-2-24 pure-u-1-24"></div>
     <div id="link-count-content" class="pure-u-lg-20-24 pure-u-22-24">
-      <div class="linkcount pure-u-lg-0 center">
-        {if="!empty($linkcount)"}
-        <span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
-        {if="$privateLinkcount>0"}
-        &middot; <span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
-        {/if}
-        {/if}
-      </div>
-
-      {include="linklist.paging"}
-
       <div id="plugin_zone_start_linklist" class="plugin_zone">
         {loop="$plugin_start_zone"}
           {$value}

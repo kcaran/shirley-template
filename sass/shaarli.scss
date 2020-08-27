@@ -170,22 +170,14 @@ body,
 }
 
 // MENU
-.shaarli-menu {
-  position: fixed;
-  top: 0;
-  transition: max-height .5s;
-  z-index: 999;
-  background: var(--main-color);
-  width: 100%;
-  // Hack to transition with auto height: http://stackoverflow.com/a/8331169/1484919
-  max-height: 45px;
-  overflow: hidden;
-  -webkit-font-smoothing: antialiased;
+#shaarli-menu {
+	background: var(--main-color);
+	width: 100%;
+}
 
-  &.open {
-    transition: max-height .75s;
-    max-height: 500px;
-  }
+.shaarli-menu {
+	margin: auto;
+	width: 1140px;
 }
 
 .pure-menu-item {
@@ -293,31 +285,26 @@ body,
 }
 
 .linkcount {
-  color: $dark-grey;
+  color: $almost-white;
   font-size: .8em;
-}
-
-@media screen and (min-width: 64em) {
-  .linkcount {
-    position: absolute;
-    right: 5px;
-  }
+	line-height: 45px;
+	text-align: right;
+	font-style: italic
 }
 
 .searchform-block {
-  width: 100%;
-  text-align: center;
 
   input {
-    &[type='text'] {
+    &[type="text"] {
       border: medium none currentColor;
-      border-radius: 2px;
+      border-radius: 4px;
       box-shadow: 0 1px 0 $light-shadow, 0 1px 1px $dark-shadow inset;
       background: $almost-white;
-      padding: 0 5px;
-      width: 260px;
+      padding: 0 12px;
+      width: 200px;
       height: 30px;
       color: $dark-grey;
+		margin-right: 16px;
 
       &::-webkit-input-placeholder {
         color: $light-grey;
@@ -327,10 +314,12 @@ body,
 
   button {
     border: 0;
-    border-radius: 2px;
     background-color: var(--main-color);
-    padding: 4px 8px 6px;
+    padding: 0;
     color: $almost-white;
+	position: relative;
+	top: 3px;
+	font-size: 22px;
   }
 }
 
@@ -396,10 +385,12 @@ body,
   visibility: hidden;
   z-index: 999;
   background: var(--main-color);
-  padding: 5px 0;
+  padding: 16px 0 4px;
   width: 100%;
   height: 30px;
   text-align: center;
+	top: 0;
+	right: 0;
 
   input {
     &[type='text'],
@@ -492,9 +483,11 @@ body,
 
 // CONTENT - GENERAL
 .container {
-  position: relative;
-  z-index: 2;
-  margin-top: 45px;
+	position: relative;
+	z-index: 2;
+	margin: auto;
+// KAC - Turn off responsiveness for now
+	width: 1140px;
 }
 
 // Plugins additional forms
@@ -547,8 +540,9 @@ body,
 // 64em -> lg
 .linklist-filters {
   margin: 5px 0;
-  color: $dark-grey;
-  font-size: .9em;
+	display: inline-block;
+	position: absolute;
+	right: 0;
 
 
   a {
@@ -575,18 +569,27 @@ body,
 }
 
 .linklist-pages {
-  margin: 5px 0;
-  text-align: center;
-  color: $dark-grey;
+	display: inline-block;
+	line-height: 40px;
 
   a {
+	color: $almost-white;
     text-decoration: none;
-    color: $dark-grey;
+	font-size: 20px;
+	line-height: 40px;
+	position: relative;
+	top: 2px;
+	left: 8px;
 
     &:hover {
       color: $white;
     }
   }
+}
+
+.linklist-paging {
+	position: relative;
+    color: $almost-white;
 }
 
 %linksperpage-button {
@@ -596,14 +599,7 @@ body,
 }
 
 .linksperpage {
-  margin: 5px 0;
-  text-align: right;
-  color: $dark-grey;
-  font-size: .9em;
-
-  form {
-    display: inline;
-  }
+	display: inline-block;
 
   a {
     @extend %linksperpage-button;
@@ -614,17 +610,22 @@ body,
     color: $dark-grey;
   }
 
+	label {
+		margin-right: 8px;
+	}
+
   input {
-    &[type='text'] {
+    &[type="text"] {
       @extend %linksperpage-button;
 
-      margin: 0;
+      margin: 0 6px 0 16px;
       border: medium none currentColor;
       background: $almost-white;
-      padding: 4px 5px 3px 8px;
-      height: 20px;
+      padding: 0;
+      height: 27px;
       color: $dark-grey;
-      font-size: .8em;
+		width: 48px;
+		border-radius: 4px;
     }
   }
 }

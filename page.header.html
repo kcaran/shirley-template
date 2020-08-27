@@ -1,4 +1,5 @@
-<div class="shaarli-menu pure-g" id="shaarli-menu">
+<div id="shaarli-menu">
+<div class="shaarli-menu pure-g">
   <div class="pure-u-lg-0 pure-u-1">
     <div class="pure-menu">
      <header role="banner">
@@ -51,28 +52,6 @@
             </a>
           </li>
         {/loop}
-        <li class="pure-menu-item pure-u-lg-0 shaarli-menu-mobile" id="shaarli-menu-mobile-rss">
-            <a href="?do={$feed_type}{$searchcrits}" class="pure-menu-link">{'RSS Feed'|t}</a>
-        </li>
-        {if="$is_logged_in"}
-          <li class="pure-menu-item pure-u-lg-0 shaarli-menu-mobile" id="shaarli-menu-mobile-logout">
-            <a href="?do=logout" class="pure-menu-link">{'Logout'|t}</a>
-          </li>
-        {else}
-          <li class="pure-menu-item pure-u-lg-0 shaarli-menu-mobile" id="shaarli-menu-mobile-login">
-            <a href="?do=login" class="pure-menu-link">{'Login'|t}</a>
-          </li>
-        {/if}
-      </ul>
-      <div class="header-buttons pure-u-lg-1-6 pure-u-0 pure-u-lg-visible">
-        <ul class="pure-menu-list">
-          <li class="pure-menu-item" id="shaarli-menu-desktop-search">
-            <a href="#" class="pure-menu-link subheader-opener"
-               data-open-id="search"
-               id="search-button" aria-label="{'Search'|t}" title="{'Search'|t}">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-          </li>
           <li class="pure-menu-item" id="shaarli-menu-desktop-rss">
             <a href="?do={$feed_type}{$searchcrits}" class="pure-menu-link" title="{'RSS Feed'|t}" aria-label="{'RSS Feed'|t}">
               <i class="fa fa-rss" aria-hidden="true"></i>
@@ -93,30 +72,55 @@
               </a>
             </li>
           {/if}
-        </ul>
+        <li class="pure-menu-item pure-u-lg-0 shaarli-menu-mobile" id="shaarli-menu-mobile-rss">
+            <a href="?do={$feed_type}{$searchcrits}" class="pure-menu-link">{'RSS Feed'|t}</a>
+        </li>
+        {if="$is_logged_in"}
+          <li class="pure-menu-item pure-u-lg-0 shaarli-menu-mobile" id="shaarli-menu-mobile-logout">
+            <a href="?do=logout" class="pure-menu-link">{'Logout'|t}</a>
+          </li>
+        {else}
+          <li class="pure-menu-item pure-u-lg-0 shaarli-menu-mobile" id="shaarli-menu-mobile-login">
+            <a href="?do=login" class="pure-menu-link">{'Login'|t}</a>
+          </li>
+        {/if}
+      </ul>
+      <div class="linkcount pure-u-lg-1-6 pure-u-0 pure-u-lg-visible">
+		{if="!empty($linkcount)"}
+		<span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
+		{if="$privateLinkcount>0"}
+		<br><span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
+		{/if}
+		{/if}
+	</div>
+
       </div>
     </div>
+<div id="search-linklist" class="searchform-block search-linklist pure-u-1-2">
+
+  <form method="GET" class="pure-form searchform" name="searchform">
+    <input type="text" name="searchterm" class="searchterm" aria-label="{'Search text'|t}" placeholder="{'Search text'|t}"
+           {if="!empty($search_term)"}
+           value="{$search_term}"
+           {/if}
+    >
+    <input type="text" name="searchtags" class="searchtags" aria-label="{'Filter by tag'|t}" placeholder="{'Filter by tag'|t}"
+           {if="!empty($search_tags)"}
+           value="{$search_tags}"
+           {/if}
+    autocomplete="off" data-multiple data-autofirst data-minChars="1"
+    data-list="{loop="$tags"}{$key}, {/loop}"
+    >
+    <button type="submit" class="search-button" aria-label="{'Search'|t}"><i class="fa fa-search" aria-hidden="true"></i></button>
+  </form>
+</div>
+
+{include="linklist.paging"}
+
   </div>
 </div>
 
 <main id="content" class="container" role="main">
-  <div id="search" class="subheader-form searchform-block header-search">
-    <form method="GET" class="pure-form searchform" name="searchform">
-      <input type="text" id="searchform_value" name="searchterm" aria-label="{'Search text'|t}" placeholder="{'Search text'|t}"
-             {if="!empty($search_term)"}
-             value="{$search_term}"
-             {/if}
-      >
-      <input type="text" name="searchtags" id="tagfilter_value" aria-label="{'Filter by tag'|t}" placeholder="{'Filter by tag'|t}"
-             {if="!empty($search_tags)"}
-             value="{$search_tags}"
-             {/if}
-      autocomplete="off" data-multiple data-autofirst data-minChars="1"
-      data-list="{loop="$tags"}{$key}, {/loop}"
-      >
-      <button type="submit" class="search-button" aria-label="{'Search'|t}"><i class="fa fa-search" aria-hidden="true"></i></button>
-    </form>
-  </div>
   <div id="actions" class="subheader-form">
     <div class="pure-g">
       <div class="pure-u-1">
