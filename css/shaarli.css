@@ -3909,6 +3909,9 @@ https://github.com/pure-css/pure/blob/master/LICENSE.md
   font-weight: 700;
   src: local("Roboto Bold"), local("Roboto-Bold"), url("../fonts/roboto-v20-latin-700.woff2") format("woff2"), url("../fonts/roboto-v20-latin-700.woff") format("woff"); }
 
+*, *:before, *:after {
+  box-sizing: border-box; }
+
 body {
   background: var(--background-color);
   font: 16px/1.4 Roboto, arial, sans-serif;
@@ -4361,6 +4364,7 @@ pre {
   position: relative;
   color: #252525;
   word-wrap: break-word;
+  margin-bottom: 12px;
   max-width: 800px; }
   .linklist-item-description a {
     text-decoration: none;
@@ -4484,18 +4488,17 @@ pre {
   .footer-container a {
     color: #252525; }
 
-.page-form input[type='text'], .page-form input[type='password'], .page-form textarea {
+.page-form input[type="text"], .page-form input[type="password"], .page-form textarea {
   margin: 10px 0;
   border: solid 1px #d8d8d8;
   border-radius: 2px;
   background: #eee;
   padding: 5px 5px 3px 15px;
-  width: 90%;
+  width: 100%;
   height: 35px;
-  color: #252525;
-  box-sizing: border-box; }
+  color: #252525; }
 
-.page-form a.button, .page-form input[type='submit'] {
+.page-form a.button, .page-form input[type="submit"] {
   display: inline-block;
   margin: 15px 5px;
   border: 0;
@@ -4503,7 +4506,7 @@ pre {
   background: var(--main-color);
   min-width: 150px;
   height: 35px;
-  vertical-align: center;
+  text-align: center;
   text-decoration: none;
   line-height: 35px;
   color: #f5f5f5;
@@ -4512,30 +4515,38 @@ pre {
 
 .page-form {
   margin: 20px 0 0;
+  padding: 4px 80px;
   box-shadow: 1px 1px 2px #797979;
   background: #f5f5f5;
   overflow: hidden;
   color: #252525; }
+  .page-form label {
+    margin-top: 16px;
+    display: inline-block; }
   .page-form .window-title {
-    margin: 0 0 10px;
+    margin: 0 0 -16px;
     background: #f5f5f5;
     padding: 10px 0;
     width: 100%;
-    text-align: center;
+    text-align: left;
     color: var(--main-color); }
   .page-form .window-subtitle {
-    text-align: center; }
+    text-align: left; }
   .page-form a {
     text-decoration: none;
     color: var(--main-color);
     font-weight: bold; }
+    .page-form a:hover {
+      color: #186446; }
   .page-form p {
     margin: 0;
     padding: 5px 10px; }
-  .page-form input[type='text']::-webkit-input-placeholder {
+  .page-form input[type="text"]::-webkit-input-placeholder {
     color: #797979; }
-  .page-form input[type='password']::-webkit-input-placeholder {
+  .page-form input[type="password"]::-webkit-input-placeholder {
     color: #797979; }
+  .page-form input[type="submit"]:hover {
+    background-color: #186446; }
   .page-form textarea {
     padding: 15px 5px 3px 15px;
     min-height: 240px;
@@ -4545,7 +4556,11 @@ pre {
   .page-form select {
     color: #252525; }
   .page-form .button.button-red {
-    background: #ac2925; }
+    background: #ac2925;
+    color: #fff; }
+  .page-form .button:hover {
+    color: #fff;
+    opacity: 0.8; }
   .page-form .submit-buttons {
     margin-bottom: 10px; }
   .page-form section {
@@ -4585,7 +4600,7 @@ pre {
 
 .page-form-light div,
 .page-form-light p {
-  text-align: center; }
+  text-align: left; }
 
 .page-form-complete .form-label label, .page-form-complete .form-input input, .page-form-complete .form-input select.align, .page-form-complete .timezone {
   position: absolute;
@@ -4660,7 +4675,8 @@ form[name='linkform'].page-form {
   color: #252525; }
 
 .edit-link-container .created-date {
-  margin-bottom: 10px;
+  float: right;
+  margin-top: -36px;
   color: #797979; }
 
 .login-form-container .remember-me {
@@ -4885,6 +4901,17 @@ form[name='linkform'].page-form {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
+
+.mark-private {
+  float: right;
+  margin-top: -32px; }
+  .mark-private input {
+    margin-right: 4px; }
+
+#editlink-plugins {
+  float: right;
+  font-size: 14px;
+  margin-top: 16px; }
 
 @media print {
   .shaarli-menu {
