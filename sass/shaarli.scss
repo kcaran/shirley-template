@@ -9,8 +9,8 @@ $fa-font-path: "../fork-awesome/fonts";
 $white: #fff;
 $black: #000;
 $almost-white: #f5f5f5;
-$dark-grey: #252525;
-$light-grey: #797979;
+$dark-gray: #252525;
+$light-gray: #797979;
 $main-green: #1b926c;
 $light-green: #b0ddce;
 $dark-green: #186446;
@@ -29,40 +29,6 @@ $form-input-background: #eee;
   --main-color: #{$main-green};
   --background-color: #{$white};
   --dark-main-color: #{$dark-green};
-}
-
-// General
-body {
-  background: var(--background-color);
-}
-
-.strong {
-  font-weight: bold;
-}
-
-.clear {
-  clear: both;
-}
-
-.center {
-  margin: auto;
-  text-align: center;
-}
-
-.label {
-  display: inline-block;
-  border-radius: .25rem;
-  padding: .25em .4em;
-  vertical-align: baseline;
-  text-align: center;
-  line-height: 1;
-  white-space: nowrap;
-  font-size: 75%;
-  font-weight: 700;
-}
-
-pre {
-  max-width: 100%;
 }
 
 @font-face {
@@ -106,9 +72,54 @@ pre {
        url('../fonts/roboto-v20-latin-700.woff') format('woff');
 }
 
+// General
+body {
+  background: var(--background-color);
+}
+
 body,
 .pure-g [class*='pure-u'] {
-  font-family: Roboto, Arial, sans-serif;
+	font: 16px/1.4 Roboto, arial, sans-serif;
+	color: $dark-gray;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+.clear {
+  clear: both;
+}
+
+.center {
+  margin: auto;
+  text-align: center;
+}
+
+.label {
+  display: inline-block;
+	position: relative;
+	top: -1px;
+  border-radius: .25rem;
+	margin-right: 4px;
+  padding: 4px 6px;
+  vertical-align: baseline;
+  text-align: center;
+  line-height: 1;
+  white-space: nowrap;
+  font-size: 12.7px;
+  font-weight: 500;
+	background: $blue;
+	color: $white;
+}
+
+.label-tag a {
+	text-decoration: none;
+	color: $white;
+}
+
+pre {
+  max-width: 100%;
 }
 
 // Extends Pure grids responsive to hide items.
@@ -323,13 +334,13 @@ body,
       box-shadow: 0 1px 0 $light-shadow, 0 1px 1px $dark-shadow inset;
       background: $almost-white;
       padding: 0 12px;
-      width: 200px;
+      width: 240px;
       height: 30px;
-      color: $dark-grey;
+      color: $dark-gray;
 		margin-right: 16px;
 
       &::-webkit-input-placeholder {
-        color: $light-grey;
+        color: $light-gray;
       }
     }
   }
@@ -380,11 +391,6 @@ body,
   }
 }
 
-.header-search,
-.search-linklist {
-  padding: 6px 0;
-}
-
 @media screen and (max-width: 64em) {
   .header-search ,
   .header-search * {
@@ -398,7 +404,7 @@ body,
   box-shadow: 0 1px 0 $light-shadow, 0 1px 4px $dark-shadow inset;
   background: $almost-white;
   padding: 5px 5px 3px 15px;
-  color: $dark-grey;
+  color: $dark-gray;
 }
 
 .subheader-form {
@@ -420,7 +426,7 @@ body,
       @extend %subheader-form-input;
 
       &::-webkit-input-placeholder {
-        color: $dark-grey;
+        color: $dark-gray;
       }
     }
   }
@@ -476,7 +482,7 @@ body,
 
       // because chrome
       &::-webkit-input-placeholder {
-        color: $light-grey;
+        color: $light-gray;
       }
     }
   }
@@ -526,10 +532,10 @@ body,
       padding: 0 5px;
       width: 300px;
       height: 30px;
-      color: $dark-grey;
+      color: $dark-gray;
 
       &::-webkit-input-placeholder {
-        color: $light-grey;
+        color: $light-gray;
       }
     }
 
@@ -539,7 +545,7 @@ body,
       background: $almost-white;
       padding: 0 10px;
       height: 30px;
-      color: $dark-grey;
+      color: $dark-gray;
 
       &:hover {
         background: $white;
@@ -561,11 +567,10 @@ body,
 // CONTENT - LINKLIST PAGING
 // 64em -> lg
 .linklist-filters {
-  margin: 5px 0;
 	display: inline-block;
 	position: absolute;
+	top: -4px;
 	right: 0;
-
 
   a {
     display: inline-block;
@@ -576,7 +581,7 @@ body,
 
   .filter-off {
     background: $almost-white;
-    color: $dark-grey;
+    color: $dark-gray;
   }
 
   .filter-on {
@@ -592,7 +597,9 @@ body,
 
 .linklist-pages {
 	display: inline-block;
-	line-height: 40px;
+	position: relative;
+	top: -6px;
+	left: 36px;
 
   a {
 	color: $almost-white;
@@ -621,7 +628,7 @@ body,
     background: $almost-white;
     padding: 5px;
     text-decoration: none;
-    color: $dark-grey;
+    color: $dark-gray;
   }
 
 	label {
@@ -633,11 +640,11 @@ body,
       margin: 0 6px 0 16px;
       border: medium none currentColor;
       background: $almost-white;
-      padding: 0;
+      padding: 0 8px 0 0;
       height: 27px;
-      color: $dark-grey;
+      color: $dark-gray;
 		text-align: right;
-		width: 48px;
+		width: 40px;
 		border-radius: 4px;
     }
   }
@@ -659,7 +666,7 @@ body,
 .linklist-item {
   position: relative;
   margin: 0 0 10px;
-  box-shadow: 1px 1px 3px $light-grey;
+  box-shadow: 1px 1px 3px $light-gray;
 
   &.private {
     &::before {
@@ -696,17 +703,22 @@ body,
   text-align: center;
 }
 
+.linklist-item-tags {
+	margin: 1em 0;
+}
+
 .linklist-item-title {
   position: relative;
-  margin: 0 0 20px 0;
+  margin: 0 0 8px 0;
   word-wrap: break-word;
 
   h2 {
     margin: 0;
     word-wrap: break-word;
-	font-size: 28px;
-	font-weight: 500;
-	line-height: 40px;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 29px;
+	max-width: 80%;
 
     a {
       vertical-align: middle;
@@ -720,13 +732,12 @@ body,
 		}
 
       &:hover {
-		color: var(--main-dark-color);
+		color: var(--dark-main-color);
       }
     }
   }
 
   .label {
-    font-family: Arial, sans-serif;
     font-size: .65em;
   }
 
@@ -743,7 +754,7 @@ body,
 
 .fold-button {
   display: none;
-  color: $dark-grey;
+  color: $dark-gray;
 }
 
 .linklist-item-editbuttons {
@@ -785,9 +796,9 @@ body,
 
 .linklist-item-description {
   position: relative;
-  line-height: 1.3em;
-  color: $dark-grey;
+  color: $dark-gray;
   word-wrap: break-word;
+	max-width: 800px;
 
   a {
     text-decoration: none;
@@ -797,6 +808,49 @@ body,
       color: var(--main-color);
     }
   }
+}
+
+// Markdown
+.linklist-item-description .markdown {
+	h1 {
+		font-size: 24px;
+		font-weight: 500;
+	}
+	h2 {
+		font-size: 20px;
+		font-weight: 500;
+		font-style: italic;
+	}
+	h3 {
+		font-size: 18px;
+		font-weight: 700;
+		margin: 1em 0 0;
+	}
+	h4, h5, h6 {
+		font-size: 18px;
+		font-weight: 500;
+	}
+/*
+	p {
+		margin: 0 !important;
+	}
+*/
+	p + p, p + ul, p + ol {
+		margin: .5em 0 0 !important;
+	}
+	ol li, ul li {
+		margin: .5em 0 0;
+	}
+/*
+	* {
+		&:first-child {
+			margin-top: 0 !important;
+		}
+		&:last-child {
+			margin-bottom: 5px !important;
+		}
+	}
+*/
 }
 
 .linklist-item-thumbnail {
@@ -811,23 +865,15 @@ body,
 .linklist-item-infos {
   background: $background-linklist-info;
   padding: 4px 8px;
-  color: $dark-grey;
+  color: $dark-gray;
 
   a {
     text-decoration: none;
-    color: $dark-grey;
+    color: $dark-gray;
 
     &:hover {
       color: $black;
     }
-  }
-
-  .linklist-item-tags {
-    font-size: .8em;
-  }
-
-  .label-tag {
-    font-size: 1em;
   }
 
   .mobile-buttons {
@@ -852,18 +898,29 @@ body,
 }
 
 .linklist-item-infos-url {
-  height: 23px;
   overflow: hidden;
-  text-align: right;
   text-overflow: ellipsis;
-  line-height: 23px;
   white-space: nowrap;
-  font-size: .8em;
+	font-size: 12.7px;
+	margin-bottom: 4px;
+	a {
+		color: $light-gray;
+		text-decoration: none;
+		&:hover {
+			color: $blue;
+		}
+	}
+}
+
+.linkdate {
+	font-size: 12.7px;
+	font-style: italic;
+	color: $light-gray;
 }
 
 .linklist-item-infos-controls-group {
   display: inline-block;
-  border-right: 1px solid $light-grey;
+  border-right: 1px solid $light-gray;
   padding-right: 6px;
 }
 
@@ -887,19 +944,19 @@ body,
   margin: 20px 0;
   padding: 5px;
   text-align: center;
-  color: $dark-grey;
+  color: $dark-gray;
 
   &::before {
     display: block;
     margin: 10px auto;
-    background: linear-gradient(to right, var(--background-color), $dark-grey, var(--background-color));
+    background: linear-gradient(to right, var(--background-color), $dark-gray, var(--background-color));
     width: 80%;
     height: 1px;
     content: '';
   }
 
   a {
-    color: $dark-grey;
+    color: $dark-gray;
   }
 }
 
@@ -912,7 +969,7 @@ body,
   padding: 5px 5px 3px 15px;
   width: 90%;
   height: 35px;
-  color: $dark-grey;
+  color: $dark-gray;
   box-sizing: border-box;
 }
 
@@ -934,10 +991,10 @@ body,
 
 .page-form {
   margin: 20px 0 0;
-  box-shadow: 1px 1px 2px $light-grey;
+  box-shadow: 1px 1px 2px $light-gray;
   background: $almost-white;
   overflow: hidden;
-  color: $dark-grey;
+  color: $dark-gray;
 
   .window-title {
     margin: 0 0 10px;
@@ -972,7 +1029,7 @@ body,
       @extend %page-form-input;
 
       &::-webkit-input-placeholder {
-        color: $light-grey;
+        color: $light-gray;
       }
     }
 
@@ -980,7 +1037,7 @@ body,
       @extend %page-form-input;
 
       &::-webkit-input-placeholder {
-        color: $light-grey;
+        color: $light-gray;
       }
     }
 
@@ -1000,7 +1057,7 @@ body,
   }
 
   select {
-    color: $dark-grey;
+    color: $dark-gray;
   }
 
   .button {
@@ -1022,7 +1079,7 @@ body,
   td {
     border-width: 1px 0;
     border-style: solid;
-    border-color: $light-grey;
+    border-color: $light-gray;
   }
 
   th,
@@ -1036,7 +1093,7 @@ body,
 
     .order {
       text-decoration: none;
-      color: $dark-grey;
+      color: $dark-gray;
     }
   }
 
@@ -1100,7 +1157,7 @@ body,
 .page-form-complete {
   div,
   p {
-    color: $dark-grey;
+    color: $dark-gray;
   }
 
   .form-label,
@@ -1231,18 +1288,18 @@ form {
 
 // Page visitor (page form extended)
 .page-visitor {
-  color: $dark-grey;
+  color: $dark-gray;
 }
 
 .page404-container {
-  color: $dark-grey;
+  color: $dark-gray;
 }
 
 // EDIT LINK
 .edit-link-container {
   .created-date {
     margin-bottom: 10px;
-    color: $light-grey;
+    color: $light-gray;
   }
 }
 
@@ -1259,6 +1316,10 @@ form {
     text-decoration: none;
     color: $white;
   }
+
+	.label:first-child {
+		margin-left: 4px;
+	}
 
   .label-tag {
     border-color: $white;
@@ -1323,15 +1384,15 @@ form {
   padding: 10px;
   text-align: center;
   text-decoration: none;
-  color: $dark-grey;
+  color: $dark-gray;
 
   a {
     text-decoration: none;
-    color: $dark-grey;
+    color: $dark-gray;
   }
 
   .count {
-    color: $light-grey;
+    color: $light-gray;
   }
 }
 
@@ -1341,14 +1402,14 @@ form {
 
   a {
     text-decoration: none;
-    color: $dark-grey;
+    color: $dark-gray;
   }
 
   .count {
     display: inline-block;
     width: 35px;
     text-align: right;
-    color: $light-grey;
+    color: $light-gray;
   }
 
   .rename-tag-form {
@@ -1374,7 +1435,7 @@ form {
   clear: both;
   margin: 0 10px 10px;
   background-color: $almost-white;
-  color: $dark-grey;
+  color: $dark-gray;
 }
 
 .picwall-pictureframe {
@@ -1404,7 +1465,6 @@ form {
   span {
     &.info {
       display: none;
-      font-family: Arial, sans-serif;
     }
   }
 
@@ -1442,15 +1502,15 @@ form {
 
 // DAILY
 .daily-desc {
-  color: $light-grey;
+  color: $light-gray;
   font-size: .8em;
 
   a {
     text-decoration: none;
-    color: $dark-grey;
+    color: $dark-gray;
 
     &:hover {
-      color: $light-grey;
+      color: $light-gray;
     }
   }
 }
@@ -1461,7 +1521,7 @@ form {
     &::after {
       display: block;
       margin: 10px auto;
-      background: linear-gradient(to right, var(--background-color), $dark-grey, var(--background-color));
+      background: linear-gradient(to right, var(--background-color), $dark-gray, var(--background-color));
       width: 90%;
       height: 1px;
       content: '';
@@ -1483,7 +1543,7 @@ form {
     &::after {
       display: block;
       margin: 5px auto;
-      background: linear-gradient(to right, $white, $light-grey, $white);
+      background: linear-gradient(to right, $white, $light-gray, $white);
       width: 70%;
       height: 1px;
       content: '';
@@ -1538,51 +1598,6 @@ form {
   }
 }
 
-// Markdown
-.linklist-item-description .markdown {
-	h1 {
-		font-size: 24px;
-		font-weight: 500;
-	}
-
-	h2 {
-		font-size: 20px;
-		font-weight: 500;
-		font-style: italic;
-	}
-
-	h3 {
-		font-size: 18px;
-		font-weight: 700;
-	}
-	h4, h5, h6 {
-		font-size: 18px;
-		font-weight: 500;
-	}
-
-  p {
-    margin: 0 !important;
-  }
-
-  p + p, p + ul, p + ol {
-    margin: .5em 0 0 !important;
-  }
-
-	ol li, ul li {
-		margin: .5em 0 0;
-	}
-
-  * {
-    &:first-child {
-      margin-top: 0 !important;
-    }
-
-    &:last-child {
-      margin-bottom: 5px !important;
-    }
-  }
-}
-
 // Pure Button
 .pure-button-success,
 .pure-button-error,
@@ -1625,7 +1640,7 @@ form {
 
   .thumbnail-placeholder {
     margin: 10px auto;
-    background-color: $light-grey;
+    background-color: $light-gray;
   }
 
   .thumbnail-link-title {
