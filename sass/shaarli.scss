@@ -27,7 +27,7 @@ $form-input-background: #eee;
 
 :root {
   --main-color: #{$main-green};
-  --background-color: #{$background-color};
+  --background-color: #{$white};
   --dark-main-color: #{$dark-green};
 }
 
@@ -67,22 +67,43 @@ pre {
 
 @font-face {
   font-family: 'Roboto';
-  font-weight: 400;
   font-style: normal;
-  src: local('Roboto'),
-  local('Roboto-Regular'),
-  url('../fonts/Roboto-Regular.woff2') format('woff2'),
-  url('../fonts/Roboto-Regular.woff') format('woff');
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'),
+       url('../fonts/roboto-v20-latin-regular.woff') format('woff');
 }
-
 @font-face {
   font-family: 'Roboto';
-  font-weight: 700;
   font-style: normal;
-  src: local('Roboto'),
-  local('Roboto-Bold'),
-  url('../fonts/Roboto-Bold.woff2') format('woff2'),
-  url('../fonts/Roboto-Bold.woff') format('woff');
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+       url('../fonts/roboto-v20-latin-500.woff2') format('woff2'),
+       url('../fonts/roboto-v20-latin-500.woff') format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Roboto Medium Italic'), local('Roboto-MediumItalic'),
+       url('../fonts/roboto-v20-latin-500italic.woff2') format('woff2'),
+       url('../fonts/roboto-v20-latin-500italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Roboto Italic'), local('Roboto-Italic'),
+       url('../fonts/roboto-v20-latin-italic.woff2') format('woff2'),
+       url('../fonts/roboto-v20-latin-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+       url('../fonts/roboto-v20-latin-700.woff2') format('woff2'),
+       url('../fonts/roboto-v20-latin-700.woff') format('woff');
 }
 
 body,
@@ -173,6 +194,7 @@ body,
 #shaarli-menu {
 	background: var(--main-color);
 	width: 100%;
+	margin-bottom: 20px;
 }
 
 .shaarli-menu {
@@ -592,18 +614,10 @@ body,
     color: $almost-white;
 }
 
-%linksperpage-button {
-  display: inline-block;
-  width: 20px;
-  text-align: center;
-}
-
 .linksperpage {
 	display: inline-block;
 
   a {
-    @extend %linksperpage-button;
-
     background: $almost-white;
     padding: 5px;
     text-decoration: none;
@@ -611,19 +625,18 @@ body,
   }
 
 	label {
-		margin-right: 8px;
+		margin-right: 16px;
 	}
 
   input {
     &[type="text"] {
-      @extend %linksperpage-button;
-
       margin: 0 6px 0 16px;
       border: medium none currentColor;
       background: $almost-white;
       padding: 0;
       height: 27px;
       color: $dark-grey;
+		text-align: right;
 		width: 48px;
 		border-radius: 4px;
     }
@@ -647,7 +660,6 @@ body,
   position: relative;
   margin: 0 0 10px;
   box-shadow: 1px 1px 3px $light-grey;
-  background: $almost-white;
 
   &.private {
     &::before {
@@ -686,40 +698,30 @@ body,
 
 .linklist-item-title {
   position: relative;
-  margin: 0;
-  background: $almost-white;
+  margin: 0 0 20px 0;
   word-wrap: break-word;
 
   h2 {
     margin: 0;
-    padding: 3px 10px 0;
-    line-height: 30px;
     word-wrap: break-word;
+	font-size: 28px;
+	font-weight: 500;
+	line-height: 40px;
 
     a {
       vertical-align: middle;
       text-decoration: none;
-      color: $dark-grey;
-      font-size: .7em;
-
-      &:visited {
-        .linklist-link {
-          color: var(--dark-main-color);
-        }
-      }
+		color: var(--main-color);
+		i {
+			font-size: 16px;
+			position: relative;
+			top: -2px;
+			left: 16px;
+		}
 
       &:hover {
-        color: $dark-grey;
+		color: var(--main-dark-color);
       }
-    }
-  }
-
-  .linklist-link {
-    color: var(--main-color);
-    font-size: 1.1em;
-
-    &:hover {
-      color: $dark-grey;
     }
   }
 
@@ -783,7 +785,6 @@ body,
 
 .linklist-item-description {
   position: relative;
-  padding: 0 10px;
   line-height: 1.3em;
   color: $dark-grey;
   word-wrap: break-word;
@@ -793,11 +794,7 @@ body,
     color: var(--main-color);
 
     &:hover {
-      color: $dark-grey;
-    }
-
-    &:visited {
-      color: var(--dark-main-color);
+      color: var(--main-color);
     }
   }
 }
@@ -1518,10 +1515,7 @@ form {
 
     &:hover {
       text-shadow: 1px 1px $background-linklist-info;
-    }
-
-    &:visited {
-      color: var(--dark-main-color);
+      color: var(--main-color);
     }
   }
 }
@@ -1545,14 +1539,38 @@ form {
 }
 
 // Markdown
-.markdown {
+.linklist-item-description .markdown {
+	h1 {
+		font-size: 24px;
+		font-weight: 500;
+	}
+
+	h2 {
+		font-size: 20px;
+		font-weight: 500;
+		font-style: italic;
+	}
+
+	h3 {
+		font-size: 18px;
+		font-weight: 700;
+	}
+	h4, h5, h6 {
+		font-size: 18px;
+		font-weight: 500;
+	}
+
   p {
     margin: 0 !important;
   }
 
-  p + p {
+  p + p, p + ul, p + ol {
     margin: .5em 0 0 !important;
   }
+
+	ol li, ul li {
+		margin: .5em 0 0;
+	}
 
   * {
     &:first-child {

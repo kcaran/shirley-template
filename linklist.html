@@ -25,8 +25,7 @@
 
 <div id="linklist">
   <div id="link-count-block" class="pure-g link-count-block">
-    <div class="pure-u-lg-2-24 pure-u-1-24"></div>
-    <div id="link-count-content" class="pure-u-lg-20-24 pure-u-22-24">
+    <div id="link-count-content" class="pure-u-1">
       <div id="plugin_zone_start_linklist" class="plugin_zone">
         {loop="$plugin_start_zone"}
           {$value}
@@ -37,14 +36,12 @@
 
   {if="count($links)==0"}
     <div id="search-result-block" class="pure-g pure-alert pure-alert-error search-result">
-      <div class="pure-u-2-24"></div>
       <div id="search-result-content" class="pure-u-20-24">
         <div id="searchcriteria">{'Nothing found.'|t}</div>
       </div>
     </div>
   {elseif="!empty($search_term) or $search_tags !== '' or !empty($visibility) or $untaggedonly"}
     <div id="search-result-block" class="pure-g pure-alert pure-alert-success search-result">
-      <div class="pure-u-2-24"></div>
       <div id="search-result-content" class="pure-u-20-24 search-result-main">
         {function="sprintf(t('%s result', '%s results', $result_count), $result_count)"}
         {if="!empty($search_term)"}
@@ -75,8 +72,7 @@
   {/if}
 
   <div id="linklist-loop-block" class="pure-g">
-    <div class="pure-u-lg-2-24 pure-u-1-24"></div>
-    <div id="linklist-loop-content" class="pure-u-lg-20-24 pure-u-22-24">
+    <div id="linklist-loop-content" class="pure-u-1">
       {ignore}Set translation here, for performances{/ignore}
       {$strPrivate=t('Private')}
       {$strEdit=t('Edit')}
@@ -118,13 +114,14 @@
 
             <h2>
               <a href="{$value.real_url}">
+                <span class="linklist-link">{$value.title}</span>
+
                 {if="strpos($value.url, $value.shorturl) === false"}
                   <i class="fa fa-external-link" aria-hidden="true"></i>
                 {else}
                   <i class="fa fa-sticky-note" aria-hidden="true"></i>
                 {/if}
 
-                <span class="linklist-link">{$value.title}</span>
               </a>
             </h2>
           </div>
@@ -249,8 +246,7 @@
   </div>
 
 <div id="linklist-paging-bottom-block" class="pure-g link-count-block">
-  <div class="pure-u-lg-2-24 pure-u-1-24"></div>
-  <div id="linklist-paging-bottom-content" class="pure-u-lg-20-24 pure-u-22-24">
+  <div id="linklist-paging-bottom-content" class="pure-u-1">
     {include="linklist.paging"}
   </div>
 </div>
