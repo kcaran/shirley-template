@@ -3910,10 +3910,7 @@ https://github.com/pure-css/pure/blob/master/LICENSE.md
   src: local("Roboto Bold"), local("Roboto-Bold"), url("../fonts/roboto-v20-latin-700.woff2") format("woff2"), url("../fonts/roboto-v20-latin-700.woff") format("woff"); }
 
 body {
-  background: var(--background-color); }
-
-body,
-.pure-g [class*='pure-u'] {
+  background: var(--background-color);
   font: 16px/1.4 Roboto, arial, sans-serif;
   color: #252525; }
 
@@ -3933,12 +3930,12 @@ body,
   top: -1px;
   border-radius: .25rem;
   margin-right: 4px;
-  padding: 4px 6px;
+  padding: 6px 8px;
   vertical-align: baseline;
   text-align: center;
   line-height: 1;
   white-space: nowrap;
-  font-size: 12.7px;
+  font-size: 14px;
   font-weight: 500;
   background: #0b5ea6;
   color: #fff; }
@@ -4004,6 +4001,8 @@ pre {
 .shaarli-menu {
   margin: auto;
   width: 1140px; }
+  .shaarli-menu > div {
+    margin-bottom: 8px; }
 
 .pure-menu-item {
   height: 45px; }
@@ -4223,12 +4222,14 @@ pre {
     margin: 3px 0;
     padding: 5px 8px;
     text-decoration: none; }
+    .linklist-filters a:hover {
+      background-color: #fff; }
   .linklist-filters .filter-off {
     background: #f5f5f5;
     color: #252525; }
   .linklist-filters .filter-on {
-    background: var(--main-color);
-    color: #b0ddce; }
+    background: #b0ddce;
+    color: var(--main-color); }
   .linklist-filters .filter-block {
     background: #ac2925;
     color: #f5f5f5; }
@@ -4277,16 +4278,10 @@ pre {
   position: relative;
   margin: 0 0 10px;
   box-shadow: 1px 1px 3px #797979; }
-  .linklist-item.private::before {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background: #f89406;
-    width: 2px;
-    height: 100%;
-    content: ''; }
+  .linklist-item.private .linklist-item-title h2, .linklist-item.private .linklist-item-title h2 a {
+    color: #d28314; }
+  .linklist-item.private .linklist-item-title h2 a:hover {
+    color: #97600d; }
 
 .linklist-item-buttons {
   position: relative;
@@ -4330,14 +4325,8 @@ pre {
         left: 16px; }
       .linklist-item-title h2 a:hover {
         color: var(--dark-main-color); }
-  .linklist-item-title .label {
-    font-size: .65em; }
   .linklist-item-title .label-private {
-    border: solid 1px #f89406;
-    color: #f89406; }
-  .linklist-item-title .label-sticky {
-    border: solid 1px #0b5ea6;
-    color: #0b5ea6; }
+    background-color: #d28314; }
 
 .fold-button {
   display: none;
@@ -4423,29 +4412,17 @@ pre {
   padding: 0 0 0 5px;
   height: 90px; }
 
-.linklist-item-infos {
-  background: #ddd;
-  padding: 4px 8px;
+.linklist-item-infos a {
+  text-decoration: none;
   color: #252525; }
-  .linklist-item-infos a {
-    text-decoration: none;
-    color: #252525; }
-    .linklist-item-infos a:hover {
-      color: #000; }
-  .linklist-item-infos .mobile-buttons {
-    text-align: right; }
-  .linklist-item-infos .linklist-plugin-icon {
-    display: inline-block;
-    margin: 0 2px;
-    width: 16px;
-    height: 16px; }
+  .linklist-item-infos a:hover {
+    color: #000; }
+
+.linklist-item-infos .mobile-buttons {
+  text-align: right; }
 
 .linklist-item-infos-dateblock {
   font-size: .9em; }
-
-.linklist-plugin-icon {
-  width: 13px;
-  height: 13px; }
 
 .linklist-item-infos-url {
   overflow: hidden;
@@ -4464,16 +4441,28 @@ pre {
   font-style: italic;
   color: #797979; }
 
-.linklist-item-infos-controls-group {
-  display: inline-block;
-  border-right: 1px solid #797979;
-  padding-right: 6px; }
+.linklist-item-infos-controls-item {
+  display: inline-block; }
+  .linklist-item-infos-controls-item a {
+    display: inline-block;
+    font-size: 24px;
+    padding: 4px 12px;
+    border-radius: 3px;
+    border: 1px solid #fff; }
+    .linklist-item-infos-controls-item a .fa {
+      font-size: 24px; }
+    .linklist-item-infos-controls-item a:hover {
+      border: 1px solid #0b5ea6; }
 
-.ctrl-edit {
-  margin: 0 7px; }
+.linkqrcode a:before {
+  font-family: "ForkAwesome";
+  content: "\f029"; }
 
-.ctrl-delete {
-  margin: 0 7px 0 0; }
+.linkqrcode a img {
+  display: none; }
+
+.ctrl-checkbox {
+  margin-right: 8px; }
 
 @media screen and (max-width: 64em) {
   .linklist-item-infos-url {

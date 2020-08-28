@@ -15,7 +15,7 @@ $main-green: #1b926c;
 $light-green: #b0ddce;
 $dark-green: #186446;
 $red: #ac2925;
-$orange: #f89406;
+$orange: #d28314;
 $blue: #0b5ea6;
 $background-color: #d0d0d0;
 $background-linklist-info: #ddd;
@@ -74,11 +74,7 @@ $form-input-background: #eee;
 
 // General
 body {
-  background: var(--background-color);
-}
-
-body,
-.pure-g [class*='pure-u'] {
+	background: var(--background-color);
 	font: 16px/1.4 Roboto, arial, sans-serif;
 	color: $dark-gray;
 }
@@ -102,12 +98,12 @@ body,
 	top: -1px;
   border-radius: .25rem;
 	margin-right: 4px;
-  padding: 4px 6px;
+  padding: 6px 8px;
   vertical-align: baseline;
   text-align: center;
   line-height: 1;
   white-space: nowrap;
-  font-size: 12.7px;
+  font-size: 14px;
   font-weight: 500;
 	background: $blue;
 	color: $white;
@@ -211,6 +207,9 @@ pre {
 .shaarli-menu {
 	margin: auto;
 	width: 1140px;
+	& > div {
+		margin-bottom: 8px;
+	}
 }
 
 .pure-menu-item {
@@ -577,6 +576,9 @@ pre {
     margin: 3px 0;
     padding: 5px 8px;
     text-decoration: none;
+	&:hover {
+		background-color: $white;
+	}
   }
 
   .filter-off {
@@ -585,8 +587,8 @@ pre {
   }
 
   .filter-on {
-    background: var(--main-color);
-    color: $light-green;
+    background: $light-green;
+    color: var(--main-color);
   }
 
   .filter-block {
@@ -665,21 +667,15 @@ pre {
 
 .linklist-item {
   position: relative;
-  margin: 0 0 10px;
-  box-shadow: 1px 1px 3px $light-gray;
+  margin: 0 0 16px;
 
   &.private {
-    &::before {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      background: $orange;
-      width: 2px;
-      height: 100%;
-      content: '';
-    }
+	.linklist-item-title h2, .linklist-item-title h2 a {
+		color: $orange;
+	}
+	.linklist-item-title h2 a:hover {
+		color: $warning-text;
+	}
   }
 }
 
@@ -738,17 +734,13 @@ pre {
   }
 
   .label {
-    font-size: .65em;
   }
 
   .label-private {
-    border: solid 1px $orange;
-    color: $orange;
+	background-color: $orange;
   }
 
   .label-sticky {
-    border: solid 1px $blue;
-    color: $blue;
   }
 }
 
@@ -863,9 +855,6 @@ pre {
 }
 
 .linklist-item-infos {
-  background: $background-linklist-info;
-  padding: 4px 8px;
-  color: $dark-gray;
 
   a {
     text-decoration: none;
@@ -879,22 +868,10 @@ pre {
   .mobile-buttons {
     text-align: right;
   }
-
-  .linklist-plugin-icon {
-    display: inline-block;
-    margin: 0 2px;
-    width: 16px;
-    height: 16px;
-  }
 }
 
 .linklist-item-infos-dateblock {
   font-size: .9em;
-}
-
-.linklist-plugin-icon {
-  width: 13px;
-  height: 13px;
 }
 
 .linklist-item-infos-url {
@@ -918,18 +895,44 @@ pre {
 	color: $light-gray;
 }
 
-.linklist-item-infos-controls-group {
-  display: inline-block;
-  border-right: 1px solid $light-gray;
-  padding-right: 6px;
+.linklist-item-infos-controls-item {
+	display: inline-block;
+	a {
+		display: inline-block;
+		font-size: 24px;
+		padding: 4px 12px;
+		border-radius: 3px;
+		border: 1px solid $white;
+		.fa {
+			font-size: 24px;
+		}
+		&:hover {
+			border: 1px solid $blue;
+		}
+	}
+}
+
+// Replace QR Code png with icon
+.linkqrcode {
+	a {
+		&:before {
+			font-family: "ForkAwesome";
+			content: "\f029";	
+		}
+		img {
+			display: none;
+		}
+	}
+}
+
+.ctrl-checkbox {
+	margin-right: 8px;
 }
 
 .ctrl-edit {
-  margin: 0 7px;
 }
 
 .ctrl-delete {
-  margin: 0 7px 0 0;
 }
 
 // 64em -> lg

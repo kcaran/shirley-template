@@ -89,15 +89,14 @@
 		{if="!empty($linkcount)"}
 		<span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
 		{if="$privateLinkcount>0"}
-		<br><span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
+		&middot; <span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
 		{/if}
 		{/if}
 	</div>
-
       </div>
     </div>
-<div id="search-linklist" class="searchform-block search-linklist pure-u-1-2">
 
+<div id="search-linklist" class="searchform-block search-linklist pure-u-1-2">
   <form method="GET" class="pure-form searchform" name="searchform">
     <input type="text" name="searchterm" class="searchterm" aria-label="{'Search text'|t}" placeholder="{'Search text'|t}"
            {if="!empty($search_term)"}
@@ -117,7 +116,7 @@
 
 {include="linklist.paging"}
 
-  </div>
+</div>
 </div>
 
 <main id="content" class="container" role="main">
