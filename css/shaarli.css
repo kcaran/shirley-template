@@ -4276,8 +4276,7 @@ pre {
 
 .linklist-item {
   position: relative;
-  margin: 0 0 10px;
-  box-shadow: 1px 1px 3px #797979; }
+  margin: 0 0 16px; }
   .linklist-item.private .linklist-item-title h2, .linklist-item.private .linklist-item-title h2 a {
     color: #d28314; }
   .linklist-item.private .linklist-item-title h2 a:hover {
@@ -4312,7 +4311,6 @@ pre {
     word-wrap: break-word;
     font-size: 24px;
     font-weight: 700;
-    line-height: 29px;
     max-width: 80%; }
     .linklist-item-title h2 a {
       vertical-align: middle;
@@ -4325,8 +4323,9 @@ pre {
         left: 16px; }
       .linklist-item-title h2 a:hover {
         color: var(--dark-main-color); }
-  .linklist-item-title .label-private {
-    background-color: #d28314; }
+
+.label-private {
+  background-color: #d28314; }
 
 .fold-button {
   display: none;
@@ -4412,14 +4411,16 @@ pre {
   padding: 0 0 0 5px;
   height: 90px; }
 
-.linklist-item-infos a {
-  text-decoration: none;
-  color: #252525; }
-  .linklist-item-infos a:hover {
-    color: #000; }
-
-.linklist-item-infos .mobile-buttons {
-  text-align: right; }
+.linklist-item-infos {
+  position: relative;
+  top: -6px; }
+  .linklist-item-infos a {
+    text-decoration: none;
+    color: #252525; }
+    .linklist-item-infos a:hover {
+      color: #000; }
+  .linklist-item-infos .mobile-buttons {
+    text-align: right; }
 
 .linklist-item-infos-dateblock {
   font-size: .9em; }

@@ -88,162 +88,151 @@
       {loop="links"}
         <div class="anchor" id="{$value.shorturl}"></div>
 
-        <div class="linklist-item linklist-item{if="$value.class"} {$value.class}{/if}" data-id="{$value.id}">
-          <div class="linklist-item-title">
-            {if="$thumbnails_enabled && !empty($value.thumbnail)"}
-              <div class="linklist-item-thumbnail" style="width:{$thumbnails_width}px;height:{$thumbnails_height}px;">
-                <div class="thumbnail">
-                  {ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
-                  <a href="{$value.real_url}" aria-hidden="true" tabindex="-1">
-                  <img data-src="{$value.thumbnail}#" class="b-lazy"
+<div class="linklist-item {if="$value.class"} {$value.class}{/if}" data-id="{$value.id}">
+	<div class="linklist-item-title pure-g">
+		<h2 class="pure-u-3-5">
+		{if="$thumbnails_enabled && !empty($value.thumbnail)"}
+		<div class="linklist-item-thumbnail" style="width:{$thumbnails_width}px;height:{$thumbnails_height}px;">
+			<div class="thumbnail">
+				{ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
+				<a href="{$value.real_url}" aria-hidden="true" tabindex="-1">
+				<img data-src="{$value.thumbnail}#" class="b-lazy"
                     src=""
-                    alt="" width="{$thumbnails_width}" height="{$thumbnails_height}" />
-                  </a>
-                </div>
-              </div>
-            {/if}
+                    alt="" width="{$thumbnails_width}" height="{$thumbnails_height}" /></a>
+			</div>
+		</div>
+		{/if}
 
-            <div class="linklist-item-editbuttons">
-              {if="$value.sticky"}
-                <span class="label label-sticky">{$strSticky}</span>
-              {/if}
-              {if="$value.private"}
-                <span class="label label-private">{$strPrivate}</span>
-              {/if}
-            </div>
+		{if="strpos($value.url, $value.shorturl) === false"}
+		<a href="{$value.real_url}"><span class="linklist-link">{$value.title}</span></a>
+		{else}
+		<span class="linklist-link">{$value.title}</span>
+		{/if}
+		</h2>
 
-            <h2>
-                {if="strpos($value.url, $value.shorturl) === false"}
-              <a href="{$value.real_url}">
-                <span class="linklist-link">{$value.title}</span>
-              </a>
-                {else}
-                <span class="linklist-link">{$value.title}</span>
-                {/if}
+		<div class="linklist-item-infos pure-u-2-5">
+			{if="$is_logged_in"}
+			<span class="linklist-item-infos-controls-item ctrl-edit">
+			<a href="?edit_link={$value.id}" aria-label="{$strEdit}" title="{$strEdit}"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
+			</span>
 
-            </h2>
-          </div>
+			<span class="linklist-item-infos-controls-item ctrl-delete">
+			<a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" aria-label="{$strDelete}"
+			title="{$strDelete}" class="delete-link">
+			<i class="fa fa-trash" aria-hidden="true"></i></a>
+			</span>
 
-          {if="$value.description"}
-            <div class="linklist-item-description">
-              {$value.description}
-            </div>
-          {/if}
+			<span class="linklist-item-infos-controls-item ctrl-pin">
+			<a href="?do=pin&amp;id={$value.id}&amp;token={$token}"
+			title="{$strToggleSticky}" aria-label="{$strToggleSticky}" class="pin-link {if="$value.sticky"}pinned-link{/if}">
+			<i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
+			</span>
+			{else}
+			{if="$value.sticky"}
+			<span class="linklist-item-infos-controls-item ctrl-pin">
+				<span title="{$strSticky}" class="pin-link pinned-link">
+				<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+			</span>
+			</span>
+			{/if}
+			{/if}
 
-          {if="strpos($value.url, $value.shorturl) === false"}
-          <div class="linklist-item-infos-url">
-			<a href="{$value.real_url}" aria-label="{$value.title}" title="{$value.title}">{$value.url}</a>
-          </div>
-          {/if}
+			<span class="linklist-item-infos-controls-item">
+			<a href="?{$value.shorturl}" title="{$strPermalink}">
+			<i class="fa fa-link" aria-hidden="true"></i></a>
+			</span>
 
-          {if="!$hide_timestamps || $is_logged_in"}
-            {$updated=$value.updated_timestamp ? $strEdited. format_date($value.updated) : $strPermalink}
-            <div class="linkdate" title="{$updated}">
-              {$value.created|format_date}
-              {if="$value.updated_timestamp"}*{/if}
-            </div>
-          {/if}
-
-          <div id="linklist-controls" class="pure-g">
-          <div class="linklist-item-tags pure-u-1-2">
-          {if="$is_logged_in"}
-             <span class="ctrl-checkbox">
-               <input type="checkbox" class="link-checkbox" value="{$value.id}">
-             </span>
-          {/if}
-
-          {if="$value.tags"}
-              {$tag_counter=count($value.taglist)}
-              {loop="value.taglist"}
-                <span class="label label-tag" title="{$strAddTag}">
-                  <a href="?addtag={$value|urlencode}">{$value}</a>
-                </span>
-              {/loop}
-          {/if}
-          </div>
-
-          <div class="linklist-item-infos pure-u-1-2">
-                {if="$is_logged_in"}
-                    <span class="linklist-item-infos-controls-item ctrl-edit">
-                      <a href="?edit_link={$value.id}" aria-label="{$strEdit}" title="{$strEdit}"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
-                    </span>
-                    <span class="linklist-item-infos-controls-item ctrl-delete">
-                      <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" aria-label="{$strDelete}"
-                         title="{$strDelete}" class="delete-link">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                      </a>
-                    </span>
-                    <span class="linklist-item-infos-controls-item ctrl-pin">
-                      <a href="?do=pin&amp;id={$value.id}&amp;token={$token}"
-                         title="{$strToggleSticky}" aria-label="{$strToggleSticky}" class="pin-link {if="$value.sticky"}pinned-link{/if}">
-                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-                      </a>
-                    </span>
-                {else}
-                  {if="$value.sticky"}
-                      <span class="linklist-item-infos-controls-item ctrl-pin">
-                        <span title="{$strSticky}" class="pin-link pinned-link">
-                          <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-                        </span>
-                      </span>
-                  {/if}
-                {/if}
+			<div class="linklist-item-infos-controls-item">
+                 {if="isset($value.link_plugin)"}
+                   {$link_plugin_counter=count($value.link_plugin)}
+                   {loop="$value.link_plugin"}
+                     {$value}
+                   {/loop}
+                 {/if}
+			</div>
 
                <span class="linklist-item-infos-controls-item">
-                <a href="?{$value.shorturl}" title="{$strPermalink}">
-			      <i class="fa fa-link" aria-hidden="true"></i>
-                </a>
+                 <a href="#" aria-label="{$strFold}" title="{$strFold}" class="fold-button"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
                </span>
+		</div>
+	</div>
 
-                <span class="linklist-item-infos-controls-item">
-                  {if="isset($value.link_plugin)"}
-                    {$link_plugin_counter=count($value.link_plugin)}
-                    {loop="$value.link_plugin"}
-                      {$value}
-                    {/loop}
-                  {/if}
-                </span>
+	{if="$value.description"}
+	<div class="linklist-item-description">{$value.description}</div>
+	{/if}
 
-                <span class="linklist-item-infos-controls-item">
-                  <a href="#" aria-label="{$strFold}" title="{$strFold}" class="fold-button"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-                </span>
-              </div>
-           </div>
+	{if="strpos($value.url, $value.shorturl) === false"}
+	<div class="linklist-item-infos-url">
+		<a href="{$value.real_url}" aria-label="{$value.title}" title="{$value.title}">{$value.url}</a>
+	</div>
+	{/if}
 
-              <div class="mobile-buttons pure-u-1 pure-u-lg-0">
-                {if="isset($value.link_plugin)"}
-                  {$link_plugin_counter=count($value.link_plugin)}
-                  {loop="$value.link_plugin"}
-                    {$value}
-                    {if="$link_plugin_counter - 1 != $counter"}&middot;{/if}
-                  {/loop}
-                {/if}
-                {if="$is_logged_in"}
-                  &middot;
-                  <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" aria-label="{$strDelete}"
-                     title="{$strDelete}" class="delete-link confirm-delete">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                  </a>
-                  &middot;
-                  <a href="?edit_link={$value.id}" aria-label="{$strEdit}" title="{$strEdit}"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
-                {/if}
-              </div>
-        </div>
-      {/loop}
-    </div>
-  </div>
+	{if="!$hide_timestamps || $is_logged_in"}
+	{$updated=$value.updated_timestamp ? $strEdited. format_date($value.updated) : $strPermalink}
+	<div class="linkdate" title="{$updated}">
+		{$value.created|format_date}
+		{if="$value.updated_timestamp"}*{/if}
+	</div>
+	{/if}
+
+	<div class="linklist-controls pure-g">
+		<div class="linklist-item-tags pure-u-1-2">
+		{if="$is_logged_in"}
+			<span class="ctrl-checkbox">
+			<input type="checkbox" class="link-checkbox" value="{$value.id}">
+			</span>
+		{/if}
+
+		{if="$value.tags"}
+			{$tag_counter=count($value.taglist)}
+			{loop="value.taglist"}
+				<span class="label label-tag" title="{$strAddTag}">
+					<a href="?addtag={$value|urlencode}">{$value}</a>
+				</span>
+			{/loop}
+		{/if}
+
+		{if="$value.private"}
+			<span class="label label-private">{$strPrivate}</span>
+		{/if}
+		</div>
+	</div>
+
+	<div class="mobile-buttons pure-u-1 pure-u-lg-0">
+		{if="isset($value.link_plugin)"}
+			{$link_plugin_counter=count($value.link_plugin)}
+			{loop="$value.link_plugin"}
+				{$value}
+				{if="$link_plugin_counter - 1 != $counter"}&middot;{/if}
+			{/loop}
+		{/if}
+		{if="$is_logged_in"}
+			&middot;
+			<a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" aria-label="{$strDelete}"
+			title="{$strDelete}" class="delete-link confirm-delete">
+			<i class="fa fa-trash" aria-hidden="true"></i>
+			</a>
+			&middot;
+			<a href="?edit_link={$value.id}" aria-label="{$strEdit}" title="{$strEdit}"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
+		{/if}
+	</div>
 </div>
 
-  <div id="plugin_zone_end_linklist" class="plugin_zone">
-    {loop="$plugin_end_zone"}
-    {$value}
-    {/loop}
-  </div>
+{/loop}
+</div>
+</div>
+</div>
+
+<div id="plugin_zone_end_linklist" class="plugin_zone">
+{loop="$plugin_end_zone"}
+{$value}
+{/loop}
+</div>
 
 <div id="linklist-paging-bottom-block" class="pure-g link-count-block">
-  <div id="linklist-paging-bottom-content" class="pure-u-1">
-    {include="linklist.paging"}
-  </div>
+<div id="linklist-paging-bottom-content" class="pure-u-1">
+{include="linklist.paging"}
+</div>
 </div>
 
 {include="page.footer"}

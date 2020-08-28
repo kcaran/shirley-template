@@ -713,7 +713,6 @@ pre {
     word-wrap: break-word;
 	font-size: 24px;
 	font-weight: 700;
-	line-height: 29px;
 	max-width: 80%;
 
     a {
@@ -736,12 +735,12 @@ pre {
   .label {
   }
 
-  .label-private {
-	background-color: $orange;
-  }
-
   .label-sticky {
   }
+}
+
+.label-private {
+	background-color: $orange;
 }
 
 .fold-button {
@@ -783,13 +782,14 @@ pre {
 }
 
 .pinned-link {
-  color: $blue !important;
+	color: $blue !important;
 }
 
 .linklist-item-description {
   position: relative;
   color: $dark-gray;
   word-wrap: break-word;
+	margin-bottom: 12px;
 	max-width: 800px;
 
   a {
@@ -855,6 +855,8 @@ pre {
 }
 
 .linklist-item-infos {
+	position: relative;
+	top: -6px;
 
   a {
     text-decoration: none;
