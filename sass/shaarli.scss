@@ -23,7 +23,6 @@ $light-shadow: rgba(255, 255, 255, .078);
 $dark-shadow: rgba(0, 0, 0, .298);
 $warning-text: #97600d;
 $form-input-border: #d8d8d8;
-$form-input-background: #eee;
 
 :root {
   --main-color: #{$main-green};
@@ -83,6 +82,10 @@ body {
 	background: var(--background-color);
 	font: 16px/1.4 Roboto, arial, sans-serif;
 	color: $dark-gray;
+}
+
+.pure-g [class*=pure-u] {
+	font-family: Roboto, arial, sans-serif;
 }
 
 .strong {
@@ -612,16 +615,32 @@ pre {
   a {
 	color: $almost-white;
     text-decoration: none;
-	font-size: 20px;
+	font-size: 24px;
 	line-height: 40px;
-	position: relative;
-	top: 2px;
-	left: 8px;
+	display: inline-block;
+	width: 32px;
+	text-align: center;
 
     &:hover {
       color: $white;
     }
   }
+	span {
+		position: relative;
+		top: -2px;
+	}
+}
+
+#linklist-paging-bottom-content .linklist-pages {
+	position: relative; 
+	left: 50%; 
+	transform: translateX(-50%);
+	a {
+		color: $dark-gray;
+    	&:hover {
+      		opacity: 0.8;
+    	}
+	}
 }
 
 .linklist-paging {
@@ -711,15 +730,15 @@ pre {
 
 .linklist-item-title {
   position: relative;
-  margin: 0 0 8px 0;
+  margin: 0 0 0px 0;
   word-wrap: break-word;
 
   h2 {
     margin: 0;
     word-wrap: break-word;
-	font-size: 24px;
+	font-size: 22px;
 	font-weight: 700;
-	max-width: 80%;
+	line-height: 26px;
 
     a {
       vertical-align: middle;
@@ -795,7 +814,6 @@ pre {
   position: relative;
   color: $dark-gray;
   word-wrap: break-word;
-	margin-bottom: 12px;
 	max-width: 800px;
 
   a {
@@ -861,8 +879,9 @@ pre {
 }
 
 .linklist-item-infos {
-	position: relative;
-	top: -6px;
+	position: absolute;
+	top: -4px;
+	right: 0px;
 
   a {
     text-decoration: none;
@@ -887,7 +906,7 @@ pre {
   text-overflow: ellipsis;
   white-space: nowrap;
 	font-size: 12.7px;
-	margin-bottom: 4px;
+	margin: 12px 0 4px;
 	a {
 		color: $light-gray;
 		text-decoration: none;
@@ -907,12 +926,11 @@ pre {
 	display: inline-block;
 	a {
 		display: inline-block;
-		font-size: 24px;
-		padding: 4px 12px;
 		border-radius: 3px;
 		border: 1px solid $white;
-		.fa {
+		&.fa {
 			font-size: 24px;
+			padding: 4px 12px;
 		}
 		&:hover {
 			border: 1px solid $blue;
@@ -926,6 +944,8 @@ pre {
 		&:before {
 			font-family: "ForkAwesome";
 			content: "\f029";	
+			font-size: 24px;
+			padding: 4px 12px;
 		}
 		img {
 			display: none;
@@ -976,7 +996,6 @@ pre {
   margin: 10px 0;
   border: solid 1px $form-input-border;
   border-radius: 2px;
-  background: $form-input-background;
   padding: 5px 5px 3px 15px;
   width: 100%;
   height: 35px;
@@ -1012,9 +1031,8 @@ pre {
 	}
 
   .window-title {
-    margin: 0 0 -16px;
+    margin: 16px 0px;
     background: $almost-white;
-    padding: 10px 0;
     width: 100%;
     text-align: left;
     color: var(--main-color);
@@ -1040,7 +1058,6 @@ pre {
 
   p {
     margin: 0;
-    padding: 5px 10px;
   }
 
   input {
@@ -1080,7 +1097,13 @@ pre {
 
   select {
     color: $dark-gray;
+	padding: 4px 16px 4px 8px;
   }
+
+	label span + select {
+		display: block;
+		margin-top: 8px;
+	}
 
   .button {
     &.button-red {
@@ -1125,7 +1148,7 @@ pre {
   }
 
   .awesomplete {
-    width: 90%;
+    width: 100%;
 
     input {
       width: 100%;
@@ -1186,6 +1209,9 @@ pre {
   p {
     color: $dark-gray;
   }
+	p {
+		margin: 0 0 16px;
+	}
 
   .form-label,
   .form-input {
@@ -1204,7 +1230,7 @@ pre {
   }
 
   .label-name {
-    font-weight: bold;
+    font-weight: 500;
   }
 
   .label-desc {
@@ -1233,7 +1259,10 @@ pre {
   }
 
   .timezone {
-    @extend %page-form-valign;
+	select {
+		display: inline-block;
+		margin: 8px 0;
+	}
   }
 }
 
@@ -1324,6 +1353,7 @@ form {
 
 // EDIT LINK
 .edit-link-container {
+	margin-bottom: 300px;
   .created-date {
 	float: right;
     margin-top: -36px;
@@ -1366,9 +1396,10 @@ form {
 
 // TOOLS
 .tools-item {
-  margin: 10px 0;
+  margin: 16px 0;
 
   .pure-button {
+	min-width: 240px;
     &:hover {
       background-color: var(--main-color);
       background-image: none;

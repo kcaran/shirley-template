@@ -3917,6 +3917,9 @@ body {
   font: 16px/1.4 Roboto, arial, sans-serif;
   color: #252525; }
 
+.pure-g [class*=pure-u] {
+  font-family: Roboto, arial, sans-serif; }
+
 .strong {
   font-weight: bold; }
 
@@ -4245,13 +4248,25 @@ pre {
   .linklist-pages a {
     color: #f5f5f5;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 40px;
-    position: relative;
-    top: 2px;
-    left: 8px; }
+    display: inline-block;
+    width: 32px;
+    text-align: center; }
     .linklist-pages a:hover {
       color: #fff; }
+  .linklist-pages span {
+    position: relative;
+    top: -2px; }
+
+#linklist-paging-bottom-content .linklist-pages {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+  #linklist-paging-bottom-content .linklist-pages a {
+    color: #252525; }
+    #linklist-paging-bottom-content .linklist-pages a:hover {
+      opacity: 0.8; }
 
 .linklist-paging {
   position: relative;
@@ -4307,14 +4322,14 @@ pre {
 
 .linklist-item-title {
   position: relative;
-  margin: 0 0 8px 0;
+  margin: 0 0 0px 0;
   word-wrap: break-word; }
   .linklist-item-title h2 {
     margin: 0;
     word-wrap: break-word;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
-    max-width: 80%; }
+    line-height: 26px; }
     .linklist-item-title h2 a {
       vertical-align: middle;
       text-decoration: none;
@@ -4364,7 +4379,6 @@ pre {
   position: relative;
   color: #252525;
   word-wrap: break-word;
-  margin-bottom: 12px;
   max-width: 800px; }
   .linklist-item-description a {
     text-decoration: none;
@@ -4416,8 +4430,9 @@ pre {
   height: 90px; }
 
 .linklist-item-infos {
-  position: relative;
-  top: -6px; }
+  position: absolute;
+  top: -4px;
+  right: 0px; }
   .linklist-item-infos a {
     text-decoration: none;
     color: #252525; }
@@ -4434,7 +4449,7 @@ pre {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 12.7px;
-  margin-bottom: 4px; }
+  margin: 12px 0 4px; }
   .linklist-item-infos-url a {
     color: #797979;
     text-decoration: none; }
@@ -4450,18 +4465,19 @@ pre {
   display: inline-block; }
   .linklist-item-infos-controls-item a {
     display: inline-block;
-    font-size: 24px;
-    padding: 4px 12px;
     border-radius: 3px;
     border: 1px solid #fff; }
-    .linklist-item-infos-controls-item a .fa {
-      font-size: 24px; }
+    .linklist-item-infos-controls-item a.fa {
+      font-size: 24px;
+      padding: 4px 12px; }
     .linklist-item-infos-controls-item a:hover {
       border: 1px solid #0b5ea6; }
 
 .linkqrcode a:before {
   font-family: "ForkAwesome";
-  content: "\f029"; }
+  content: "\f029";
+  font-size: 24px;
+  padding: 4px 12px; }
 
 .linkqrcode a img {
   display: none; }
@@ -4492,7 +4508,6 @@ pre {
   margin: 10px 0;
   border: solid 1px #d8d8d8;
   border-radius: 2px;
-  background: #eee;
   padding: 5px 5px 3px 15px;
   width: 100%;
   height: 35px;
@@ -4524,9 +4539,8 @@ pre {
     margin-top: 16px;
     display: inline-block; }
   .page-form .window-title {
-    margin: 0 0 -16px;
+    margin: 16px 0px;
     background: #f5f5f5;
-    padding: 10px 0;
     width: 100%;
     text-align: left;
     color: var(--main-color); }
@@ -4539,8 +4553,7 @@ pre {
     .page-form a:hover {
       color: #186446; }
   .page-form p {
-    margin: 0;
-    padding: 5px 10px; }
+    margin: 0; }
   .page-form input[type="text"]::-webkit-input-placeholder {
     color: #797979; }
   .page-form input[type="password"]::-webkit-input-placeholder {
@@ -4554,7 +4567,11 @@ pre {
     overflow-y: auto;
     word-wrap: break-word; }
   .page-form select {
-    color: #252525; }
+    color: #252525;
+    padding: 4px 16px 4px 8px; }
+  .page-form label span + select {
+    display: block;
+    margin-top: 8px; }
   .page-form .button.button-red {
     background: #ac2925;
     color: #fff; }
@@ -4581,7 +4598,7 @@ pre {
       text-decoration: none;
       color: #252525; }
   .page-form .awesomplete {
-    width: 90%; }
+    width: 100%; }
     .page-form .awesomplete input {
       width: 100%; }
   .page-form div .awesomplete > ul {
@@ -4602,7 +4619,7 @@ pre {
 .page-form-light p {
   text-align: left; }
 
-.page-form-complete .form-label label, .page-form-complete .form-input input, .page-form-complete .form-input select.align, .page-form-complete .timezone {
+.page-form-complete .form-label label, .page-form-complete .form-input input, .page-form-complete .form-input select.align {
   position: absolute;
   top: 50%;
   transform: translateY(-50%); }
@@ -4610,6 +4627,9 @@ pre {
 .page-form-complete div,
 .page-form-complete p {
   color: #252525; }
+
+.page-form-complete p {
+  margin: 0 0 16px; }
 
 .page-form-complete .form-label,
 .page-form-complete .form-input {
@@ -4622,7 +4642,7 @@ pre {
   text-align: right; }
 
 .page-form-complete .label-name {
-  font-weight: bold; }
+  font-weight: 500; }
 
 .page-form-complete .label-desc {
   font-size: .8em; }
@@ -4632,6 +4652,10 @@ pre {
 
 .page-form-complete textarea {
   margin: 0; }
+
+.page-form-complete .timezone select {
+  display: inline-block;
+  margin: 8px 0; }
 
 div.awesomplete {
   width: inherit; }
@@ -4674,10 +4698,12 @@ form[name='linkform'].page-form {
 .page404-container {
   color: #252525; }
 
-.edit-link-container .created-date {
-  float: right;
-  margin-top: -36px;
-  color: #797979; }
+.edit-link-container {
+  margin-bottom: 300px; }
+  .edit-link-container .created-date {
+    float: right;
+    margin-top: -36px;
+    color: #797979; }
 
 .login-form-container .remember-me {
   margin: 5px 0; }
@@ -4700,11 +4726,13 @@ form[name='linkform'].page-form {
   border: 1px solid #fff; }
 
 .tools-item {
-  margin: 10px 0; }
-  .tools-item .pure-button:hover {
-    background-color: var(--main-color);
-    background-image: none;
-    color: #f5f5f5; }
+  margin: 16px 0; }
+  .tools-item .pure-button {
+    min-width: 240px; }
+    .tools-item .pure-button:hover {
+      background-color: var(--main-color);
+      background-image: none;
+      color: #f5f5f5; }
 
 .pluginform-container .mobile-row {
   font-size: .9em; }
@@ -4904,7 +4932,7 @@ form[name='linkform'].page-form {
 
 .mark-private {
   float: right;
-  margin-top: -32px; }
+  margin-top: -36px; }
   .mark-private input {
     margin-right: 4px; }
 
