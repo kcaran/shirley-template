@@ -4472,6 +4472,16 @@ pre {
       padding: 4px 12px; }
     .linklist-item-infos-controls-item a:hover {
       border: 1px solid #0b5ea6; }
+  .linklist-item-infos-controls-item a.fold-button {
+    border: none; }
+    .linklist-item-infos-controls-item a.fold-button .fa {
+      display: inline-block;
+      border-radius: 3px;
+      border: 1px solid #fff;
+      font-size: 24px;
+      padding: 4px 12px; }
+      .linklist-item-infos-controls-item a.fold-button .fa:hover {
+        border: 1px solid #0b5ea6; }
 
 .linkqrcode a:before {
   font-family: "ForkAwesome";
