@@ -19,14 +19,14 @@
           {'Filters'|t}
         </span>
         {if="$is_logged_in"}
-        <a href="?visibility=private" aria-label="{'Only display private links'|t}" title="{'Only display private links'|t}"
+        <a href="{$base_path}/admin/visibility/private" aria-label="{'Only display private links'|t}" title="{'Only display private links'|t}"
            class="{if="$visibility==='private'"}filter-on{else}filter-off{/if}"
         ><i class="fa fa-user-secret" aria-hidden="true"></i></a>
-        <a href="?visibility=public" aria-label="{'Only display public links'|t}" title="{'Only display public links'|t}"
+        <a href="{$base_path}/admin/visibility/public" aria-label="{'Only display public links'|t}" title="{'Only display public links'|t}"
            class="{if="$visibility==='public'"}filter-on{else}filter-off{/if}"
         ><i class="fa fa-globe" aria-hidden="true"></i></a>
         {/if}
-        <a href="?untaggedonly" aria-label="{'Filter untagged links'|t}" title="{'Filter untagged links'|t}"
+        <a href="{$base_path}/untagged-only" aria-label="{'Filter untagged links'|t}" title="{'Filter untagged links'|t}"
            class={if="$untaggedonly"}"filter-on"{else}"filter-off"{/if}
         ><i class="fa fa-tag" aria-hidden="true"></i></a>
         <a href="#" aria-label="{'Select all'|t}" title="{'Select all'|t}"
@@ -48,9 +48,11 @@
       {/if}
 
     <div class="linksperpage">
-      <form method="GET" class="pure-u-0 pure-u-lg-visible">
+      <form method="GET" class="pure-u-0 pure-u-lg-visible" action="{$base_path}/links-per-page">
         <label class="pure-u-0 pure-u-lg-visible">
-        <input type="text" name="linksperpage" placeholder="133">{'Links per page'|t}</label>
+        <input type="text" name="nb" placeholder="133" value="{$links_per_page}">{'Links per page'|t}</label>
+    </div>
+
       </form>
       <a href="#" class="filter-off fold-all pure-u-0 pure-u-lg-visible" aria-label="{'Fold all'|t}" title="{'Fold all'|t}">
         <i class="fa fa-chevron-up" aria-hidden="true"></i>

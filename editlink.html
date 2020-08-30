@@ -6,12 +6,15 @@
 <body>
   {include="page.header"}
   <div id="editlinkform" class="edit-link-container" class="pure-g">
-    <div class="pure-u-1-24"></div>
-    <form method="post" name="linkform" class="page-form pure-u-22-24 page-form page-form-light">
+    <div class="pure-u-lg-1-5 pure-u-1-24"></div>
+    <form method="post"
+          name="linkform"
+          action="{$base_path}/admin/shaare"
+          class="page-form pure-u-22-24 page-form page-form-light"
+    >
       <h2 class="window-title">
         {if="!$link_is_new"}{'Edit Shaare'|t}{else}{'New Shaare'|t}{/if}
       </h2>
-      <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
       {if="isset($link.id)"}
         <input type="hidden" name="lf_id" value="{$link.id}">
       {/if}
@@ -31,7 +34,7 @@
       </div>
 
       <div>
-        <input type="text" name="lf_url" id="lf_url" value="{$link.url}" class="lf_input autofocus">
+        <input type="text" name="lf_url" id="lf_url" value="{$link.url}" class="lf_input">
       </div>
       <div>
       <label for="lf_title">{'Title'|t}</label>
@@ -41,12 +44,14 @@
       </div>
       <div>
         <label for="lf_description">{'Description'|t}</label>
-      <div id="editlink-plugins">
-        {loop="$edit_link_plugin"}
-          {$value}
-        {/loop}
       </div>
-      </div>
+      {if="$formatter==='markdown'"}
+        <div class="md_help">
+          <a href="http://daringfireball.net/projects/markdown/syntax" title="{'Markdown syntax documentation'|t}">
+            {'Markdown syntax'|t}
+          </a>
+        </div>
+      {/if}
 
       <div>
         <textarea name="lf_description" id="lf_description" class="autofocus">{$link.description}</textarea>
@@ -59,12 +64,17 @@
           data-list="{loop="$tags"}{$key}, {/loop}" data-multiple data-autofirst autocomplete="off" >
       </div>
 
+      <div id="editlink-plugins">
+        {loop="$edit_link_plugin"}
+          {$value}
+        {/loop}
+      </div>
 
       <div class="submit-buttons center">
         <input type="submit" name="save_edit" class="" id="button-save-edit"
                value="{if="$link_is_new"}{'Save'|t}{else}{'Update'|t}{/if}">
         {if="!$link_is_new"}
-        <a href="?delete_link&amp;lf_linkdate={$link.id}&amp;token={$token}"
+        <a href="{$base_path}/admin/shaare/delete?id={$link.id}&amp;token={$token}"
            title="" name="delete_link" class="button button-red confirm-delete">
           {'Delete'|t}
         </a>
@@ -72,6 +82,7 @@
       </div>
 
       <input type="hidden" name="token" value="{$token}">
+      <input type="hidden" name="source" value="{$source}">
       {if="$http_referer"}
         <input type="hidden" name="returnurl" value="{$http_referer}">
       {/if}

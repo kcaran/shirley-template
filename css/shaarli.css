@@ -4069,6 +4069,8 @@ pre {
   line-height: 45px;
   text-align: right;
   font-style: italic; }
+  .linkcount .strong {
+    font-style: normal; }
 
 .searchform-block input[type="text"] {
   border: medium none currentColor;
@@ -4547,7 +4549,8 @@ pre {
   color: #252525; }
   .page-form label {
     margin-top: 16px;
-    display: inline-block; }
+    display: inline-block;
+    font-weight: 500; }
   .page-form .window-title {
     margin: 16px 0px;
     background: #f5f5f5;
@@ -4945,6 +4948,10 @@ form[name='linkform'].page-form {
   margin-top: -36px; }
   .mark-private input {
     margin-right: 4px; }
+
+.md_help {
+  float: right;
+  margin-top: -24px; }
 
 #editlink-plugins {
   float: right;

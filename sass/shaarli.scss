@@ -330,7 +330,10 @@ pre {
   font-size: .8em;
 	line-height: 45px;
 	text-align: right;
-	font-style: italic
+	font-style: italic;
+	.strong {
+		font-style: normal;
+	}
 }
 
 .searchform-block {
@@ -1044,6 +1047,7 @@ pre {
 	label {
 		margin-top: 16px;
 		display: inline-block;
+		font-weight: 500;
 	}
 
   .window-title {
@@ -1732,6 +1736,11 @@ form {
 	input {
 		margin-right: 4px;
 	}
+}
+
+.md_help {
+	float: right;
+	margin-top: -24px;
 }
 
 #editlink-plugins {
