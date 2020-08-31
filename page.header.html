@@ -1,48 +1,39 @@
 <div id="shaarli-menu">
 <div class="shaarli-menu pure-g pure-g-full">
-  <div class="pure-u-lg-0 pure-u-1">
-    <div class="pure-menu">
-     <header role="banner">
-      <a href="{$titleLink}" class="pure-menu-link shaarli-title" id="shaarli-title-mobile">
-        <i class="fa fa-shaarli" aria-hidden="true"></i>
-        {$shaarlititle}
-      </a>
-      </header>
-      <a href="#" class="menu-toggle" id="menu-toggle" aria-label="{'Menu'|t}"><s class="bar" aria-hidden="true"></s><s class="bar" aria-hidden="true"></s></a>
-    </div>
-  </div>
+
   <div class="pure-u-1">
     <div class="pure-menu menu-transform pure-menu-horizontal pure-g">
-      <ul class="pure-menu-list pure-u-lg-5-6 pure-u-1">
-        <li class="pure-menu-item pure-u-0 pure-u-lg-visible">
+      <ul class="pure-menu-list pure-u-5-6">
+        <li class="pure-menu-item">
           <a href="{$titleLink}" class="pure-menu-link shaarli-title" id="shaarli-title-desktop">
             <i class="fa fa-shaarli" aria-hidden="true"></i>
             {$shaarlititle}
           </a>
         </li>
+
         {if="$is_logged_in || $openshaarli"}
-          <li class="pure-menu-item">
+        <li class="pure-menu-item pure-u-lg-visible">
             <a href="{$base_path}/admin/add-shaare" class="pure-menu-link" id="shaarli-menu-shaare">
               <i class="fa fa-plus" aria-hidden="true"></i> {'Shaare'|t}
             </a>
           </li>
-          <li class="pure-menu-item" id="shaarli-menu-tools">
+          <li class="pure-menu-item pure-u-lg-visible" id="shaarli-menu-tools">
             <a href="{$base_path}/admin/tools" class="pure-menu-link">{'Tools'|t}</a>
           </li>
         {/if}
-        <li class="pure-menu-item" id="shaarli-menu-tags">
+        <li class="pure-menu-item pure-u-lg-visible" id="shaarli-menu-tags">
           <a href="{$base_path}/tags/cloud" class="pure-menu-link">{'Tag cloud'|t}</a>
         </li>
         {if="$thumbnails_enabled"}
-          <li class="pure-menu-item" id="shaarli-menu-picwall">
+          <li class="pure-menu-item pure-u-lg-visible" id="shaarli-menu-picwall">
             <a href="{$base_path}/picture-wall?{function="ltrim($searchcrits, '&')"}" class="pure-menu-link">{'Picture wall'|t}</a>
           </li>
         {/if}
-        <li class="pure-menu-item" id="shaarli-menu-daily">
+        <li class="pure-menu-item pure-u-lg-visible" id="shaarli-menu-daily">
           <a href="{$base_path}/daily" class="pure-menu-link">{'Daily'|t}</a>
         </li>
         {loop="$plugins_header.buttons_toolbar"}
-          <li class="pure-menu-item shaarli-menu-plugin">
+          <li class="pure-menu-item shaarli-menu-plugin pure-u-lg-visible">
             <a
               {$value.attr.class=isset($value.class) ? $value.attr.class . ' pure-menu-link' : 'pure-menu-link'}
               {loop="$value.attr"}
@@ -52,13 +43,13 @@
             </a>
           </li>
         {/loop}
-          <li class="pure-menu-item" id="shaarli-menu-desktop-rss">
-            <a href="{$base_path}/feed/{$feed_type}?{$searchcrits}" class="pure-menu-link" title="{'RSS Feed'|t}" aria-label="{'RSS Feed'|t}"</a>
-              <i class="fa fa-rss" aria-hidden="true"></i>
+          <li class="pure-menu-item pure-u-lg-visible" id="shaarli-menu-desktop-rss">
+            <a href="{$base_path}/feed/{$feed_type}?{$searchcrits}" class="pure-menu-link" title="{'RSS Feed'|t}" aria-label="{'RSS Feed'|t}">
+              <i class="fa fa-rss" aria-hidden="true"></i> RSS
             </a>
           </li>
           {if="!$is_logged_in"}
-            <li class="pure-menu-item" id="shaarli-menu-desktop-login">
+            <li class="pure-menu-item pure-u-lg-visible" id="shaarli-menu-desktop-login">
               <a href="{$base_path}/login" class="pure-menu-link"
                  data-open-id="header-login-form"
                  id="login-button" aria-label="{'Login'|t}" title="{'Login'|t}">
@@ -66,28 +57,14 @@
               </a>
             </li>
           {else}
-            <li class="pure-menu-item" id="shaarli-menu-desktop-logout">
+            <li class="pure-menu-item pure-u-lg-visible" id="shaarli-menu-desktop-logout">
               <a href="{$base_path}/admin/logout" class="pure-menu-link" title="{'Logout'|t}" aria-label="{'Logout'|t}">
                 <i class="fa fa-sign-out" aria-hidden="true"></i> {'Logout'|t}
               </a>
             </li>
           {/if}
-        <li class="pure-menu-item pure-u-lg-0 shaarli-menu-mobile" id="shaarli-menu-mobile-rss">
-            <a href="{$base_path}/feed/{$feed_type}?{$searchcrits}" class="pure-menu-link" title="{'RSS Feed'|t}" aria-label="{'RSS Feed'|t}">
-                <i class="fa fa-user" aria-hidden="true"></i> Login
-            </a>
-        </li>
-        {if="$is_logged_in"}
-          <li class="pure-menu-item pure-u-lg-0 shaarli-menu-mobile" id="shaarli-menu-mobile-logout">
-            <a href="{$base_path}/admin/logout" class="pure-menu-link">{'Logout'|t}</a>
-          </li>
-        {else}
-          <li class="pure-menu-item pure-u-lg-0 shaarli-menu-mobile" id="shaarli-menu-mobile-login">
-            <a href="{$base_path}/login" class="pure-menu-link">{'Login'|t}</a>
-          </li>
-        {/if}
       </ul>
-      <div class="linkcount pure-u-lg-1-6 pure-u-0 pure-u-lg-visible">
+      <div class="linkcount pure-u-1-6 pure-u-lg-visible">
 		{if="!empty($linkcount)"}
 		<span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
 		{if="$privateLinkcount>0"}
@@ -96,9 +73,10 @@
 		{/if}
 	</div>
       </div>
+      <a href="#" class="menu-toggle" id="menu-toggle" aria-label="{'Menu'|t}"><s class="bar" aria-hidden="true"></s><s class="bar" aria-hidden="true"></s></a>
     </div>
 
-<div id="search-linklist" class="searchform-block search-linklist pure-u-1-2">
+<div id="search-linklist" class="searchform-block search-linklist pure-u-1 pure-u-lg-1-2">
   <form method="GET" class="pure-form searchform" name="searchform" action="{$basepath}/">
     <input type="text" name="searchterm" class="searchterm" aria-label="{'Search text'|t}" placeholder="{'Search text'|t}"
            {if="!empty($search_term)"}
@@ -125,21 +103,22 @@
   <div id="actions" class="subheader-form">
     <div class="pure-g pure-g-full">
       <div class="pure-u-1">
-        <a href="" id="actions-delete" class="button">
+        <a href="#" id="actions-delete" class="button">
           <i class="fa fa-trash" aria-hidden="true"></i>
           {'Delete'|t}
         </a>&nbsp;
-        <a href="" class="actions-change-visibility button" data-visibility="public">
+        <a href="#" class="actions-change-visibility button" data-visibility="public">
           <i class="fa fa-globe" aria-hidden="true"></i>
           {'Set public'|t}
         </a>&nbsp;
-        <a href="" class="actions-change-visibility button" data-visibility="private">
+        <a href="#" class="actions-change-visibility button" data-visibility="private">
           <i class="fa fa-user-secret" aria-hidden="true"></i>
           {'Set private'|t}
         </a>
       </div>
     </div>
   </div>
+
   {if="!$is_logged_in"}
     <form method="post" name="loginform">
       <div class="subheader-form header-login-form" id="header-login-form">
@@ -155,6 +134,7 @@
       </div>
     </form>
   {/if}
+
 {if="!empty($newVersion) || !empty($versionError)"}
   <div class="pure-g new-version-message pure-alert pure-alert-warning pure-alert-closable">
     <div class="pure-u-2-24"></div>

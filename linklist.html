@@ -52,8 +52,7 @@
           {'tagged'|t}
           {loop="$exploded_tags"}
               <span class="label label-tag" title="{'Remove tag'|t}">
-				 <a href="{$base_path}/remove-tag/{function="urlencode($value)"
-}" aria-label="{'Remove tag'|t}">
+				<a href="{$base_path}/remove-tag/{function="urlencode($value)"}" aria-label="{'Remove tag'|t}">
                    {$value}<span class="remove"><i class="fa fa-times" aria-hid
 den="true"></i></span>
                  </a>
@@ -92,9 +91,8 @@ den="true"></i></span>
       {loop="links"}
         <div class="anchor" id="{$value.shorturl}"></div>
 
-<div class="linklist-item {if="$value.class"} {$value.class}{/if}" data-id="{$value.id}">
-	<div class="linklist-item-title pure-g">
-		<h2 class="pure-u-3-5">
+<div class="linklist-item pure-g {if="$value.class"} {$value.class}{/if}" data-id="{$value.id}">
+	<h2 class="linklist-item-title pure-u-1 pure-u-lg-16-24">
 		{if="$thumbnails_enabled && !empty($value.thumbnail)"}
 		<div class="linklist-item-thumbnail" style="width:{$thumbnails_width}px;height:{$thumbnails_height}px;">
 			<div class="thumbnail">
@@ -112,10 +110,9 @@ den="true"></i></span>
 		{else}
 		<span class="linklist-link">{$value.title}</span>
 		{/if}
-		</h2>
+	</h2>
 
-		<div class="pure-u-2-5">
-		<div class="linklist-item-infos">
+	<div class="linklist-item-infos pure-u-1 pure-u-lg-8-24">
 			{if="$is_logged_in"}
 			<span class="linklist-item-infos-controls-item ctrl-edit">
 			<a href="{$base_path}/admin/shaare/{$value.id}" class="fa fa-pencil-square-o edit-link" aria-label="{$strEdit}" title="{$strEdit}"></a>
@@ -138,7 +135,7 @@ den="true"></i></span>
 			{/if}
 			{/if}
 
-			<span class="linklist-item-infos-controls-item kac">
+			<span class="linklist-item-infos-controls-item">
 			<a href="{$base_path}/shaare/{$value.shorturl}" class="fa fa-link" title="{$strPermalink}"></a>
 			</span>
 
@@ -151,33 +148,31 @@ den="true"></i></span>
                  {/if}
 			</div>
 
-               <span class="linklist-item-infos-controls-item">
+            <span class="linklist-item-infos-controls-item">
                  <a href="#" aria-label="{$strFold}" title="{$strFold}" class="fold-button" aria-hidden="true"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-               </span>
-		</div>
-		</div>
+            </span>
 	</div>
 
 	{if="$value.description"}
-	<div class="linklist-item-description">{$value.description}</div>
+	<div class="linklist-item-description pure-u-1 pure-u-lg-16-24">{$value.description}</div>
+	<div class="pure-u-0 pure-u-lg-8-24">FILLER</div>
 	{/if}
 
 	{if="strpos($value.url, $value.shorturl) === false"}
-	<div class="linklist-item-infos-url">
+	<div class="linklist-item-infos-url pure-u-1">
 		<a href="{$value.real_url}" aria-label="{$value.title}" title="{$value.title}">{$value.url}</a>
 	</div>
 	{/if}
 
 	{if="!$hide_timestamps || $is_logged_in"}
 	{$updated=$value.updated_timestamp ? $strEdited. format_date($value.updated) : $strPermalink}
-	<div class="linkdate" title="{$updated}">
+	<div class="linkdate pure-u-1" title="{$updated}">
 		{$value.created|format_date}
 		{if="$value.updated_timestamp"}*{/if}
 	</div>
 	{/if}
 
-	<div class="linklist-controls pure-g">
-		<div class="linklist-item-tags pure-u-1-2">
+	<div class="linklist-item-tags pure-u-1 pure-u-lg-16-24">
 		{if="$is_logged_in"}
 			<span class="ctrl-checkbox">
 			<input type="checkbox" class="link-checkbox" value="{$value.id}">
@@ -196,26 +191,8 @@ den="true"></i></span>
 		{if="$value.private"}
 			<span class="label label-private">{$strPrivate}</span>
 		{/if}
-		</div>
 	</div>
-
-	<div class="mobile-buttons pure-u-1 pure-u-lg-0">
-		{if="isset($value.link_plugin)"}
-			{$link_plugin_counter=count($value.link_plugin)}
-			{loop="$value.link_plugin"}
-				{$value}
-				{if="$link_plugin_counter - 1 != $counter"}&middot;{/if}
-			{/loop}
-		{/if}
-		{if="$is_logged_in"}
-			&middot;
-			<a href="{$base_path}/admin/shaare/delete?id={$value.id}&amp;token={$token}" aria-label="{$strDelete}"
-			title="{$strDelete}" class="fa fa-trash delete-link confirm-delete"></a>
-			</a>
-			&middot;
-			<a href="{$base_path}/admin/shaare/{$value.id}" aria-label="{$strEdit}" title="{$strEdit}"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
-		{/if}
-	</div>
+	<div class="pure-u-0 pure-u-lg-8-24">FILLER</div>
 </div>
 
 {/loop}

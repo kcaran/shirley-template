@@ -3966,29 +3966,22 @@ pre {
 .pure-u-0 {
   display: none !important; }
 
-@media screen and (min-width: 35.5em) {
-  .pure-u-sm-0 {
-    display: none !important; }
-  .pure-u-sm-visible {
-    display: inline-block !important; } }
-
-@media screen and (min-width: 48em) {
-  .pure-u-md-0 {
-    display: none !important; }
-  .pure-u-md-visible {
-    display: inline-block !important; } }
-
 @media screen and (min-width: 64em) {
   .pure-u-lg-0 {
     display: none !important; }
   .pure-u-lg-visible {
-    display: inline-block !important; } }
+    display: inline-block !important; }
+  .page-form .submit-buttons {
+    position: relative; }
+    .page-form .submit-buttons .button.button-red {
+      position: absolute;
+      right: 5%; } }
 
-@media screen and (min-width: 80em) {
-  .pure-u-xl-0 {
-    display: none !important; }
-  .pure-u-xl-visible {
-    display: inline-block !important; } }
+@media screen and (min-width: 64em) {
+  .subheader-form.open {
+    visibility: visible; }
+    .subheader-form.open * {
+      visibility: visible; } }
 
 .pure-alert-closable .fa-times {
   float: right; }
@@ -4066,10 +4059,6 @@ pre {
     .menu-toggle.x .bar:first-child {
       transform: rotate(-45deg); }
 
-@media screen and (max-width: 64em) {
-  .menu-toggle {
-    display: block; } }
-
 .header-buttons {
   text-align: right; }
 
@@ -4088,7 +4077,7 @@ pre {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 1px rgba(0, 0, 0, 0.298) inset;
   background: #f5f5f5;
   padding: 0 12px;
-  width: 240px;
+  width: 232px;
   height: 30px;
   color: #252525;
   margin-right: 16px; }
@@ -4102,31 +4091,20 @@ pre {
   color: #f5f5f5;
   position: relative;
   top: 3px;
-  font-size: 22px; }
-
-@media screen and (max-width: 64em) {
-  .searchform {
-    margin: 0 auto;
-    max-width: 260px; } }
+  left: -10px;
+  font-size: 26px;
+  width: 44px;
+  height: 44px; }
+  .searchform-block button:hover {
+    color: #fff; }
 
 .search-tagcloud button {
   width: 90%; }
-
-@media screen and (max-width: 64em) {
-  .search-linklist button {
-    width: 100%; }
-  .search-linklist .awesomplete {
-    margin: 5px 0; } }
 
 .header-search button:hover,
 .search-linklist button:hover,
 .search-tagcloud button:hover {
   color: var(--background-color); }
-
-@media screen and (max-width: 64em) {
-  .header-search,
-  .header-search * {
-    visibility: hidden; } }
 
 .subheader-form input[type='text'], .subheader-form input[type='password'], .subheader-form .remember-me {
   border: medium none currentColor;
@@ -4184,12 +4162,6 @@ pre {
   .header-login-form input[type='text']::-webkit-input-placeholder, .header-login-form input[type='password']::-webkit-input-placeholder {
     color: #797979; }
 
-@media screen and (min-width: 64em) {
-  .subheader-form.open {
-    visibility: visible; }
-    .subheader-form.open * {
-      visibility: visible; } }
-
 .new-version-message {
   text-align: center; }
   .new-version-message a {
@@ -4225,14 +4197,10 @@ pre {
     .toolbar-plugin input[type='submit']:hover {
       background: #fff; }
 
-@media screen and (max-width: 64em) {
-  .toolbar-plugin input[type='text'] {
-    width: 70%; } }
-
 .linklist-filters {
   display: inline-block;
   position: absolute;
-  top: -4px;
+  top: 6px;
   right: 10px; }
   .linklist-filters a {
     display: inline-block;
@@ -4254,8 +4222,7 @@ pre {
 .linklist-pages {
   display: inline-block;
   position: relative;
-  top: -6px;
-  left: 36px; }
+  top: 5px; }
   .linklist-pages a {
     color: #f5f5f5;
     text-decoration: none;
@@ -4306,9 +4273,9 @@ pre {
 .linklist-item {
   position: relative;
   margin: 0 0 16px; }
-  .linklist-item.private .linklist-item-title h2, .linklist-item.private .linklist-item-title h2 a {
+  .linklist-item.private h2.linklist-item-title h2, .linklist-item.private h2.linklist-item-title a {
     color: #d28314; }
-  .linklist-item.private .linklist-item-title h2 a:hover {
+  .linklist-item.private h2.linklist-item-title a:hover {
     color: #97600d; }
 
 .linklist-item-buttons {
@@ -4331,27 +4298,23 @@ pre {
 .linklist-item-tags {
   margin: 1em 0; }
 
-.linklist-item-title {
-  position: relative;
-  margin: 0 0 0px 0;
-  word-wrap: break-word; }
-  .linklist-item-title h2 {
-    margin: 0;
-    word-wrap: break-word;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 26px; }
-    .linklist-item-title h2 a {
-      vertical-align: middle;
-      text-decoration: none;
-      color: var(--main-color); }
-      .linklist-item-title h2 a i {
-        font-size: 16px;
-        position: relative;
-        top: -2px;
-        left: 16px; }
-      .linklist-item-title h2 a:hover {
-        color: var(--dark-main-color); }
+h2.linklist-item-title {
+  margin: 0;
+  word-wrap: break-word;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 26px; }
+  h2.linklist-item-title a {
+    vertical-align: middle;
+    text-decoration: none;
+    color: var(--main-color); }
+    h2.linklist-item-title a i {
+      font-size: 16px;
+      position: relative;
+      top: -2px;
+      left: 16px; }
+    h2.linklist-item-title a:hover {
+      color: var(--dark-main-color); }
 
 .label-private {
   background-color: #d28314; }
@@ -4389,8 +4352,7 @@ pre {
 .linklist-item-description {
   position: relative;
   color: #252525;
-  word-wrap: break-word;
-  max-width: 800px; }
+  word-wrap: break-word; }
   .linklist-item-description a {
     text-decoration: none;
     color: var(--main-color); }
@@ -4443,7 +4405,8 @@ pre {
 .linklist-item-infos {
   position: absolute;
   top: -4px;
-  right: -8px; }
+  right: -8px;
+  text-align: right; }
   .linklist-item-infos a {
     text-decoration: none;
     color: #252525; }
@@ -4452,15 +4415,12 @@ pre {
   .linklist-item-infos .mobile-buttons {
     text-align: right; }
 
-.linklist-item-infos-dateblock {
-  font-size: .9em; }
-
 .linklist-item-infos-url {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 12.7px;
-  margin: 12px 0 4px; }
+  margin: 0px 0 4px; }
   .linklist-item-infos-url a {
     color: #797979;
     text-decoration: none; }
@@ -4505,10 +4465,6 @@ pre {
 
 .ctrl-checkbox {
   margin-right: 8px; }
-
-@media screen and (max-width: 64em) {
-  .linklist-item-infos-url {
-    text-align: left; } }
 
 .footer-container {
   margin: 20px 0;
@@ -4627,17 +4583,6 @@ pre {
   .pure-g .page-form div .awesomplete > ul {
     color: #000; }
 
-@media screen and (min-width: 64em) {
-  .page-form .submit-buttons {
-    position: relative; }
-    .page-form .submit-buttons .button.button-red {
-      position: absolute;
-      right: 5%; } }
-
-@media screen and (max-width: 64em) {
-  .page-form .submit-buttons .button {
-    margin: auto; } }
-
 .page-form-light div,
 .page-form-light p {
   text-align: left; }
@@ -4690,31 +4635,6 @@ div.awesomplete {
 form[name='linkform'].page-form {
   overflow: visible; }
 
-@media screen and (max-width: 64em) {
-  .page-form-complete .form-label label, .page-form-complete .form-input input, .page-form-complete .timezone {
-    position: inherit;
-    top: inherit;
-    transform: translateY(0); }
-  .page-form-complete .form-label {
-    height: inherit; }
-    .page-form-complete .form-label label {
-      display: block;
-      margin: 10px 0 0;
-      text-align: left; }
-  .page-form-complete .form-input {
-    text-align: center; }
-    .page-form-complete .form-input input[type='checkbox'] {
-      position: absolute;
-      top: 50%;
-      right: 50%;
-      transform: translateY(-50%); }
-  .page-form-complete .radio-buttons {
-    padding: 5px 15px;
-    text-align: left; }
-  .timezone-continent::after {
-    white-space: pre;
-    content: '\a\a'; } }
-
 .page-visitor {
   color: #252525; }
 
@@ -4762,14 +4682,6 @@ form[name='linkform'].page-form {
 
 .pluginform-container .more {
   margin-top: 10px; }
-
-@media screen and (max-width: 64em) {
-  .pluginform-container .main-row {
-    border-top-style: none;
-    border-bottom-style: none; }
-    .pluginform-container .main-row td {
-      border-top-style: none;
-      border-bottom-style: none; } }
 
 .import-field-container {
   margin: 15px 0; }
@@ -4967,6 +4879,80 @@ form[name='linkform'].page-form {
   float: right;
   font-size: 14px;
   margin-top: 16px; }
+
+@media screen and (max-width: 64em) {
+  .pure-g-full {
+    width: 100%; }
+  .pure-g-full > * {
+    padding: 0; }
+  .pure-u-lg-visible {
+    display: none !important; }
+  .menu-toggle {
+    display: block; }
+  #shaarli-menu.open .pure-menu-item {
+    display: block !important; }
+  .search-linklist {
+    position: relative;
+    padding: 0 1em; }
+    .search-linklist button {
+      position: absolute;
+      left: 260px;
+      top: -8px; }
+    .search-linklist input.searchterm {
+      margin-bottom: 12px; }
+  .linklist-item {
+    padding: 0 1em; }
+  .linklist-paging {
+    padding: 0 1em; }
+  .linklist-item-infos {
+    position: relative;
+    top: 0; } }
+
+@media screen and (max-width: 64em) {
+  .header-search,
+  .header-search * {
+    visibility: hidden; } }
+
+@media screen and (max-width: 64em) {
+  .toolbar-plugin input[type='text'] {
+    width: 70%; } }
+
+@media screen and (max-width: 64em) {
+  .page-form .submit-buttons .button {
+    margin: auto; } }
+
+@media screen and (max-width: 64em) {
+  .pluginform-container .main-row {
+    border-top-style: none;
+    border-bottom-style: none; }
+    .pluginform-container .main-row td {
+      border-top-style: none;
+      border-bottom-style: none; } }
+
+@media screen and (max-width: 64em) {
+  .page-form-complete .form-label label, .page-form-complete .form-input input, .page-form-complete .timezone {
+    position: inherit;
+    top: inherit;
+    transform: translateY(0); }
+  .page-form-complete .form-label {
+    height: inherit; }
+    .page-form-complete .form-label label {
+      display: block;
+      margin: 10px 0 0;
+      text-align: left; }
+  .page-form-complete .form-input {
+    text-align: center; }
+    .page-form-complete .form-input input[type='checkbox'] {
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      transform: translateY(-50%); }
+  .page-form-complete .radio-buttons {
+    padding: 5px 15px;
+    text-align: left; }
+  .timezone-continent::after {
+    white-space: pre;
+    content: '\a\a'; } }
 
 @media print {
   .shaarli-menu {
