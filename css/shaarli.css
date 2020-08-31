@@ -3920,6 +3920,15 @@ body {
 .pure-g [class*=pure-u] {
   font-family: Roboto, arial, sans-serif; }
 
+/* Set up pure grids to have 20px gutters @ 1140px (use 12 not 24) */
+.pure-g-full {
+  width: 1140px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.pure-g-full > * {
+  padding: 0 10px; }
+
 .strong {
   font-weight: bold; }
 
@@ -3927,7 +3936,8 @@ body {
   clear: both; }
 
 .center {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center; }
 
 .label {
@@ -4005,8 +4015,8 @@ pre {
   margin-bottom: 20px; }
 
 .shaarli-menu {
-  margin: auto;
-  width: 1140px; }
+  margin-left: auto;
+  margin-right: auto; }
   .shaarli-menu > div {
     margin-bottom: 8px; }
 
@@ -4189,8 +4199,7 @@ pre {
 .container {
   position: relative;
   z-index: 2;
-  margin: auto;
-  width: 1140px; }
+  margin: auto; }
 
 .toolbar-plugin {
   margin: 5px 0;
@@ -4224,7 +4233,7 @@ pre {
   display: inline-block;
   position: absolute;
   top: -4px;
-  right: 0; }
+  right: 10px; }
   .linklist-filters a {
     display: inline-block;
     margin: 3px 0;
@@ -4434,7 +4443,7 @@ pre {
 .linklist-item-infos {
   position: absolute;
   top: -4px;
-  right: 0px; }
+  right: -8px; }
   .linklist-item-infos a {
     text-decoration: none;
     color: #252525; }
@@ -4516,7 +4525,7 @@ pre {
   .footer-container a {
     color: #252525; }
 
-.page-form input[type="text"], .page-form input[type="password"], .page-form textarea {
+.pure-g .page-form input[type="text"], .pure-g .page-form input[type="password"], .pure-g .page-form textarea {
   margin: 10px 0;
   border: solid 1px #d8d8d8;
   border-radius: 2px;
@@ -4525,7 +4534,7 @@ pre {
   height: 35px;
   color: #252525; }
 
-.page-form a.button, .page-form input[type="submit"] {
+.pure-g .page-form a.button, .pure-g .page-form input[type="submit"] {
   display: inline-block;
   margin: 15px 5px;
   border: 0;
@@ -4540,81 +4549,82 @@ pre {
   font-size: 1.2em;
   font-weight: normal; }
 
-.page-form {
+.pure-g .page-form {
   margin: 20px 0 0;
   padding: 4px 80px;
   box-shadow: 1px 1px 2px #797979;
   background: #f5f5f5;
   overflow: hidden;
   color: #252525; }
-  .page-form label {
+  .pure-g .page-form label {
     margin-top: 16px;
     display: inline-block;
     font-weight: 500; }
-  .page-form .window-title {
+  .pure-g .page-form .window-title {
     margin: 16px 0px;
     background: #f5f5f5;
     width: 100%;
     text-align: left;
     color: var(--main-color); }
-  .page-form .window-subtitle {
+  .pure-g .page-form .window-subtitle {
     text-align: left; }
-  .page-form a {
+  .pure-g .page-form a {
     text-decoration: none;
     color: var(--main-color);
     font-weight: bold; }
-    .page-form a:hover {
+    .pure-g .page-form a:hover {
       color: #186446; }
-  .page-form p {
+  .pure-g .page-form p {
     margin: 0; }
-  .page-form input[type="text"]::-webkit-input-placeholder {
+  .pure-g .page-form input[type="text"]::-webkit-input-placeholder {
     color: #797979; }
-  .page-form input[type="password"]::-webkit-input-placeholder {
+  .pure-g .page-form input[type="password"]::-webkit-input-placeholder {
     color: #797979; }
-  .page-form input[type="submit"]:hover {
+  .pure-g .page-form input[type="submit"]:hover {
     background-color: #186446; }
-  .page-form textarea {
+  .pure-g .page-form textarea {
     padding: 15px 5px 3px 15px;
     min-height: 240px;
     resize: vertical;
     overflow-y: auto;
     word-wrap: break-word; }
-  .page-form select {
+  .pure-g .page-form select {
     color: #252525;
     padding: 4px 16px 4px 8px; }
-  .page-form label span + select {
+  .pure-g .page-form label span + select {
     display: block;
     margin-top: 8px; }
-  .page-form .button.button-red {
+  .pure-g .page-form .button.button-red {
     background: #ac2925;
     color: #fff; }
-  .page-form .button:hover {
+  .pure-g .page-form .button:hover {
     color: #fff;
     opacity: 0.8; }
-  .page-form .submit-buttons {
+  .pure-g .page-form .submit-buttons {
     margin-bottom: 10px; }
-  .page-form section {
+  .pure-g .page-form section {
     margin: 10px 0 25px; }
-  .page-form table,
-  .page-form th,
-  .page-form td {
+  .pure-g .page-form table,
+  .pure-g .page-form th,
+  .pure-g .page-form td {
     border-width: 1px 0;
     border-style: solid;
-    border-color: #797979; }
-  .page-form th,
-  .page-form td {
+    border-color: #797979;
+    border-collapse: collapse; }
+  .pure-g .page-form th,
+  .pure-g .page-form td {
     padding: 5px; }
-  .page-form table {
+  .pure-g .page-form table {
     margin: auto;
     width: 90%; }
-    .page-form table .order {
+    .pure-g .page-form table .order {
       text-decoration: none;
       color: #252525; }
-  .page-form .awesomplete {
+  .pure-g .page-form .awesomplete {
     width: 100%; }
-    .page-form .awesomplete input {
+    .pure-g .page-form .awesomplete input {
       width: 100%; }
-  .page-form div .awesomplete > ul {
+  .pure-g .page-form div .awesomplete > ul {
     color: #000; }
 
 @media screen and (min-width: 64em) {

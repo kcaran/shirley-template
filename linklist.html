@@ -24,7 +24,7 @@
 {/loop}
 
 <div id="linklist">
-  <div id="link-count-block" class="pure-g link-count-block">
+  <div id="link-count-block" class="pure-g pure-g-full link-count-block">
     <div id="link-count-content" class="pure-u-1">
       <div id="plugin_zone_start_linklist" class="plugin_zone">
         {loop="$plugin_start_zone"}
@@ -35,13 +35,13 @@
   </div>
 
   {if="count($links)==0"}
-    <div id="search-result-block" class="pure-g pure-alert pure-alert-error search-result">
+    <div id="search-result-block" class="pure-g pure-g-full pure-alert pure-alert-error search-result">
       <div id="search-result-content" class="pure-u-20-24">
         <div id="searchcriteria">{'Nothing found.'|t}</div>
       </div>
     </div>
   {elseif="!empty($search_term) or $search_tags !== '' or !empty($visibility) or $untaggedonly"}
-    <div id="search-result-block" class="pure-g pure-alert pure-alert-success search-result">
+    <div id="search-result-block" class="pure-g pure-g-full pure-alert pure-alert-success search-result">
       <div id="search-result-content" class="pure-u-20-24 search-result-main">
         {function="sprintf(t('%s result', '%s results', $result_count), $result_count)"}
         {if="!empty($search_term)"}
@@ -75,7 +75,7 @@ den="true"></i></span>
     </div>
   {/if}
 
-  <div id="linklist-loop-block" class="pure-g">
+  <div id="linklist-loop-block" class="pure-g pure-g-full">
     <div id="linklist-loop-content" class="pure-u-1">
       {ignore}Set translation here, for performances{/ignore}
       {$strPrivate=t('Private')}
@@ -229,7 +229,7 @@ den="true"></i></span>
 {/loop}
 </div>
 
-<div id="linklist-paging-bottom-block" class="pure-g link-count-block">
+<div id="linklist-paging-bottom-block" class="pure-g pure-g-full link-count-block">
 <div id="linklist-paging-bottom-content" class="pure-u-1">
    <div class="linklist-pages">
       {if="$next_page_url"}
