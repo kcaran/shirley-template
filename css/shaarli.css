@@ -3987,6 +3987,22 @@ pre {
 .anchor:target {
   padding-top: 40px; }
 
+.pure-button,
+.pure-button-success,
+.pure-button-error,
+.pure-button-warning,
+.pure-button-primary,
+.pure-button-secondary {
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.298); }
+  .pure-button .fa,
+  .pure-button-success .fa,
+  .pure-button-error .fa,
+  .pure-button-warning .fa,
+  .pure-button-primary .fa,
+  .pure-button-secondary .fa {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.298); }
+
 #shaarli-menu {
   background: var(--main-color);
   width: 100%;
@@ -4479,14 +4495,15 @@ h2.linklist-item-title {
 
 .pure-g .page-form input[type="text"], .pure-g .page-form input[type="password"], .pure-g .page-form textarea {
   display: inline-block;
-  margin: 0;
+  margin: 8px 0 16px;
   border: solid 1px #d8d8d8;
   border-radius: 2px;
   padding: 5px 5px 3px 15px;
   height: 36px;
+  width: 100%;
   color: #252525; }
 
-.pure-g .page-form a.pure-button, .pure-g .page-form input[type="submit"], .pure-g .page-form button {
+.pure-g .page-form .pure-button, .pure-g .page-form input[type="submit"], .pure-g .page-form button, .pure-g .page-form .button {
   display: inline-block;
   position: relative;
   top: -1px;
@@ -4502,9 +4519,9 @@ h2.linklist-item-title {
   border-radius: 5px;
   font-size: 1.2em;
   font-weight: normal; }
-  .pure-g .page-form a.pure-button .fa, .pure-g .page-form input[type="submit"] .fa, .pure-g .page-form button .fa {
+  .pure-g .page-form .pure-button .fa, .pure-g .page-form input[type="submit"] .fa, .pure-g .page-form button .fa, .pure-g .page-form .button .fa {
     font-size: 20px; }
-  .pure-g .page-form a.pure-button:hover, .pure-g .page-form input:hover[type="submit"], .pure-g .page-form button:hover {
+  .pure-g .page-form .pure-button:hover, .pure-g .page-form input:hover[type="submit"], .pure-g .page-form button:hover, .pure-g .page-form .button:hover {
     background-color: var(--dark-main-color); }
 
 .pure-g .page-form {
@@ -4516,11 +4533,11 @@ h2.linklist-item-title {
   overflow: hidden;
   color: #252525; }
   .pure-g .page-form label {
-    margin-top: 16px;
+    margin: 16px 0 0 16px;
     display: inline-block;
     font-weight: 500; }
   .pure-g .page-form .window-title {
-    margin: 16px 0px;
+    margin: 16px 0px 24px;
     background: #f5f5f5;
     width: 100%;
     text-align: left;
@@ -4549,14 +4566,15 @@ h2.linklist-item-title {
   .pure-g .page-form label span + select {
     display: block;
     margin-top: 8px; }
-  .pure-g .page-form .button.button-red {
-    background: #ac2925;
-    color: #fff; }
-  .pure-g .page-form .button:hover {
-    color: #fff;
-    opacity: 0.8; }
+  .pure-g .page-form .button-red {
+    background: #ac2925 !important;
+    color: #fff !important; }
+    .pure-g .page-form .button-red:hover {
+      opacity: 0.8; }
   .pure-g .page-form .submit-buttons {
-    margin-bottom: 10px; }
+    display: flex;
+    justify-content: space-between;
+    margin: 24px 16px; }
   .pure-g .page-form section {
     margin: 10px 0 25px; }
   .pure-g .page-form table,
@@ -4575,10 +4593,6 @@ h2.linklist-item-title {
     .pure-g .page-form table .order {
       text-decoration: none;
       color: #252525; }
-
-.page-form-light div,
-.page-form-light p {
-  text-align: left; }
 
 .page-form-complete .form-label label, .page-form-complete .form-input input, .page-form-complete .form-input select.align {
   position: absolute;
@@ -4638,7 +4652,7 @@ form[name='linkform'].page-form {
   margin-bottom: 300px; }
   .edit-link-container .created-date {
     float: right;
-    margin-top: -36px;
+    margin-top: -52px;
     color: #797979; }
 
 .login-form-container .remember-me {
@@ -4661,13 +4675,13 @@ form[name='linkform'].page-form {
 .search-result .label-private {
   border: 1px solid #fff; }
 
-.tools-item {
+.pure-g .tools-item {
   margin: 16px 0 24px; }
-  .tools-item .pure-button {
+  .pure-g .tools-item a.pure-button {
     min-width: 265px;
-    padding: 0.8em 1em;
-    border-radius: 4px; }
-    .tools-item .pure-button:hover {
+    color: #fff;
+    font-size: 16px; }
+    .pure-g .tools-item a.pure-button:hover {
       background-color: var(--main-color);
       background-image: none;
       color: #f5f5f5; }
@@ -4882,23 +4896,6 @@ form[name='linkform'].page-form {
     .tag-sort a:hover {
       text-decoration: underline; }
 
-.pure-button,
-.pure-button-success,
-.pure-button-error,
-.pure-button-warning,
-.pure-button-primary,
-.pure-button-secondary {
-  border-radius: 4px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.298);
-  color: #fff !important; }
-  .pure-button .fa,
-  .pure-button-success .fa,
-  .pure-button-error .fa,
-  .pure-button-warning .fa,
-  .pure-button-primary .fa,
-  .pure-button-secondary .fa {
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.298); }
-
 .progressbar {
   border-radius: 6px;
   background-color: var(--main-color);
@@ -4924,13 +4921,13 @@ form[name='linkform'].page-form {
 
 .mark-private {
   float: right;
-  margin-top: -36px; }
+  margin: 0px 16px 0 0; }
   .mark-private input {
     margin-right: 4px; }
 
 .md_help {
   float: right;
-  margin-top: -24px; }
+  margin: 16px 16px 0 0; }
 
 #editlink-plugins {
   float: right;
@@ -4988,6 +4985,18 @@ form[name='linkform'].page-form {
       margin: 3px 2px; }
   .pure-g .page-form {
     padding: 4px 1em; }
+  .edit-link-container .created-date {
+    display: block;
+    float: none;
+    margin: -16px 0 8px;
+    text-align: left;
+    font-size: 0.8em; }
+  .edit-link-container .mark-private {
+    font-size: 0.8em;
+    margin: 4px 8px 0 0; }
+  .edit-link-container .md_help {
+    margin: 18px 8px 0 0;
+    font-size: 0.8em; }
   .pure-g .cloudtag-container {
     margin: 0 -1em;
     font-size: 0.8em; }

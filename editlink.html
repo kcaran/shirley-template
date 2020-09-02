@@ -5,13 +5,12 @@
 </head>
 <body>
   {include="page.header"}
-  <div id="editlinkform" class="edit-link-container" class="pure-g pure-g-full">
+  <div id="editlinkform" class="edit-link-container pure-g pure-g-full">
     <div class="pure-u-2-24"></div>
     <form method="post"
           name="linkform"
           action="{$base_path}/admin/shaare"
-          class="page-form pure-u-20-24 page-form page-form-light"
-    >
+          class="page-form pure-u-20-24">
       <h2 class="window-title">
         {if="!$link_is_new"}{'Edit Shaare'|t}{else}{'New Shaare'|t}{/if}
       </h2>
@@ -19,10 +18,6 @@
         <input type="hidden" name="lf_id" value="{$link.id}">
       {/if}
       {if="!$link_is_new"}<div class="created-date">{'Created:'|t} {$link.created|format_date}</div>{/if}
-
-      <div>
-        <label for="lf_url">{'URL'|t}</label>
-      </div>
 
       <div class="mark-private">
 		<label>
@@ -34,6 +29,10 @@
       </div>
 
       <div>
+        <label for="lf_url">{'URL'|t}</label>
+      </div>
+
+      <div>
         <input type="text" name="lf_url" id="lf_url" value="{$link.url}" class="lf_input">
       </div>
       <div>
@@ -42,9 +41,7 @@
       <div>
         <input type="text" name="lf_title" id="lf_title" value="{$link.title}" class="lf_input autofocus">
       </div>
-      <div>
-        <label for="lf_description">{'Description'|t}</label>
-      </div>
+
       {if="$formatter==='markdown'"}
         <div class="md_help">
           <a href="http://daringfireball.net/projects/markdown/syntax" title="{'Markdown syntax documentation'|t}">
@@ -52,6 +49,10 @@
           </a>
         </div>
       {/if}
+
+      <div>
+        <label for="lf_description">{'Description'|t}</label>
+      </div>
 
       <div>
         <textarea name="lf_description" id="lf_description" class="autofocus">{$link.description}</textarea>
@@ -70,12 +71,12 @@
         {/loop}
       </div>
 
-      <div class="submit-buttons center">
+      <div class="submit-buttons">
         <input type="submit" name="save_edit" class="" id="button-save-edit"
                value="{if="$link_is_new"}{'Save'|t}{else}{'Update'|t}{/if}">
         {if="!$link_is_new"}
         <a href="{$base_path}/admin/shaare/delete?id={$link.id}&amp;token={$token}"
-           title="" name="delete_link" class="button button-red confirm-delete">
+           title="" name="delete_link" class="pure-button button-red confirm-delete">
           {'Delete'|t}
         </a>
         {/if}

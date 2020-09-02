@@ -181,6 +181,20 @@ pre {
   }
 }
 
+// Pure Button
+.pure-button,
+.pure-button-success,
+.pure-button-error,
+.pure-button-warning,
+.pure-button-primary,
+.pure-button-secondary {
+	border-radius: 4px;
+	text-shadow: 0 1px 1px $dark-shadow;
+	.fa {
+  		text-shadow: 0 1px 1px $dark-shadow;
+	}
+}
+
 // MENU
 #shaarli-menu {
 	background: var(--main-color);
@@ -935,11 +949,12 @@ h2.linklist-item-title {
 // PAGE FORM
 %page-form-input {
   display: inline-block;
-  margin: 0;
+  margin: 8px 0 16px;
   border: solid 1px $form-input-border;
   border-radius: 2px;
   padding: 5px 5px 3px 15px;
   height: 36px;
+  width: 100%;
   color: $dark-gray;
 }
 
@@ -977,13 +992,13 @@ h2.linklist-item-title {
   overflow: hidden;
   color: $dark-gray;
 	label {
-		margin-top: 16px;
+		margin: 16px 0 0 16px;
 		display: inline-block;
 		font-weight: 500;
 	}
 
   .window-title {
-    margin: 16px 0px;
+    margin: 16px 0px 24px;
     background: $almost-white;
     width: 100%;
     text-align: left;
@@ -998,10 +1013,10 @@ h2.linklist-item-title {
     text-decoration: none;
     color: var(--main-color);
     font-weight: bold;
+  }
 
-    &.pure-button {
-      @extend %page-form-button;
-    }
+  .pure-button {
+    @extend %page-form-button;
   }
 
   p {
@@ -1030,7 +1045,7 @@ h2.linklist-item-title {
     }
   }
 
-  button {
+  button, .button {
 	@extend %page-form-button;
   }
 
@@ -1054,19 +1069,18 @@ h2.linklist-item-title {
 		margin-top: 8px;
 	}
 
-  .button {
-    &.button-red {
-      background: $red;
-		color: $white;
-    }
+  .button-red {
+	background: $red !important;
+	color: $white !important;
 	&:hover {
-		color: $white;
 		opacity: 0.8;
 	}
   }
 
   .submit-buttons {
-    margin-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
+    margin: 24px 16px;
   }
 
   section {
@@ -1095,14 +1109,6 @@ h2.linklist-item-title {
       text-decoration: none;
       color: $dark-gray;
     }
-  }
-}
-
-// PAGE FORM - LIGHT
-.page-form-light {
-  div,
-  p {
-    text-align: left;
   }
 }
 
@@ -1212,7 +1218,7 @@ form {
 	margin-bottom: 300px;
   .created-date {
 	float: right;
-    margin-top: -36px;
+    margin-top: -52px;
     color: $light-gray;
   }
 }
@@ -1251,18 +1257,12 @@ form {
 }
 
 // TOOLS
-.tools-item {
+.pure-g .tools-item {
   margin: 16px 0 24px;
 
-  .pure-button {
+  a.pure-button {
 	min-width: 265px;
-	padding: 0.8em 1em;
-	border-radius: 4px;
-    &:hover {
-      background-color: var(--main-color);
-      background-image: none;
-      color: $almost-white;
-    }
+	font-size: 16px;
   }
 }
 
@@ -1580,21 +1580,6 @@ form {
   }
 }
 
-// Pure Button
-.pure-button,
-.pure-button-success,
-.pure-button-error,
-.pure-button-warning,
-.pure-button-primary,
-.pure-button-secondary {
-  border-radius: 4px;
-  text-shadow: 0 1px 1px $dark-shadow;
-  color: $white !important;
-	.fa {
-  		text-shadow: 0 1px 1px $dark-shadow;
-	}
-}
-
 .progressbar {
   border-radius: 6px;
   background-color: var(--main-color);
@@ -1634,7 +1619,7 @@ form {
 
 .mark-private {
 	float: right;
-	margin-top: -36px;
+	margin: 0px 16px 0 0;
 	input {
 		margin-right: 4px;
 	}
@@ -1642,7 +1627,7 @@ form {
 
 .md_help {
 	float: right;
-	margin-top: -24px;
+	margin: 16px 16px 0 0;
 }
 
 #editlink-plugins {
@@ -1748,6 +1733,26 @@ form {
 
 	.pure-g .page-form {
 		padding: 4px 1em;
+	}
+
+	.edit-link-container {
+		.created-date {
+			display: block;
+			float: none;
+			margin: -16px 0 8px;
+			text-align: left;
+			font-size: 0.8em;
+		}
+
+		.mark-private {
+			font-size: 0.8em;
+			margin: 4px 8px 0 0;
+		}
+
+		.md_help {
+			margin: 18px 8px 0 0;
+			font-size: 0.8em;
+		}
 	}
 
 	.pure-g .cloudtag-container {
