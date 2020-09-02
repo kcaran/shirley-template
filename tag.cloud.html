@@ -6,24 +6,14 @@
 <body>
 {include="page.header"}
 
-{include="tag.sort"}
-
 <div class="pure-g pure-g-full">
-  <div class="pure-u-2-24"></div>
-  <div class="pure-u-20-24 page-form page-visitor">
-    {$countTags=count($tags)}
-    <h2 class="window-title">{'Tag cloud'|t} - {$countTags} {'tags'|t}</h2>
-    {if="!empty($search_tags)"}
-    <p class="center">
-      <a href="{$base_path}/?searchtags={$search_tags|urlencode}" class="pure-button pure-button-shaarli">
-        {'List all links with those tags'|t}
-      </a>
-    </p>
-    {/if}
+  <div class="pure-u-lg-2-24"></div>
+  <div class="pure-u-1 pure-u-lg-20-24 page-form page-visitor">
+    {include="tag.sort"}
 
-    <div id="search-tagcloud" class="pure-g">
-      <div class="pure-u-lg-1-4"></div>
-      <div class="pure-u-1 pure-u-lg-1-2">
+    {$countTags=count($tags)}
+    <h2 class="window-title">{'Tag cloud'|t} &middot; {$countTags} {'tags'|t}</h2>
+    <div id="search-tagcloud">
         <form method="GET">
           <input type="hidden" name="do" value="tagcloud">
           <input type="text" name="searchtags" aria-label="{'Filter by tag'|t}" placeholder="{'Filter by tag'|t}"
@@ -34,10 +24,14 @@
           data-list="{loop="$tags"}{$key}, {/loop}"
           class="autofocus"
           >
+
           <button type="submit" class="search-button" aria-label="{'Search'|t}"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+          {if="!empty($search_tags)"}
+          <a href="{$base_path}/?searchtags={$search_tags|urlencode}" class="pure-button">{'Show links'|t}</a>
+          {/if}
+
         </form>
-      </div>
-      <div class="pure-u-lg-1-4"></div>
     </div>
 
     <div id="plugin_zone_start_tagcloud" class="plugin_zone">
@@ -48,11 +42,13 @@
 
     <div id="cloudtag" class="cloudtag-container">
       {loop="tags"}
+        <div class="cloudtag">
         <a href="{$base_path}/?searchtags={$key|urlencode} {$search_tags|urlencode}" style="font-size:{$value.size}em;">{$key}</a
         ><a href="{$base_path}/add-tag/{$key|urlencode}" title="{'Filter by tag'|t}" class="count">{$value.count}</a>
         {loop="$value.tag_plugin"}
           {$value}
         {/loop}
+       </div>
       {/loop}
     </div>
 
@@ -63,8 +59,6 @@
     </div>
   </div>
 </div>
-
-{include="tag.sort"}
 
 {include="page.footer"}
 </body>

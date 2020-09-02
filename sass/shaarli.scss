@@ -133,6 +133,9 @@ body {
 .label-tag a {
 	text-decoration: none;
 	color: $white;
+	&:hover {
+		opacity: 0.8;
+	}
 }
 
 pre {
@@ -144,41 +147,6 @@ pre {
 // Display it at any level with xx-visible.
 .pure-u-0 {
   display: none !important;
-}
-
-@media screen and (min-width: 64em) {
-  .pure-u-lg-0 {
-    display: none !important;
-  }
-
-  .pure-u-lg-visible {
-    display: inline-block !important;
-  }
-
-  .page-form {
-    .submit-buttons {
-      position: relative;
-
-      .button {
-        &.button-red {
-          position: absolute;
-          right: 5%;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 64em) {
-  .subheader-form {
-    &.open {
-      visibility: visible;
-
-      * {
-        visibility: visible;
-      }
-    }
-  }
 }
 
 // Make pure-extras alert closable.
@@ -225,6 +193,10 @@ pre {
 	margin-right: auto;
 	& > div {
 		margin-bottom: 8px;
+	}
+	.search-linklist {
+		padding-left: 28px;
+		margin-bottom: 20px;
 	}
 }
 
@@ -291,9 +263,9 @@ pre {
   display: none;
   position: absolute;
   top: 5px;
-  right: 0;
-  width: 34px;
-  height: 45px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
 
   .bar {
     display: block;
@@ -335,6 +307,7 @@ pre {
 	.strong {
 		font-style: normal;
 	}
+	padding-right: 1rem;
 }
 
 .searchform-block {
@@ -346,10 +319,10 @@ pre {
       box-shadow: 0 1px 0 $light-shadow, 0 1px 1px $dark-shadow inset;
       background: $almost-white;
       padding: 0 12px;
-      width: 232px;
+      width: 220px;
       height: 30px;
       color: $dark-gray;
-		margin-right: 16px;
+		margin-right: 12px;
 
       &::-webkit-input-placeholder {
         color: $light-gray;
@@ -375,15 +348,8 @@ pre {
   }
 }
 
-.search-tagcloud {
-  button {
-    width: 90%;
-  }
-}
-
 .header-search,
-.search-linklist,
-.search-tagcloud {
+.search-linklist {
   button {
     &:hover {
       color: var(--background-color);
@@ -405,10 +371,10 @@ pre {
   position: fixed;
   visibility: hidden;
   z-index: 999;
-  background: var(--main-color);
+  background: $orange;
   padding: 16px 0 4px;
   width: 100%;
-  height: 30px;
+  height: 52px;
   text-align: center;
 	top: 0;
 	right: 0;
@@ -463,6 +429,10 @@ pre {
       text-decoration: none;
       color: $almost-white;
       font-weight: bold;
+		&:hover {
+			color: $orange;
+			background-color: $almost-white;
+		}
     }
   }
 }
@@ -539,11 +509,11 @@ pre {
 	display: inline-block;
 	position: absolute;
 	top: 6px;
-	right: 10px;
+	right: 22px;
 
   a {
     display: inline-block;
-    margin: 3px 0;
+    margin: 3px 4px;
     padding: 5px 8px;
     text-decoration: none;
 	&:hover {
@@ -571,12 +541,12 @@ pre {
 	display: inline-block;
 	position: relative;
 	top: 5px;
+	line-height: 40px;
 
   a {
 	color: $almost-white;
     text-decoration: none;
 	font-size: 24px;
-	line-height: 40px;
 	display: inline-block;
 	width: 32px;
 	text-align: center;
@@ -619,12 +589,14 @@ pre {
   }
 
 	label {
-		margin-right: 16px;
+		span {
+			font-size: .8em;
+		}
 	}
 
   input {
     &[type="text"] {
-      margin: 0 6px 0 16px;
+      margin: 0 6px 0;
       border: medium none currentColor;
       background: $almost-white;
       padding: 0 8px 0 0;
@@ -652,7 +624,9 @@ pre {
 
 .linklist-item {
   position: relative;
-  margin: 0 0 16px;
+  margin: 0 0 24px;
+	padding-left: 1rem;
+	padding-right: 1rem;
 
   &.private {
 	h2.linklist-item-title h2, h2.linklist-item-title a {
@@ -834,7 +808,7 @@ h2.linklist-item-title {
 .linklist-item-infos {
 	position: absolute;
 	top: -4px;
-	right: -8px;
+	right: 8px;
 	text-align: right;
 
   a {
@@ -952,34 +926,44 @@ h2.linklist-item-title {
 
 // PAGE FORM
 %page-form-input {
-  margin: 10px 0;
+  display: inline-block;
+  margin: 0;
   border: solid 1px $form-input-border;
   border-radius: 2px;
   padding: 5px 5px 3px 15px;
-  width: 100%;
-  height: 35px;
+  height: 36px;
   color: $dark-gray;
 }
 
 %page-form-button {
   display: inline-block;
-  margin: 15px 5px;
+	position: relative;
+	top: -1px;
+	margin: 0;
+	padding: 0 16px;
   border: 0;
-  box-shadow: 1px 1px 1px $form-input-border, -1px -1px 6px $form-input-border, -1px 1px 2px $form-input-border, 1px -1px 2px $form-input-border;
+  //box-shadow: 1px 1px 1px $form-input-border, -1px -1px 6px $form-input-border, -1px 1px 2px $form-input-border, 1px -1px 2px $form-input-border;
   background: var(--main-color);
-  min-width: 150px;
-  height: 35px;
+  height: 36px;
   text-align: center;
   text-decoration: none;
-  line-height: 35px;
+  line-height: 36px;
   color: $almost-white;
+	border-radius: 5px;
   font-size: 1.2em;
   font-weight: normal;
+	.fa {
+		font-size: 20px;
+	}
+	&:hover {
+		background-color: var(--dark-main-color);
+	}
 }
 
 .pure-g .page-form {
+	position: relative;
   margin: 20px 0 0;
-	padding: 4px 80px;
+	padding: 4px 104px;
   box-shadow: 1px 1px 2px $light-gray;
   background: $almost-white;
   overflow: hidden;
@@ -1007,13 +991,9 @@ h2.linklist-item-title {
     color: var(--main-color);
     font-weight: bold;
 
-    &.button {
+    &.pure-button {
       @extend %page-form-button;
     }
-
-	&:hover {
-		color: $dark-green;
-	}
   }
 
   p {
@@ -1039,17 +1019,18 @@ h2.linklist-item-title {
 
     &[type="submit"] {
       @extend %page-form-button;
-		&:hover {
-			background-color: $dark-green;
-		}
     }
+  }
+
+  button {
+	@extend %page-form-button;
   }
 
   textarea {
     @extend %page-form-input;
 
     padding: 15px 5px 3px 15px;
-    min-height: 240px;
+    min-height: 265px;
     resize: vertical;
     overflow-y: auto;
     word-wrap: break-word;
@@ -1105,22 +1086,6 @@ h2.linklist-item-title {
     .order {
       text-decoration: none;
       color: $dark-gray;
-    }
-  }
-
-  .awesomplete {
-    width: 100%;
-
-    input {
-      width: 100%;
-    }
-  }
-
-  div {
-    .awesomplete {
-      > ul {
-        color: $black;
-      }
     }
   }
 }
@@ -1279,10 +1244,12 @@ form {
 
 // TOOLS
 .tools-item {
-  margin: 16px 0;
+  margin: 16px 0 24px;
 
   .pure-button {
-	min-width: 240px;
+	min-width: 265px;
+	padding: 0.8em 1em;
+	border-radius: 4px;
     &:hover {
       background-color: var(--main-color);
       background-image: none;
@@ -1308,53 +1275,128 @@ form {
 }
 
 // TAG CLOUD
-.cloudtag-container {
-  padding: 10px;
+.pure-g .cloudtag-container {
   text-align: center;
   text-decoration: none;
   color: $dark-gray;
+	margin: 0 -104px;
 
   a {
     text-decoration: none;
     color: $dark-gray;
+	&:hover {
+    	color: var(--main-color);
+	}
   }
 
   .count {
     color: $light-gray;
+	margin-left: 8px;
   }
 }
 
+.cloudtag {
+	display: inline-block;
+	margin: 0 8px;
+}
+
 // TAG LIST
-.taglist-container {
-  padding: 0 10px;
+#search-tagcloud {
+	margin: 32px 0;
+	width: 550px;
+	display: flex;
+	justify-content: space-between;
 
-  a {
-    text-decoration: none;
-    color: $dark-gray;
-  }
+	.awesomplete {
+		flex-grow: 1;
+	}
 
-  .count {
-    display: inline-block;
-    width: 35px;
-    text-align: right;
-    color: $light-gray;
-  }
+	input {
+		width: 100%;
+	}
 
-  .rename-tag-form {
-    display: none;
-  }
+	button {
+		margin: 0 16px;
+	}
+}
+
+.taglist-container .tag-list-item {
+	position: relative;
+	font-size: 20px;
+	width: 550px;
+	padding: 0 1em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&:hover {
+		background-color: $light-green;
+	}
+
+	& > a {
+		margin-left: 16px;
+	}
+
+	a {
+		display: inline-block;
+		text-decoration: none;
+		color: $dark-gray;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	.tag-link {
+		display: inline-block;
+		flex-grow: 1;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.count {
+		padding: 0 20px;
+		text-align: right;
+		color: $light-gray;
+	}
+
+	.rename-tag, .delete-tag {
+		padding: 0 20px;
+		line-height: 44px;
+		font-size: 24px;
+		text-align: center;
+		position: relative;
+		top: 2px;
+	}
+
+	.rename-tag {
+		color: $blue;
+	}
+
+	.rename-tag-form {
+		display: none;
+		position: absolute;
+		top: 2px;
+		left: 0;
+		padding: 2px 0;
+		z-index: 1;
+		background-color: $light-green;
+		.rename-tag-input {
+			min-width: 75%;
+			margin-left: 1em;
+		}
+	}
+
 
   .delete-tag {
     display: none;
     color: $red;
   }
 
-  .rename-tag {
-    color: $blue;
-  }
-
   .validate-rename-tag {
     color: var(--main-color);
+	font-size: 24px;
+	padding: 0 20px;
   }
 }
 
@@ -1514,32 +1556,35 @@ form {
 }
 
 .tag-sort {
-  margin-top: 30px;
-  text-align: center;
+	position: absolute;
+	top: 28px;
+	right: 16px;
 
   a {
     display: inline-block;
-    margin: 0 15px;
+    margin: 0 12px;
     text-decoration: none;
     color: $white;
     font-weight: bold;
+	&:hover {
+    	text-decoration: underline;
+	}
   }
 }
 
 // Pure Button
+.pure-button,
 .pure-button-success,
 .pure-button-error,
 .pure-button-warning,
 .pure-button-primary,
-.pure-button-shaarli,
 .pure-button-secondary {
   border-radius: 4px;
   text-shadow: 0 1px 1px $dark-shadow;
   color: $white !important;
-}
-
-.pure-button-shaarli {
-  background-color: var(--main-color);
+	.fa {
+  		text-shadow: 0 1px 1px $dark-shadow;
+	}
 }
 
 .progressbar {
@@ -1599,6 +1644,39 @@ form {
 }
 
 // 64em -> lg
+@media screen and (min-width: 64em) {
+  .pure-u-lg-0 {
+    display: none !important;
+  }
+
+  .pure-u-lg-visible {
+    display: inline-block !important;
+  }
+
+  .page-form {
+    .submit-buttons {
+      position: relative;
+
+      .button {
+        &.button-red {
+          position: absolute;
+          right: 5%;
+        }
+      }
+    }
+  }
+
+  .subheader-form {
+    &.open {
+      visibility: visible;
+
+      * {
+        visibility: visible;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 64em) {
 	.pure-g-full {
 		width: 100%;
@@ -1640,12 +1718,53 @@ form {
 	}
 
 	.linklist-paging {
-		padding: 0 1em;
+		padding: 0;
+	}
+
+	.linklist-pages span:first-child {
+		margin-left: 8px;
 	}
 
 	.linklist-item-infos {
 		position: relative;
+		top: 4px;
+		right: -16px;
+	}
+
+	.linklist-filters {
+		right: 8px;
+		a {
+			margin: 3px 2px;
+		}
+	}
+
+	.pure-g .page-form {
+		padding: 4px 1em;
+	}
+
+	#search-tagcloud {
+		width: 100%;
+	}
+
+	.taglist-container .tag-list-item {
+		font-size: 16px;
+		width: 100%;
+		& > a {
+			margin-left: 0;
+		}
+	}
+
+	.tag-sort {
+		position: relative;
 		top: 0;
+		right: -12px;
+		text-align: right;
+	}
+
+	.tools-item {
+		.pure-button {
+			width: 100%;
+		}
 	}
 }
 

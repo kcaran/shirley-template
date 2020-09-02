@@ -5,7 +5,7 @@
           <i class="fa fa-arrow-circle-left"></i>
         </a>
       {/if}
-      {if="$page_max>1"}<span class="strong">{$page_current} / {$page_max}</span>{/if}
+      {if="$page_max>1"}<span class="strong">{$page_current} / {$page_max}</span>{elseif="$page_max === 1"}&nbsp;{/if}
       {if="$previous_page_url"}
         <a href="{$previous_page_url}" class="paging_older">
           <i class="fa fa-arrow-circle-right"></i>
@@ -13,7 +13,7 @@
       {/if}
     </div>
 
-    <div class="linklist-filters">
+    <div class="linklist-filters {if="!$page_max"}pure-u-0{/if}">
       {if="$is_logged_in or !empty($action_plugin)"}
         <span class="linklist-filters-text pure-u-0 pure-u-lg-visible">
           {'Filters'|t}
@@ -47,7 +47,7 @@
     	<div class="linksperpage">
       	<form method="GET" class="" action="{$base_path}/links-per-page">
         	<label class="">
-        	<input type="text" name="nb" placeholder="133" value="{$links_per_page}"><span class="pure-u-lg-visible">{'Links per page'|t}</span></label>
+        	<input type="text" name="nb" placeholder="133" value="{$links_per_page}"><span class="pure-u-lg-visible">{'per page'|t}</span></label>
       	</form>
     	</div>
 
