@@ -14,7 +14,6 @@
     </div>
 
     <div class="linklist-filters {if="!$page_max"}pure-u-0{/if}">
-      {if="$is_logged_in or !empty($action_plugin)"}
         <span class="linklist-filters-text pure-u-0 pure-u-lg-visible">
           {'Filters'|t}
         </span>
@@ -29,9 +28,12 @@
         <a href="{$base_path}/untagged-only" aria-label="{'Filter untagged links'|t}" title="{'Filter untagged links'|t}"
            class={if="$untaggedonly"}"filter-on"{else}"filter-off"{/if}
         ><i class="fa fa-tag" aria-hidden="true"></i></a>
+        {if="$is_logged_in"}
         <a href="#" aria-label="{'Select all'|t}" title="{'Select all'|t}"
            class="filter-off select-all-button"
         ><i class="fa fa-check-square-o" aria-hidden="true"></i></a>
+        {/if}
+        {if="!empty($action_plugin)"}
         {loop="$action_plugin"}
           {$value.attr.class=isset($value.attr.class) ? $value.attr.class : ''}
           {$value.attr.class=!empty($value.on) ? $value.attr.class .' filter-on' : $value.attr.class .' filter-off'}
