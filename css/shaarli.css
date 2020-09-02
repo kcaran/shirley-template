@@ -4286,7 +4286,13 @@ pre {
   text-align: center; }
 
 .linklist-item-tags {
-  margin: 1em 0; }
+  margin: 1em 0 1em 24px;
+  position: relative; }
+  .linklist-item-tags .ctrl-checkbox {
+    position: absolute;
+    left: -24px; }
+  .linklist-item-tags .label-tag {
+    margin-bottom: 12px; }
 
 h2.linklist-item-title {
   margin: 0;
@@ -4982,6 +4988,9 @@ form[name='linkform'].page-form {
       margin: 3px 2px; }
   .pure-g .page-form {
     padding: 4px 1em; }
+  .pure-g .cloudtag-container {
+    margin: 0 -1em;
+    font-size: 0.8em; }
   #search-tagcloud {
     width: 100%; }
   .taglist-container .tag-list-item {

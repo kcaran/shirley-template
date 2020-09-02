@@ -659,7 +659,15 @@ pre {
 }
 
 .linklist-item-tags {
-	margin: 1em 0;
+	margin: 1em 0 1em 24px;
+	position: relative;
+	.ctrl-checkbox {
+		position: absolute;
+		left: -24px;
+	}
+	.label-tag {
+		margin-bottom: 12px;
+	}
 }
 
 h2.linklist-item-title {
@@ -1740,6 +1748,11 @@ form {
 
 	.pure-g .page-form {
 		padding: 4px 1em;
+	}
+
+	.pure-g .cloudtag-container {
+		margin: 0 -1em;
+		font-size: 0.8em;
 	}
 
 	#search-tagcloud {

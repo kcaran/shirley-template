@@ -13,26 +13,24 @@
 
     {$countTags=count($tags)}
     <h2 class="window-title">{'Tag cloud'|t} &middot; {$countTags} {'tags'|t}</h2>
-    <div id="search-tagcloud">
-        <form method="GET">
-          <input type="hidden" name="do" value="tagcloud">
-          <input type="text" name="searchtags" aria-label="{'Filter by tag'|t}" placeholder="{'Filter by tag'|t}"
+    <form id="search-tagcloud" method="GET">
+        <input type="hidden" name="do" value="tagcloud">
+        <input type="text" name="searchtags" aria-label="{'Filter by tag'|t}" placeholder="{'Filter by tag'|t}"
                  {if="!empty($search_tags)"}
-                    value="{$search_tags}"
+                  value="{$search_tags}"
                  {/if}
           autocomplete="off" data-multiple data-autofirst data-minChars="1"
           data-list="{loop="$tags"}{$key}, {/loop}"
           class="autofocus"
           >
 
-          <button type="submit" class="search-button" aria-label="{'Search'|t}"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <button type="submit" class="search-button" aria-label="{'Search'|t}"><i class="fa fa-search" aria-hidden="true"></i></button>
 
-          {if="!empty($search_tags)"}
+        {if="!empty($search_tags)"}
           <a href="{$base_path}/?searchtags={$search_tags|urlencode}" class="pure-button">{'Show links'|t}</a>
-          {/if}
+        {/if}
 
-        </form>
-    </div>
+    </form>
 
     <div id="plugin_zone_start_tagcloud" class="plugin_zone">
       {loop="$plugin_start_zone"}
