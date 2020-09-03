@@ -10,7 +10,7 @@ $white: #fff;
 $black: #000;
 $almost-white: #f5f5f5;
 $dark-gray: #252525;
-$light-gray: #797979;
+$light-gray: #707070;
 $main-green: #1b926c;
 $light-green: #b0ddce;
 $dark-green: #186446;
@@ -158,6 +158,12 @@ pre {
 
 .pure-alert-close {
   cursor: pointer;
+	font-size: 24px;
+	padding: 16px 24px;
+	margin: -16px -26px 0 0;
+	&:hover {
+		opacity: 0.8;
+	}
 }
 
 .pure-alert-success {
@@ -678,6 +684,7 @@ pre {
 	.ctrl-checkbox {
 		position: absolute;
 		left: -24px;
+		margin-right: 8px;
 	}
 	.label-tag {
 		margin-bottom: 12px;
@@ -915,16 +922,6 @@ h2.linklist-item-title {
 	}
 }
 
-.ctrl-checkbox {
-	margin-right: 8px;
-}
-
-.ctrl-edit {
-}
-
-.ctrl-delete {
-}
-
 // Footer
 .footer-container {
   margin: 20px 0;
@@ -949,7 +946,7 @@ h2.linklist-item-title {
 // PAGE FORM
 %page-form-input {
   display: inline-block;
-  margin: 8px 0 16px;
+  margin: 8px 0 16px -6px;
   border: solid 1px $form-input-border;
   border-radius: 2px;
   padding: 5px 5px 3px 15px;
@@ -985,16 +982,18 @@ h2.linklist-item-title {
 
 .pure-g .page-form {
 	position: relative;
-  margin: 20px 0 0;
-	padding: 4px 104px;
+	margin: 20px 0 0;
+	padding: 4px 104px 60px;
   box-shadow: 1px 1px 2px $light-gray;
   background: $almost-white;
   overflow: hidden;
   color: $dark-gray;
+
 	label {
-		margin: 16px 0 0 16px;
+		margin: 16px 0 0 6px;
 		display: inline-block;
 		font-weight: 500;
+		width: 100%;
 	}
 
   .window-title {
@@ -1066,7 +1065,7 @@ h2.linklist-item-title {
 
 	label span + select {
 		display: block;
-		margin-top: 8px;
+		margin: 8px 0 16px -4px;
 	}
 
   .button-red {
@@ -1077,11 +1076,44 @@ h2.linklist-item-title {
 	}
   }
 
+	.checkbox {
+		font-weight: 400;
+		input {
+			margin-right: 4px;
+		}
+	}
+
+	.radio-buttons {
+		label {
+			display: block;
+			font-weight: 400;
+		}
+
+		input {
+			margin-right: 4px;
+		}
+	}
+
   .submit-buttons {
 	display: flex;
 	justify-content: space-between;
     margin: 24px 16px;
   }
+
+	.mark-private {
+		position: relative;
+		top: 36px;
+		right: 16px;
+		text-align: right;
+
+		label {
+			margin: 0;
+			display: block;
+		}
+		input {
+			margin-right: 4px;
+		}
+	}
 
   section {
     margin: 10px 0 25px;
@@ -1117,68 +1149,6 @@ h2.linklist-item-title {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.page-form-complete {
-  div,
-  p {
-    color: $dark-gray;
-  }
-	p {
-		margin: 0 0 16px;
-	}
-
-  .form-label,
-  .form-input {
-    position: relative;
-    height: 60px;
-  }
-
-  .form-label {
-    label {
-      @extend %page-form-valign;
-
-      right: 0;
-      padding: 0 20px;
-      text-align: right;
-    }
-  }
-
-  .label-name {
-    font-weight: 500;
-  }
-
-  .label-desc {
-    font-size: .8em;
-  }
-
-  .form-input {
-    input {
-      @extend %page-form-valign;
-
-      &[type='text'],
-      &[type='password'] {
-        margin: 0;
-      }
-    }
-
-    select {
-      &.align {
-        @extend %page-form-valign;
-      }
-    }
-  }
-
-  textarea {
-    margin: 0;
-  }
-
-  .timezone {
-	select {
-		display: inline-block;
-		margin: 8px 0;
-	}
-  }
 }
 
 // Awesomeplete fix
@@ -1263,6 +1233,8 @@ form {
   a.pure-button {
 	min-width: 265px;
 	font-size: 16px;
+	height: 40px;
+	line-height: 40px;
   }
 }
 
@@ -1277,17 +1249,12 @@ form {
   }
 }
 
-// IMPORT
-.import-field-container {
-  margin: 15px 0;
-}
-
 // TAG CLOUD
 .pure-g .cloudtag-container {
   text-align: center;
   text-decoration: none;
   color: $dark-gray;
-	margin: 0 -104px;
+	margin: 0 -96px;
 
   a {
     text-decoration: none;
@@ -1305,7 +1272,12 @@ form {
 
 .cloudtag {
 	display: inline-block;
-	margin: 0 8px;
+	margin: 0 0 -4px;
+	padding: 2px 4px;
+	border: 1px solid $almost-white;
+	&:hover {
+		border-color: $orange; 
+	}
 }
 
 // TAG LIST
@@ -1314,6 +1286,7 @@ form {
 	width: 550px;
 	display: flex;
 	justify-content: space-between;
+	align-items: baseline;
 
 	.awesomplete {
 		flex-grow: 1;
@@ -1390,7 +1363,7 @@ form {
 		z-index: 1;
 		background-color: $light-green;
 		.rename-tag-input {
-			min-width: 75%;
+			width: calc( 100% - 104px );
 			margin-left: 1em;
 		}
 	}
@@ -1617,17 +1590,25 @@ form {
   }
 }
 
-.mark-private {
+.label-desc {
+	font-size: .8em;
+	font-weight: 400;
+	color: $light-gray;
+}
+
+.input-desc {
 	float: right;
-	margin: 0px 16px 0 0;
-	input {
-		margin-right: 4px;
-	}
+	font-size: .8em;
+	font-weight: 400;
+	color: $light-gray;
+	margin: -18px 16px 0 0;
 }
 
 .md_help {
-	float: right;
-	margin: 16px 16px 0 0;
+	position: relative;
+	top: 40px;
+	right: 16px;
+	text-align: right;
 }
 
 #editlink-plugins {
@@ -1784,16 +1765,12 @@ form {
 			width: 100%;
 		}
 	}
-}
 
-@media screen and (max-width: 64em) {
   .header-search ,
   .header-search * {
     visibility: hidden;
   }
-}
 
-@media screen and (max-width: 64em) {
   .toolbar-plugin {
     input {
       &[type='text'] {
@@ -1801,9 +1778,7 @@ form {
       }
     }
   }
-}
 
-@media screen and (max-width: 64em) {
   .page-form {
     .submit-buttons {
       .button {
@@ -1811,9 +1786,7 @@ form {
       }
     }
   }
-}
 
-@media screen and (max-width: 64em) {
   .pluginform-container {
     .main-row {
       border-top-style: none;
@@ -1823,52 +1796,6 @@ form {
         border-top-style: none;
         border-bottom-style: none;
       }
-    }
-  }
-}
-
-@media screen and (max-width: 64em) {
-  %page-form-valign-mobile {
-    position: inherit;
-    top: inherit;
-    transform: translateY(0);
-  }
-
-  .page-form-complete {
-    .form-label {
-      height: inherit;
-
-      label {
-        @extend %page-form-valign-mobile;
-
-        display: block;
-        margin: 10px 0 0;
-        text-align: left;
-      }
-    }
-
-    .form-input {
-      text-align: center;
-
-      input {
-        @extend %page-form-valign-mobile;
-
-        &[type='checkbox'] {
-          position: absolute;
-          top: 50%;
-          right: 50%;
-          transform: translateY(-50%);
-        }
-      }
-    }
-
-    .timezone {
-      @extend %page-form-valign-mobile;
-    }
-
-    .radio-buttons {
-      padding: 5px 15px;
-      text-align: left;
     }
   }
 

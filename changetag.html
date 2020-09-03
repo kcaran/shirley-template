@@ -7,33 +7,35 @@
 {include="page.header"}
 <div class="pure-g pure-g-full">
   <div class="pure-u-2-24"></div>
-  <div id="addlink-form" class="page-form pure-u-20-24">
+  <form id="changetag" method="POST" action="{$base_path}/admin/tags" name="changetag" id="changetag" class="page-form pure-u-20-24">
     <h2 class="window-title">{"Manage tags"|t}</h2>
-    <form method="POST" action="{$base_path}/admin/tags" name="changetag" id="changetag">
-      <div>
+
+    <div class="pure-u-1">
         <input type="text" name="fromtag" aria-label="{'Tag'|t}" placeholder="{'Tag'|t}" value="{$fromtag}"
                list="tagsList" autocomplete="off" class="awesomplete autofocus" data-minChars="1">
         <datalist id="tagsList">
           {loop="$tags"}<option>{$key}</option>{/loop}
         </datalist>
       </div>
-      <div>
+
+    <div class="pure-u-1">
         <input type="text" name="totag" aria-label="{'New name'|t}" placeholder="{'New name'|t}"
                list="toTagsList" autocomplete="off" class="awesomplete" data-minChars="1">
         <datalist id="toTagsList">
           {loop="$tags"}<option>{$key}</option>{/loop}
         </datalist>
       </div>
+
       <div><i class="fa fa-info-circle" aria-hidden="true"></i> {'Case sensitive'|t}</div>
+
       <input type="hidden" name="token" value="{$token}">
-      <div>
+      <div class="submit-buttons">
         <input type="submit" value="{'Rename'|t}" name="renametag">
         <input type="submit" value="{'Delete'|t}" name="deletetag" class="button button-red confirm-delete">
       </div>
-    </form>
 
-    <p>{'You can also edit tags in the'|t} <a href="{$base_path}/tags/list?sort=usage">{'tag list'|t}</a>.</p>
-  </div>
+      <p>{'You can also edit tags in the'|t} <a href="{$base_path}/tags/list?sort=usage">{'tag list'|t}</a>.</p>
+    </form>
 </div>
 {include="page.footer"}
 </body>

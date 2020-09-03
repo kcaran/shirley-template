@@ -7,8 +7,7 @@
 {include="page.header"}
 <div class="pure-g pure-g-full">
   <div class="pure-u-2-24"></div>
-  <div id="login-form" class="page-form pure-u-20-24 login-form-container">
-    <form method="post" name="loginform">
+    <form method="post" name="loginform" id="login-form" class="page-form pure-u-20-24 login-form-container">
       <h2 class="window-title">{'Login'|t}</h2>
       <div>
         <input type="text" name="login" aria-label="{'Username'|t}" placeholder="{'Username'|t}"
@@ -18,18 +17,20 @@
         <input type="password" name="password" aria-label="{'Password'|t}" placeholder="{'Password'|t}" class="autofocus">
       </div>
       <div class="remember-me">
-        <input type="checkbox" name="longlastingsession" id="longlastingsessionform"
-           {if="$remember_user_default"}checked="checked"{/if}>
-        <label for="longlastingsessionform">{'Remember me'|t}</label>
+        <label class="checkbox">
+        <input type="checkbox" name="longlastingsession" id="longlastingsessionform" {if="$remember_user_default"}checked="checked"{/if}>
+        {'Remember me'|t}
+        </label>
       </div>
-      <div>
+
+      <div class="submit-buttons">
         <input type="submit" value="{'Login'|t}" class="bigbutton">
       </div>
+
       <input type="hidden" name="token" value="{$token}">
       {if="$returnurl"}<input type="hidden" name="returnurl" value="{$returnurl}">{/if}
     </form>
   </div>
-  <div class="pure-u-1-8"></div>
 </div>
 
 {include="page.footer"}

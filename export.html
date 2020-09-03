@@ -6,61 +6,42 @@
 <body>
 {include="page.header"}
 
-<form method="POST" action="{$base_path}/admin/export" name="exportform" id="exportform">
-  <div class="pure-g pure-g-full">
-    <div class="pure-u-2-24"></div>
-    <div class="pure-u-20-24 page-form page-form-complete">
-      <div>
-        <h2 class="window-title">{"Export Database"|t}</h2>
-      </div>
-      <input type="hidden" name="token" value="{$token}">
+<div class="pure-g pure-g-full">
+<div class="pure-u-2-24"></div>
+<form method="POST" action="{$base_path}/admin/export" name="exportform" id="exportform" class="page-form pure-u-20-24">
+  <h2 class="window-title">{"Export Database"|t}</h2>
+  <input type="hidden" name="token" value="{$token}">
 
-      <div class="pure-g">
-        <div class="pure-u-lg-1-2 pure-u-1">
-          <div class="form-label">
-            <label><span class="label-name">{'Selection'|t}</span></label>
-          </div>
-        </div>
-        <div class="pure-u-lg-1-2 pure-u-1">
-          <div class="radio-buttons">
-            <div>
+  <div>
+     <label><span class="label-name">{'Selection'|t}</span></label>
+  </div>
+
+  <div class="radio-buttons">
+            <label>
               <input type="radio" name="selection" value="all" checked="checked">
               {'All'|t}
-            </div>
-            <div>
+            </label>
+            <label>
               <input type="radio" name="selection" value="private">
               {'Private'|t}
-            </div>
-            <div>
+            </label>
+            <label>
               <input type="radio" name="selection" value="public">
               {'Public'|t}
-            </div>
-          </div>
-        </div>
+            </label>
       </div>
 
-      <div class="pure-g">
-        <div class="pure-u-lg-1-2 pure-u-7-8">
-          <div class="form-label">
-            <label for="prepend_note_url">
+            <label class="checkbox">
+            <input type="checkbox" name="prepend_note_url" id="prepend_note_url">
               <span class="label-name">{'Prepend note permalinks with this Shaarli instance\'s URL'|t}</span><br>
               <span class="label-desc">{'Useful to import bookmarks in a web browser'|t}</span>
             </label>
-          </div>
-        </div>
-        <div class="pure-u-lg-1-2 pure-u-1-8">
-          <div class="form-input">
-            <input type="checkbox" name="prepend_note_url" id="prepend_note_url">
-          </div>
-        </div>
-      </div>
 
-      <div class="center">
+      <div class="submit-buttons">
         <input type="submit" value="{'Export'|t}">
       </div>
-    </div>
-  </div>
 </form>
+</div>
 
 {include="page.footer"}
 </body>

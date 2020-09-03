@@ -11,11 +11,11 @@
 {$ratioInput='7-12'}
 {$ratioInputMobile='1-8'}
 
-<form method="POST" action="{$base_path}/admin/configure" name="configform" id="configform">
-  <div class="pure-g pure-g-full">
-    <div class="pure-u-2-24"></div>
-    <div class="pure-u-20-24 page-form page-form-complete">
-      <h2 class="window-title">{'Configure'|t}</h2>
+<div class="pure-g pure-g-full">
+<div class="pure-u-2-24"></div>
+<form method="POST" action="{$base_path}/admin/configure" name="configform" id="configform" class="page-form pure-u-20-24">
+
+<h2 class="window-title">{'Configure'|t}</h2>
 
 <p>
 <label for="title">
@@ -27,8 +27,8 @@
 <p>
 <label for="titleLink">
 <span class="label-name">{'Home link'|t}</span><br>
+<span class="input-desc">{'Default value'|t}: {$base_path}/</span>
 <input type="text" name="titleLink" id="titleLink" size="50" value="{$titleLink}">
-<span class="label-desc">{'Default value'|t}: {$base_path}/</span>
 </label>
 <p>
 
@@ -206,12 +206,13 @@
 </label>
 </p>
 
-<p>
+<p class="submit-buttons">
 <input type="submit" value="{'Save'|t}" name="save">
 </p>
 
 <input type="hidden" name="token" value="{$token}">
 </form>
+</div>
 
 {include="page.footer"}
 </body>

@@ -28,19 +28,17 @@
         {'Mark as Private'|t}</label>
       </div>
 
-      <div>
-        <label for="lf_url">{'URL'|t}</label>
-      </div>
-
-      <div>
+      <p>
+        <label for="lf_url">{'URL'|t}
         <input type="text" name="lf_url" id="lf_url" value="{$link.url}" class="lf_input">
-      </div>
-      <div>
-      <label for="lf_title">{'Title'|t}</label>
-      </div>
-      <div>
+		</label>
+      </p>
+
+      <p>
+      <label for="lf_title">{'Title'|t}
         <input type="text" name="lf_title" id="lf_title" value="{$link.title}" class="lf_input autofocus">
-      </div>
+      </label>
+      </p>
 
       {if="$formatter==='markdown'"}
         <div class="md_help">
@@ -50,20 +48,18 @@
         </div>
       {/if}
 
-      <div>
-        <label for="lf_description">{'Description'|t}</label>
-      </div>
-
-      <div>
+      <p>
+        <label for="lf_description">{'Description'|t}
         <textarea name="lf_description" id="lf_description" class="autofocus">{$link.description}</textarea>
-      </div>
-      <div>
-        <label for="lf_tags">{'Tags'|t}</label>
-      </div>
-      <div>
+        </label>
+      </p>
+
+      <p>
+        <label for="lf_tags">{'Tags'|t}
         <input type="text" name="lf_tags" id="lf_tags" value="{$link.tags}" class="lf_input autofocus"
           data-list="{loop="$tags"}{$key}, {/loop}" data-multiple data-autofirst autocomplete="off" >
-      </div>
+        </label>
+      </p>
 
       <div id="editlink-plugins">
         {loop="$edit_link_plugin"}

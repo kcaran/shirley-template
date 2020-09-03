@@ -19,7 +19,7 @@
 <form method="POST" action="{$base_path}/admin/plugins" name="pluginform" id="pluginform" class="pluginform-container">
   <div class="pure-g pure-g-full">
     <div class="pure-u-2-24"></div>
-    <div class="pure-u-20-24 page-form page-form-complete">
+    <div class="pure-u-20-24 page-form">
       <h2 class="window-title">{'Plugin administration'|t}</h2>
 
       <section id="enabled_plugins">
@@ -104,7 +104,7 @@
         {"More plugins available"|t}
         <a href="doc/html/Community-&-Related-software/#third-party-plugins">{"in the documentation"|t}</a>.
     </p>
-     <p>
+     <p class="submit-buttons">
         <input type="submit" value="{'Save'|t}" name="save">
     </p>
     </div>
@@ -149,7 +149,7 @@
             {if="$nbParameters===0"}
               <p class="center">{'No parameter available.'|t}</p>
             {else}
-              <div class="center">
+              <div class="submit-buttons">
                 <input type="submit" name="parameters_form" value="{'Save'|t}"/>
               </div>
             {/if}
