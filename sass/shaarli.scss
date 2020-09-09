@@ -399,6 +399,14 @@ pre {
 	top: 0;
 	right: 0;
 
+	&.open {
+		visibility: visible;
+
+		* {
+			visibility: visible;
+		}
+	}
+
   input {
     &[type='text'],
     &[type='password'] {
@@ -692,6 +700,7 @@ pre {
 }
 
 h2.linklist-item-title {
+	position: relative;
     margin: 0;
     word-wrap: break-word;
 	font-size: 22px;
@@ -783,7 +792,7 @@ h2.linklist-item-title {
 }
 
 // Markdown
-.linklist-item-description .markdown {
+.daily-entry-description .markdown, .linklist-item-description .markdown {
 	h1 {
 		font-size: 24px;
 		font-weight: 500;
@@ -802,36 +811,23 @@ h2.linklist-item-title {
 		font-size: 18px;
 		font-weight: 500;
 	}
-/*
-	p {
-		margin: 0 !important;
+	ol, ul {
+		padding: 0 0 0 1.25em;
 	}
-*/
+
 	p + p, p + ul, p + ol {
 		margin: .5em 0 0 !important;
 	}
 	ol li, ul li {
 		margin: .5em 0 0;
 	}
-/*
-	* {
-		&:first-child {
-			margin-top: 0 !important;
-		}
-		&:last-child {
-			margin-bottom: 5px !important;
-		}
-	}
-*/
 }
 
 .linklist-item-thumbnail {
-  position: relative;
-  float: right;
-  z-index: 50;
-  margin: 0;
-  padding: 0 0 0 5px;
-  height: 90px;
+	position: absolute;
+	top: 66px;
+	right: -190px;
+	z-index: 50;
 }
 
 .linklist-item-infos {
@@ -859,12 +855,12 @@ h2.linklist-item-title {
   text-overflow: ellipsis;
   white-space: nowrap;
 	font-size: 12.7px;
-	margin: 0px 0 4px;
+	margin: 8px 0 4px;
 	a {
-		color: $light-gray;
+		color: $blue;
 		text-decoration: none;
 		&:hover {
-			color: $blue;
+			text-decoration: underline;
 		}
 	}
 }
@@ -1481,7 +1477,8 @@ form {
 }
 
 .daily-entry {
-  padding: 0 10px;
+  margin: 0 0 40px 0;
+  padding: 0 8px;
 
   .daily-entry-title {
     margin: 10px 0 0;
@@ -1501,33 +1498,30 @@ form {
     }
   }
 
+  .daily-entry-thumbnail {
+    display: block;
+  }
+
   .daily-entry-description {
-    padding: 5px 5px 0;
-    text-align: justify;
+	margin: 0 0 12px 0;
+    padding: 0;
+    text-align: left;
     font-size: .9em;
     word-wrap: break-word;
+    a {
+      text-decoration: none;
+      color: var(--main-color);
+
+      &:hover {
+        text-shadow: 1px 1px $background-linklist-info;
+        color: var(--main-color);
+      }
+    }
   }
 
   .daily-entry-tags {
-    padding: 0 5px 5px;
+    padding: 0;
     font-size: .8em;
-  }
-}
-
-.daily-entry-thumbnail {
-  float: left;
-  margin: 15px 5px 5px 15px;
-}
-
-.daily-entry-description {
-  a {
-    text-decoration: none;
-    color: var(--main-color);
-
-    &:hover {
-      text-shadow: 1px 1px $background-linklist-info;
-      color: var(--main-color);
-    }
   }
 }
 
@@ -1639,16 +1633,6 @@ form {
       }
     }
   }
-
-  .subheader-form {
-    &.open {
-      visibility: visible;
-
-      * {
-        visibility: visible;
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 64em) {
@@ -1670,6 +1654,20 @@ form {
 		.pure-menu-item {
 			display: block !important;
 		}
+	}
+
+	.page-form {
+		.submit-buttons {
+			.button {
+				margin: auto;
+			}
+		}
+	}
+
+	.subheader-form {
+		padding-top: 32px;
+		padding-bottom: 32px;
+		height: 84px;
 	}
 
 	.search-linklist {
@@ -1775,14 +1773,6 @@ form {
     input {
       &[type='text'] {
         width: 70%;
-      }
-    }
-  }
-
-  .page-form {
-    .submit-buttons {
-      .button {
-        margin: auto;
       }
     }
   }

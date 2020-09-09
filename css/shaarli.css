@@ -4132,6 +4132,10 @@ pre {
   text-align: center;
   top: 0;
   right: 0; }
+  .subheader-form.open {
+    visibility: visible; }
+    .subheader-form.open * {
+      visibility: visible; }
   .subheader-form input[type='text']::-webkit-input-placeholder, .subheader-form input[type='password']::-webkit-input-placeholder {
     color: #252525; }
   .subheader-form[type='submit'] {
@@ -4317,6 +4321,7 @@ pre {
     margin-bottom: 12px; }
 
 h2.linklist-item-title {
+  position: relative;
   margin: 0;
   word-wrap: break-word;
   font-size: 22px;
@@ -4377,7 +4382,7 @@ h2.linklist-item-title {
     .linklist-item-description a:hover {
       color: var(--main-color); }
 
-.linklist-item-description .markdown {
+.daily-entry-description .markdown, .linklist-item-description .markdown {
   /*
 	p {
 		margin: 0 !important;
@@ -4393,32 +4398,33 @@ h2.linklist-item-title {
 		}
 	}
 */ }
-  .linklist-item-description .markdown h1 {
+  .daily-entry-description .markdown h1, .linklist-item-description .markdown h1 {
     font-size: 24px;
     font-weight: 500; }
-  .linklist-item-description .markdown h2 {
+  .daily-entry-description .markdown h2, .linklist-item-description .markdown h2 {
     font-size: 20px;
     font-weight: 500;
     font-style: italic; }
-  .linklist-item-description .markdown h3 {
+  .daily-entry-description .markdown h3, .linklist-item-description .markdown h3 {
     font-size: 18px;
     font-weight: 700;
     margin: 1em 0 0; }
-  .linklist-item-description .markdown h4, .linklist-item-description .markdown h5, .linklist-item-description .markdown h6 {
+  .daily-entry-description .markdown h4, .daily-entry-description .markdown h5, .daily-entry-description .markdown h6, .linklist-item-description .markdown h4, .linklist-item-description .markdown h5, .linklist-item-description .markdown h6 {
     font-size: 18px;
     font-weight: 500; }
-  .linklist-item-description .markdown p + p, .linklist-item-description .markdown p + ul, .linklist-item-description .markdown p + ol {
+  .daily-entry-description .markdown ol, .daily-entry-description .markdown ul, .linklist-item-description .markdown ol, .linklist-item-description .markdown ul {
+    padding: 0 0 0 1.25em; }
+  .daily-entry-description .markdown p + p, .daily-entry-description .markdown p + ul, .daily-entry-description .markdown p + ol, .linklist-item-description .markdown p + p, .linklist-item-description .markdown p + ul, .linklist-item-description .markdown p + ol {
     margin: .5em 0 0 !important; }
-  .linklist-item-description .markdown ol li, .linklist-item-description .markdown ul li {
+  .daily-entry-description .markdown ol li, .daily-entry-description .markdown ul li, .linklist-item-description .markdown ol li, .linklist-item-description .markdown ul li {
     margin: .5em 0 0; }
 
 .linklist-item-thumbnail {
-  position: relative;
-  float: right;
-  z-index: 50;
-  margin: 0;
-  padding: 0 0 0 5px;
-  height: 90px; }
+  position: absolute;
+  top: 66px;
+  right: -190px;
+  border: 1px solid blue;
+  z-index: 50; }
 
 .linklist-item-infos {
   position: absolute;
@@ -4438,12 +4444,12 @@ h2.linklist-item-title {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 12.7px;
-  margin: 0px 0 4px; }
+  margin: 8px 0 4px; }
   .linklist-item-infos-url a {
-    color: #707070;
+    color: #0b5ea6;
     text-decoration: none; }
     .linklist-item-infos-url a:hover {
-      color: #0b5ea6; }
+      text-decoration: underline; }
 
 .linkdate {
   font-size: 12.7px;
@@ -4678,7 +4684,7 @@ form[name='linkform'].page-form {
   text-align: center;
   text-decoration: none;
   color: #252525;
-  margin: 0 -104px; }
+  margin: 0 -96px; }
   .pure-g .cloudtag-container a {
     text-decoration: none;
     color: #252525; }
@@ -4831,7 +4837,8 @@ form[name='linkform'].page-form {
   content: ''; }
 
 .daily-entry {
-  padding: 0 10px; }
+  margin: 0 0 40px 0;
+  padding: 0 8px; }
   .daily-entry .daily-entry-title {
     margin: 10px 0 0; }
     .daily-entry .daily-entry-title a {
@@ -4844,25 +4851,23 @@ form[name='linkform'].page-form {
       width: 70%;
       height: 1px;
       content: ''; }
+  .daily-entry .daily-entry-thumbnail {
+    display: block; }
   .daily-entry .daily-entry-description {
-    padding: 5px 5px 0;
-    text-align: justify;
+    margin: 0 0 12px 0;
+    padding: 0;
+    text-align: left;
     font-size: .9em;
     word-wrap: break-word; }
+    .daily-entry .daily-entry-description a {
+      text-decoration: none;
+      color: var(--main-color); }
+      .daily-entry .daily-entry-description a:hover {
+        text-shadow: 1px 1px #ddd;
+        color: var(--main-color); }
   .daily-entry .daily-entry-tags {
-    padding: 0 5px 5px;
+    padding: 0;
     font-size: .8em; }
-
-.daily-entry-thumbnail {
-  float: left;
-  margin: 15px 5px 5px 15px; }
-
-.daily-entry-description a {
-  text-decoration: none;
-  color: var(--main-color); }
-  .daily-entry-description a:hover {
-    text-shadow: 1px 1px #ddd;
-    color: var(--main-color); }
 
 .pure-button {
   -moz-user-select: auto; }
@@ -4935,11 +4940,7 @@ form[name='linkform'].page-form {
     position: relative; }
     .page-form .submit-buttons .button.button-red {
       position: absolute;
-      right: 5%; }
-  .subheader-form.open {
-    visibility: visible; }
-    .subheader-form.open * {
-      visibility: visible; } }
+      right: 5%; } }
 
 @media screen and (max-width: 64em) {
   .pure-g-full {
@@ -4952,6 +4953,12 @@ form[name='linkform'].page-form {
     display: block; }
   #shaarli-menu.open .pure-menu-item {
     display: block !important; }
+  .page-form .submit-buttons .button {
+    margin: auto; }
+  .subheader-form {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    height: 84px; }
   .search-linklist {
     position: relative;
     padding: 0 1em; }
@@ -5011,8 +5018,6 @@ form[name='linkform'].page-form {
     visibility: hidden; }
   .toolbar-plugin input[type='text'] {
     width: 70%; }
-  .page-form .submit-buttons .button {
-    margin: auto; }
   .pluginform-container .main-row {
     border-top-style: none;
     border-bottom-style: none; }
