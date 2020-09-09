@@ -3956,11 +3956,13 @@ body {
   background: #0b5ea6;
   color: #fff; }
 
-.label-tag a {
-  text-decoration: none;
-  color: #fff; }
-  .label-tag a:hover {
-    opacity: 0.8; }
+.label-tag {
+  margin-bottom: 8px; }
+  .label-tag a {
+    text-decoration: none;
+    color: #fff; }
+    .label-tag a:hover {
+      opacity: 0.8; }
 
 pre {
   max-width: 100%; }
@@ -4382,48 +4384,41 @@ h2.linklist-item-title {
     .linklist-item-description a:hover {
       color: var(--main-color); }
 
-.daily-entry-description .markdown, .linklist-item-description .markdown {
-  /*
-	p {
-		margin: 0 !important;
-	}
-*/
-  /*
-	* {
-		&:first-child {
-			margin-top: 0 !important;
-		}
-		&:last-child {
-			margin-bottom: 5px !important;
-		}
-	}
-*/ }
-  .daily-entry-description .markdown h1, .linklist-item-description .markdown h1 {
-    font-size: 24px;
-    font-weight: 500; }
-  .daily-entry-description .markdown h2, .linklist-item-description .markdown h2 {
-    font-size: 20px;
-    font-weight: 500;
-    font-style: italic; }
-  .daily-entry-description .markdown h3, .linklist-item-description .markdown h3 {
-    font-size: 18px;
-    font-weight: 700;
-    margin: 1em 0 0; }
-  .daily-entry-description .markdown h4, .daily-entry-description .markdown h5, .daily-entry-description .markdown h6, .linklist-item-description .markdown h4, .linklist-item-description .markdown h5, .linklist-item-description .markdown h6 {
-    font-size: 18px;
-    font-weight: 500; }
-  .daily-entry-description .markdown ol, .daily-entry-description .markdown ul, .linklist-item-description .markdown ol, .linklist-item-description .markdown ul {
-    padding: 0 0 0 1.25em; }
-  .daily-entry-description .markdown p + p, .daily-entry-description .markdown p + ul, .daily-entry-description .markdown p + ol, .linklist-item-description .markdown p + p, .linklist-item-description .markdown p + ul, .linklist-item-description .markdown p + ol {
-    margin: .5em 0 0 !important; }
-  .daily-entry-description .markdown ol li, .daily-entry-description .markdown ul li, .linklist-item-description .markdown ol li, .linklist-item-description .markdown ul li {
-    margin: .5em 0 0; }
+.daily-entry-description .markdown h1, .linklist-item-description .markdown h1 {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 500; }
+
+.daily-entry-description .markdown h2, .linklist-item-description .markdown h2 {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  font-style: italic; }
+
+.daily-entry-description .markdown h3, .linklist-item-description .markdown h3 {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+  margin: 1em 0 0; }
+
+.daily-entry-description .markdown h4, .daily-entry-description .markdown h5, .daily-entry-description .markdown h6, .linklist-item-description .markdown h4, .linklist-item-description .markdown h5, .linklist-item-description .markdown h6 {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500; }
+
+.daily-entry-description .markdown ol, .daily-entry-description .markdown ul, .linklist-item-description .markdown ol, .linklist-item-description .markdown ul {
+  padding: 0 0 0 1.25em; }
+
+.daily-entry-description .markdown p + p, .daily-entry-description .markdown p + ul, .daily-entry-description .markdown p + ol, .linklist-item-description .markdown p + p, .linklist-item-description .markdown p + ul, .linklist-item-description .markdown p + ol {
+  margin: .5em 0 0 !important; }
+
+.daily-entry-description .markdown ol li, .daily-entry-description .markdown ul li, .linklist-item-description .markdown ol li, .linklist-item-description .markdown ul li {
+  margin: .5em 0 0; }
 
 .linklist-item-thumbnail {
   position: absolute;
   top: 66px;
   right: -190px;
-  border: 1px solid blue;
   z-index: 50; }
 
 .linklist-item-infos {
@@ -4828,6 +4823,15 @@ form[name='linkform'].page-form {
     .daily-desc a:hover {
       color: #707070; }
 
+#daily .daily-rss {
+  display: inline-block;
+  width: 44px;
+  line-height: 44px;
+  text-align: center;
+  color: #0b5ea6; }
+  #daily .daily-rss:hover {
+    opacity: 0.8; }
+
 .daily-about h3::before, .daily-about h3::after {
   display: block;
   margin: 10px auto;
@@ -4840,17 +4844,10 @@ form[name='linkform'].page-form {
   margin: 0 0 40px 0;
   padding: 0 8px; }
   .daily-entry .daily-entry-title {
-    margin: 10px 0 0; }
+    margin: 8px 0 12px; }
     .daily-entry .daily-entry-title a {
       text-decoration: none;
       color: #000; }
-    .daily-entry .daily-entry-title::after {
-      display: block;
-      margin: 5px auto;
-      background: linear-gradient(to right, #fff, #707070, #fff);
-      width: 70%;
-      height: 1px;
-      content: ''; }
   .daily-entry .daily-entry-thumbnail {
     display: block; }
   .daily-entry .daily-entry-description {
@@ -4865,6 +4862,9 @@ form[name='linkform'].page-form {
       .daily-entry .daily-entry-description a:hover {
         text-shadow: 1px 1px #ddd;
         color: var(--main-color); }
+    .daily-entry .daily-entry-description .markdown h1 {
+      font-size: 20px;
+      line-height: 24px; }
   .daily-entry .daily-entry-tags {
     padding: 0;
     font-size: .8em; }

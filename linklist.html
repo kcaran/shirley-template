@@ -4,6 +4,7 @@
   {include="includes"}
 </head>
 <body>
+{$display_paging=1}
 {include="page.header"}
 
 <input type="hidden" name="token" value="{$token}">
@@ -225,6 +226,6 @@ den="true"></i></span>
 </div>
 
 {include="page.footer"}
-<script src="{$asset_path}/js/thumbnails.min.js?v={$version_hash}"></script>
+<script src="{$asset_path}/js/thumbnails.min.js?v={$version_hash}#"></script>
 </body>
 </html>

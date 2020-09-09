@@ -130,11 +130,14 @@ body {
 	color: $white;
 }
 
-.label-tag a {
-	text-decoration: none;
-	color: $white;
-	&:hover {
-		opacity: 0.8;
+.label-tag {
+	margin-bottom: 8px;
+	a {
+		text-decoration: none;
+		color: $white;
+		&:hover {
+			opacity: 0.8;
+		}
 	}
 }
 
@@ -795,20 +798,24 @@ h2.linklist-item-title {
 .daily-entry-description .markdown, .linklist-item-description .markdown {
 	h1 {
 		font-size: 24px;
+		line-height: 28px;
 		font-weight: 500;
 	}
 	h2 {
 		font-size: 20px;
+		line-height: 24px;
 		font-weight: 500;
 		font-style: italic;
 	}
 	h3 {
 		font-size: 18px;
+		line-height: 22px;
 		font-weight: 700;
 		margin: 1em 0 0;
 	}
 	h4, h5, h6 {
 		font-size: 18px;
+		line-height: 22px;
 		font-weight: 500;
 	}
 	ol, ul {
@@ -1462,6 +1469,17 @@ form {
   }
 }
 
+#daily .daily-rss {
+	display: inline-block;
+	width: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: $blue;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
 .daily-about {
   h3 {
     &::before,
@@ -1481,20 +1499,11 @@ form {
   padding: 0 8px;
 
   .daily-entry-title {
-    margin: 10px 0 0;
+    margin: 8px 0 12px;
 
     a {
       text-decoration: none;
       color: $black;
-    }
-
-    &::after {
-      display: block;
-      margin: 5px auto;
-      background: linear-gradient(to right, $white, $light-gray, $white);
-      width: 70%;
-      height: 1px;
-      content: '';
     }
   }
 
@@ -1517,6 +1526,11 @@ form {
         color: var(--main-color);
       }
     }
+
+	.markdown h1 {
+		font-size: 20px;
+		line-height: 24px;
+	}
   }
 
   .daily-entry-tags {
