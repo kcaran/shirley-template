@@ -94,18 +94,6 @@ den="true"></i></span>
 
 <div class="linklist-item pure-g {if="$value.class"} {$value.class}{/if}" data-id="{$value.id}">
 	<h2 class="linklist-item-title pure-u-1 pure-u-lg-16-24">
-		{if="$thumbnails_enabled && !empty($value.thumbnail)"}
-		<div class="linklist-item-thumbnail" style="width:{$thumbnails_width}px;height:{$thumbnails_height}px;">
-			<div class="thumbnail">
-				{ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
-				<a href="{$value.real_url}" aria-hidden="true" tabindex="-1">
-				<img data-src="{$base_path}/{$value.thumbnail}#" class="b-lazy"
-                    src=""
-                    alt="" width="{$thumbnails_width}" height="{$thumbnails_height}" /></a>
-			</div>
-		</div>
-		{/if}
-
 		{if="strpos($value.url, $value.shorturl) === false"}
 		<a href="{$value.real_url}"><span class="linklist-link">{$value.title}</span></a>
 		{else}
@@ -154,10 +142,21 @@ den="true"></i></span>
             </span>
 	</div>
 
-	{if="$value.description"}
-	<div class="linklist-item-description pure-u-1 pure-u-lg-16-24">{$value.description}</div>
-	<div class="pure-u-0 pure-u-lg-8-24">FILLER</div>
+	<div class="linklist-item-description pure-u-1 pure-u-lg-16-24">
+		{if="$thumbnails_enabled && !empty($value.thumbnail)"}
+		<div class="linklist-item-thumbnail" style="width:{$thumbnails_width}px;height:{$thumbnails_height}px;">
+			<div class="thumbnail">
+				{ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
+				<a href="{$value.real_url}" aria-hidden="true" tabindex="-1">
+				<img data-src="{$base_path}/{$value.thumbnail}#" class="b-lazy"
+					src=""
+					alt="" width="{$thumbnails_width}" height="{$thumbnails_height}" /></a>
+			</div>
+		</div>
 	{/if}
+
+		{$value.description}
+ 	</div>
 
 	{if="strpos($value.url, $value.shorturl) === false"}
 	<div class="linklist-item-infos-url pure-u-1">
