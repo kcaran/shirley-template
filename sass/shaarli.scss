@@ -332,7 +332,11 @@ pre {
 	padding-right: 1rem;
 }
 
-.searchform-block {
+.searchform {
+
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
 
   input {
     &[type="text"] {
@@ -358,8 +362,6 @@ pre {
     padding: 0;
     color: $almost-white;
 	position: relative;
-	top: 3px;
-	left: -10px;
 	font-size: 26px;
 	width: 44px;
 	height: 44px;
@@ -1621,6 +1623,12 @@ form {
 	margin-top: 16px;
 }
 
+@media screen and (max-width: 64em) {
+	.pure-g-full {
+		width: 100%;
+	}
+}
+
 @media screen and (min-width: 48.0625em) {
 
   .pure-u-lg-0 {
@@ -1634,10 +1642,6 @@ form {
   .pure-u-lg-visible {
     display: inline-block !important;
   }
-
-	#shaarli-menu {
-		min-width: 1140px;
-	}
 
   .page-form {
     .submit-buttons {
@@ -1666,20 +1670,34 @@ form {
 
 	#shaarli-menu {
 		width: 100%;
-	}
+		&.open {
+			.pure-menu-item {
+				display: block !important;
+			}
+		}
+		.search-linklist {
+			position: relative;
+			padding: 0 1em;
+		}
 
-	.searchform div.awesomplete {
-		display: block;
+		.searchform {
+			flex-wrap: wrap;
+			div.awesomplete {
+				display: block;
+			}
+
+			button {
+				position: static;
+				margin: 0;
+			}
+
+			input.searchterm {
+			}
+		}
 	}
 
 	.menu-toggle {
 		display: block;
-	}
-
-	#shaarli-menu.open {
-		.pure-menu-item {
-			display: block !important;
-		}
 	}
 
 	.page-form {
@@ -1694,21 +1712,6 @@ form {
 		padding-top: 32px;
 		padding-bottom: 32px;
 		height: 84px;
-	}
-
-	.search-linklist {
-		position: relative;
-		padding: 0 1em;
-
-		button {
-			position: absolute;
-			left: 260px;
-			top: -8px;
-		}
-
-		input.searchterm {
-			margin-bottom: 12px;
-		}
 	}
 
 	.linklist-item {
