@@ -1626,6 +1626,10 @@ form {
 @media screen and (max-width: 64em) {
 	.pure-g-full {
 		width: 100%;
+		min-width: 1024px;
+	}
+	#shaarli-menu {
+		min-width: 1024px;
 	}
 }
 
@@ -1660,6 +1664,7 @@ form {
 @media screen and (max-width: 48.0625em) {
 	.pure-g-full {
 		width: 100%;
+		min-width: 0;
 	}
 	.pure-g-full > * {
 		padding: 0;
@@ -1670,6 +1675,8 @@ form {
 
 	#shaarli-menu {
 		width: 100%;
+		min-width: 0;
+
 		&.open {
 			.pure-menu-item {
 				display: block !important;

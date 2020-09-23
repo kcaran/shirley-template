@@ -4931,9 +4931,10 @@ form[name='linkform'].page-form {
 
 @media screen and (max-width: 64em) {
   .pure-g-full {
-    width: 100%; }
+    width: 100%;
+    min-width: 1024px; }
   #shaarli-menu {
-    background: blue; } }
+    min-width: 1024px; } }
 
 @media screen and (min-width: 48.0625em) {
   .pure-u-lg-0 {
@@ -4950,14 +4951,15 @@ form[name='linkform'].page-form {
 
 @media screen and (max-width: 48.0625em) {
   .pure-g-full {
-    width: 100%; }
+    width: 100%;
+    min-width: 0; }
   .pure-g-full > * {
     padding: 0; }
   .pure-u-lg-visible {
     display: none !important; }
   #shaarli-menu {
-    background: yellow;
-    width: 100%; }
+    width: 100%;
+    min-width: 0; }
     #shaarli-menu.open .pure-menu-item {
       display: block !important; }
     #shaarli-menu .search-linklist {
