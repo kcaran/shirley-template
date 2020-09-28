@@ -142,7 +142,9 @@ den="true"></i></span>
             </span>
 	</div>
 
-	<div class="linklist-item-description pure-u-1 pure-u-lg-16-24">
+	<div class="pure-u-1 pure-u-lg-16-24">
+
+	<div class="linklist-item-description">
 		{if="$thumbnails_enabled && !empty($value.thumbnail)"}
 		<div class="linklist-item-thumbnail" style="width:{$thumbnails_width}px;height:{$thumbnails_height}px;">
 			<div class="thumbnail">
@@ -159,20 +161,20 @@ den="true"></i></span>
  	</div>
 
 	{if="strpos($value.url, $value.shorturl) === false"}
-	<div class="linklist-item-infos-url pure-u-1">
+	<div class="linklist-item-infos-url">
 		<a href="{$value.real_url}" aria-label="{$value.title}" title="{$value.title}">{$value.url}</a>
 	</div>
 	{/if}
 
 	{if="!$hide_timestamps || $is_logged_in"}
 	{$updated=$value.updated_timestamp ? $strEdited. format_date($value.updated) : $strPermalink}
-	<div class="linkdate pure-u-1" title="{$updated}">
+	<div class="linkdate" title="{$updated}">
 		{$value.created|format_date}
 		{if="$value.updated_timestamp"}*{/if}
 	</div>
 	{/if}
 
-	<div class="linklist-item-tags pure-u-1 pure-u-lg-16-24">
+	<div class="linklist-item-tags">
 		{if="$is_logged_in"}
 			<label class="ctrl-checkbox">
 			<input type="checkbox" class="link-checkbox" title="Select link" value="{$value.id}">
@@ -192,6 +194,7 @@ den="true"></i></span>
 			<span class="label label-private">{$strPrivate}</span>
 		{/if}
 	</div>
+    </div>
 	<div class="pure-u-0 pure-u-lg-8-24">FILLER</div>
 </div>
 

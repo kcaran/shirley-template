@@ -4808,18 +4808,16 @@ form[name='linkform'].page-form {
   opacity: 0;
   -webkit-transition: opacity 500ms ease-in-out;
   -moz-transition: opacity 500ms ease-in-out;
-  -o-transition: opacity 500ms ease-in-out; }
+  -o-transition: opacity 500ms ease-in-out;
+  min-width: 1px;
+  min-height: 1px; }
   .b-lazy.b-loaded {
     opacity: 1; }
 
 .daily-desc {
   color: #707070;
-  font-size: .8em; }
-  .daily-desc a {
-    text-decoration: none;
-    color: #252525; }
-    .daily-desc a:hover {
-      color: #707070; }
+  font-size: .8em;
+  margin: -28px 0 16px; }
 
 #daily .daily-rss {
   display: inline-block;
@@ -4830,13 +4828,18 @@ form[name='linkform'].page-form {
   #daily .daily-rss:hover {
     opacity: 0.8; }
 
-.daily-about h3::before, .daily-about h3::after {
-  display: block;
-  margin: 10px auto;
-  background: linear-gradient(to right, var(--background-color), #252525, var(--background-color));
-  width: 90%;
-  height: 1px;
-  content: ''; }
+.daily-about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  text-align: center; }
+  .daily-about p, .daily-about h3 {
+    width: 100%; }
+  .daily-about p:first-child {
+    text-align: left; }
+  .daily-about p:last-child {
+    text-align: right; }
 
 .daily-entry {
   margin: 0 0 40px 0;

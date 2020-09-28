@@ -1446,6 +1446,8 @@ form {
   -webkit-transition: opacity 500ms ease-in-out;
   -moz-transition: opacity 500ms ease-in-out;
   -o-transition: opacity 500ms ease-in-out;
+  min-width: 1px;
+  min-height: 1px;
 
   &.b-loaded {
     opacity: 1;
@@ -1456,15 +1458,7 @@ form {
 .daily-desc {
   color: $light-gray;
   font-size: .8em;
-
-  a {
-    text-decoration: none;
-    color: $dark-gray;
-
-    &:hover {
-      color: $light-gray;
-    }
-  }
+  margin: -28px 0 16px;
 }
 
 #daily .daily-rss {
@@ -1479,17 +1473,20 @@ form {
 }
 
 .daily-about {
-  h3 {
-    &::before,
-    &::after {
-      display: block;
-      margin: 10px auto;
-      background: linear-gradient(to right, var(--background-color), $dark-gray, var(--background-color));
-      width: 90%;
-      height: 1px;
-      content: '';
-    }
-  }
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
+	text-align: center;
+	p, h3 {
+		width: 100%;
+	}
+	p:first-child {
+		text-align: left;
+	}
+	p:last-child {
+		text-align: right;
+	}
 }
 
 .daily-entry {
