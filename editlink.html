@@ -10,7 +10,10 @@
     <form method="post"
           name="linkform"
           action="{$base_path}/admin/shaare"
-          class="page-form pure-u-20-24">
+          class="page-form pure-u-20-24"
+    >
+      {$asyncLoadClass=$link_is_new && $async_metadata && empty($link.title) ? 'loading-input' : ''}
+
       <h2 class="window-title">
         {if="!$link_is_new"}{'Edit Shaare'|t}{else}{'New Shaare'|t}{/if}
       </h2>
@@ -20,7 +23,7 @@
       {if="!$link_is_new"}<div class="created-date">{'Created:'|t} {$link.created|format_date}</div>{/if}
 
       <div class="mark-private">
-		<label>
+        <label>
         <input type="checkbox"  name="lf_private" id="lf_private"
         {if="($link_is_new && $default_private_links || $link.private == true)"}
           checked="checked"
@@ -31,13 +34,15 @@
       <p>
         <label for="lf_url">{'URL'|t}
         <input type="text" name="lf_url" id="lf_url" value="{$link.url}" class="lf_input">
-		</label>
+        </label>
       </p>
 
-      <p>
-      <label for="lf_title">{'Title'|t}
-        <input type="text" name="lf_title" id="lf_title" value="{$link.title}" class="lf_input autofocus">
-      </label>
+      <p class="{$asyncLoadClass}">
+        <label for="lf_title">{'Title'|t}
+        <input type="text" name="lf_title" id="lf_title" value="{$link.title}"
+         class="lf_input {if="!$async_metadata"}autofocus{/if}"
+        >
+        </label>
       </p>
 
       {if="$formatter==='markdown'"}
@@ -48,13 +53,13 @@
         </div>
       {/if}
 
-      <p>
+      <p class="{if="$retrieve_description"}{$asyncLoadClass}{/if}">
         <label for="lf_description">{'Description'|t}
         <textarea name="lf_description" id="lf_description" class="autofocus">{$link.description}</textarea>
-        </label>
+       </label>
       </p>
 
-      <p>
+      <p class="{if="$retrieve_description"}{$asyncLoadClass}{/if}">
         <label for="lf_tags">{'Tags'|t}
         <input type="text" name="lf_tags" id="lf_tags" value="{$link.tags}" class="lf_input autofocus"
           data-list="{loop="$tags"}{$key}, {/loop}" data-multiple data-autofirst autocomplete="off" >
@@ -67,9 +72,10 @@
         {/loop}
       </div>
 
+
       <div class="submit-buttons">
         <input type="submit" name="save_edit" class="" id="button-save-edit"
-               value="{if="$link_is_new"}{'Save'|t}{else}{'Update'|t}{/if}">
+               value="{if="$link_is_new"}{'Save'|t}{else}{'Apply Changes'|t}{/if}">
         {if="!$link_is_new"}
         <a href="{$base_path}/admin/shaare/delete?id={$link.id}&amp;token={$token}"
            title="" name="delete_link" class="pure-button button-red confirm-delete">
@@ -86,5 +92,6 @@
     </form>
   </div>
   {include="page.footer"}
+  {if="$link_is_new && $async_metadata"}<script src="{$asset_path}/js/metadata.min.js?v={$version_hash}#"></script>{/if}
 </body>
 </html>
