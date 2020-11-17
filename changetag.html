@@ -31,11 +31,33 @@
       <input type="hidden" name="token" value="{$token}">
       <div class="submit-buttons">
         <input type="submit" value="{'Rename tag'|t}" name="renametag">
-        <input type="submit" value="{'Delete tag'|t}" name="deletetag" class="button button-red confirm-delete">
+        <input type="submit" value="{'Delete tag'|t}" name="deletetag" class="button button-red confirm-delete" data-type="tag">
       </div>
 
       <p>{'You can also edit tags in the'|t} <a href="{$base_path}/tags/list?sort=usage">{'tag list'|t}</a>.</p>
     </form>
+
+<div class="pure-g pure-g-full">
+  <div class="pure-u-2-24"></div>
+    <form method="POST" action="{$base_path}/admin/tags/change-separator" name="changeseparator" id="changeseparator" class="page-form pure-u-20-24">
+    <h2 class="window-title">{"Change tags separator"|t}</h2>
+      <p>
+        {'Your current tag separator is'|t} <code>{$tags_separator}</code>{if="!empty($tags_separator_desc)"} ({$tags_separator_desc}){/if}.
+      </p>
+      <div>
+        <input type="text" name="separator" placeholder="{'New separator'|t}"
+               id="separator">
+      </div>
+      <input type="hidden" name="token" value="{$token}">
+      <div class="submit-buttons">
+        <input type="submit" value="{'Save'|t}" name="saveseparator">
+      </div>
+      <p>
+        {'Note that hashtags won\'t fully work with a non-whitespace separator.'|t}
+      </p>
+    </form>
+</div>
+
 </div>
 {include="page.footer"}
 </body>

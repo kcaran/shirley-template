@@ -3874,6 +3874,15 @@ https://github.com/pure-css/pure/blob/master/LICENSE.md
   background: #3d6b00;
   color: inherit; }
 
+.fa-color-red {
+  color: #ac2925; }
+
+.fa-color-orange {
+  color: #d28314; }
+
+.fa-color-green {
+  color: #1b926c; }
+
 :root {
   --main-color: #1b926c;
   --background-color: #fff;
@@ -3883,31 +3892,31 @@ https://github.com/pure-css/pure/blob/master/LICENSE.md
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local("Roboto"), local("Roboto-Regular"), url("../fonts/roboto-v20-latin-regular.woff2") format("woff2"), url("../fonts/roboto-v20-latin-regular.woff") format("woff"); }
+  src: local("Roboto"), local("Roboto-Regular"), url("../fonts/roboto-v20-latin-regular.woff2") format("woff2"); }
 
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  src: local("Roboto Medium"), local("Roboto-Medium"), url("../fonts/roboto-v20-latin-500.woff2") format("woff2"), url("../fonts/roboto-v20-latin-500.woff") format("woff"); }
+  src: local("Roboto Medium"), local("Roboto-Medium"), url("../fonts/roboto-v20-latin-500.woff2") format("woff2"); }
 
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 500;
-  src: local("Roboto Medium Italic"), local("Roboto-MediumItalic"), url("../fonts/roboto-v20-latin-500italic.woff2") format("woff2"), url("../fonts/roboto-v20-latin-500italic.woff") format("woff"); }
+  src: local("Roboto Medium Italic"), local("Roboto-MediumItalic"), url("../fonts/roboto-v20-latin-500italic.woff2") format("woff2"); }
 
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 400;
-  src: local("Roboto Italic"), local("Roboto-Italic"), url("../fonts/roboto-v20-latin-italic.woff2") format("woff2"), url("../fonts/roboto-v20-latin-italic.woff") format("woff"); }
+  src: local("Roboto Italic"), local("Roboto-Italic"), url("../fonts/roboto-v20-latin-italic.woff2") format("woff2"); }
 
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: local("Roboto Bold"), local("Roboto-Bold"), url("../fonts/roboto-v20-latin-700.woff2") format("woff2"), url("../fonts/roboto-v20-latin-700.woff") format("woff"); }
+  src: local("Roboto Bold"), local("Roboto-Bold"), url("../fonts/roboto-v20-latin-700.woff2") format("woff2"); }
 
 *, *:before, *:after {
   box-sizing: border-box; }
@@ -4611,7 +4620,7 @@ h2.linklist-item-title {
     padding: 5px; }
   .pure-g .page-form table {
     margin: auto;
-    width: 90%; }
+    width: 100%; }
     .pure-g .page-form table .order {
       text-decoration: none;
       color: #252525; }
@@ -4834,8 +4843,6 @@ form[name='linkform'].page-form {
   align-items: center;
   margin-bottom: 16px;
   text-align: center; }
-  .daily-about p, .daily-about h3 {
-    width: 100%; }
   .daily-about p:first-child {
     text-align: left; }
   .daily-about p:last-child {
@@ -4931,6 +4938,17 @@ form[name='linkform'].page-form {
   float: right;
   font-size: 14px;
   margin-top: 16px; }
+
+.pure-g .server-row {
+  margin-bottom: 16px; }
+
+.pure-g .server-tables table {
+  margin: 16px 0;
+  border-collapse: separate; }
+  .pure-g .server-tables table td, .pure-g .server-tables table th {
+    text-align: left; }
+    .pure-g .server-tables table td:last-child, .pure-g .server-tables table th:last-child {
+      text-align: center; }
 
 @media screen and (max-width: 64em) {
   .pure-g-full {

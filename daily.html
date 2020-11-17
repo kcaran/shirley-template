@@ -9,12 +9,22 @@
 <div class="pure-g pure-g-full">
   <div class="pure-u-2-24"></div>
   <div class="pure-u-20-24 page-form page-visitor" id="daily">
+    <div class="tag-sort">
+      <a href="{$base_path}/daily?day">{'Daily'|t}</a>
+      <a href="{$base_path}/daily?week">{'Weekly'|t}</a>
+      <a href="{$base_path}/daily?month">{'Monthly'|t}</a>
+    </div>
+
     <h2 class="window-title">
-      {'The Daily Shaarli'|t}
-      <a class="daily-rss" href="{$base_path}/daily-rss" title="{'1 RSS entry per day'|t}"><i class="fa fa-rss"></i></a>
-    </h2>
-    <div class="daily-desc">
-      {'All links of one day in a single page.'|t}
+      {$localizedType} Shaarli
+      <a href="{$base_path}/daily-rss?{$type}"
+         title="{function="t('1 RSS entry per :type', '', 1, 'shaarli', [':type' => t($type)])"}"
+      >
+        <i class="fa fa-rss"></i>
+      </a>
+     </h2>
+     <div class="daily-desc">
+          {function="t('All links of one :type in a single page.', '', 1, 'shaarli', [':type' => t($type)])"}
     </div>
 
     <div id="plugin_zone_start_daily" class="plugin_zone">
@@ -26,24 +36,21 @@
     <div class="daily-about">
       <p>
           {if="$previousday"}
-            <a href="{$base_path}/daily?day={$previousday}">
+            <a href="{$base_path}/daily?{$type}={$previousday}">
               <i class="fa fa-arrow-left"></i>
-              {'Previous day'|t}
+              {function="t('Previous :type', '', 1, 'shaarli', [':type' => t($type)], true)"}
             </a>
           {/if}
         </p>
 
         <h3>
-          {if="!empty($dayDesc)"}
-            {$dayDesc} -
-          {/if}
-          {function="format_date($dayDate, false)"}
+          {$dayDesc}
         </h3>
 
         <p>
           {if="$nextday"}
-            <a href="{$base_path}/daily?day={$nextday}">
-              {'Next day'|t}
+            <a href="{$base_path}/daily?{$type}={$nextday}">
+              {function="t('Next :type', '', 1, 'shaarli', [':type' => t($type)], true)"}
               <i class="fa fa-arrow-right"></i>
             </a>
           {/if}

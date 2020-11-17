@@ -1,3 +1,4 @@
+{if="empty($batch_mode)"}
 <!DOCTYPE html>
 <html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>
@@ -5,6 +6,10 @@
 </head>
 <body>
   {include="page.header"}
+{else}
+  {ignore}Lil hack: when included in a loop in batch mode, `$value` is assigned by RainTPL with template vars.{/ignore}
+  {function="extract($value) ? '' : ''"}
+{/if}
   <div id="editlinkform" class="edit-link-container pure-g pure-g-full">
     <div class="pure-u-2-24"></div>
     <form method="post"
@@ -25,7 +30,7 @@
       <div class="mark-private">
         <label>
         <input type="checkbox"  name="lf_private" id="lf_private"
-        {if="($link_is_new && $default_private_links || $link.private == true)"}
+        {if="$link.private == true"}
           checked="checked"
         {/if}>
         {'Mark as Private'|t}</label>
@@ -74,6 +79,13 @@
 
 
       <div class="submit-buttons">
+        {if="!empty($batch_mode)"}
+          <a href="#" class="button button-grey" name="cancel-batch-link"
+            title="{'Remove this bookmark from batch creation/modification.'}"
+          >
+            {'Cancel'|t}
+          </a>
+        {/if}
         <input type="submit" name="save_edit" class="" id="button-save-edit"
                value="{if="$link_is_new"}{'Save'|t}{else}{'Apply Changes'|t}{/if}">
         {if="!$link_is_new"}
@@ -91,7 +103,10 @@
       {/if}
     </form>
   </div>
+
+{if="empty($batch_mode)"}
   {include="page.footer"}
   {if="$link_is_new && $async_metadata"}<script src="{$asset_path}/js/metadata.min.js?v={$version_hash}#"></script>{/if}
 </body>
 </html>
+{/if}

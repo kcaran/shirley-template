@@ -24,6 +24,18 @@ $dark-shadow: rgba(0, 0, 0, .298);
 $warning-text: #97600d;
 $form-input-border: #d8d8d8;
 
+.fa-color-red {
+	color: $red;
+}
+
+.fa-color-orange {
+	color: $orange;
+}
+
+.fa-color-green {
+	color: $main-green;
+}
+
 :root {
   --main-color: #{$main-green};
   --background-color: #{$white};
@@ -1131,7 +1143,7 @@ h2.linklist-item-title {
 
   table {
     margin: auto;
-    width: 90%;
+    width: 100%;
 
     .order {
       text-decoration: none;
@@ -1473,9 +1485,6 @@ form {
 	align-items: center;
 	margin-bottom: 16px;
 	text-align: center;
-	p, h3 {
-		width: 100%;
-	}
 	p:first-child {
 		text-align: left;
 	}
@@ -1613,6 +1622,23 @@ form {
 	float: right;
 	font-size: 14px;
 	margin-top: 16px;
+}
+
+.pure-g .server-row {
+	margin-bottom: 16px;
+}
+
+.pure-g .server-tables {
+	table {
+		margin: 16px 0;
+		border-collapse: separate;
+		td, th {
+			text-align: left;
+			&:last-child {
+				text-align: center;
+			}
+		}
+	}
 }
 
 @media screen and (max-width: 64em) {
