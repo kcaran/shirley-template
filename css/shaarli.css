@@ -4514,7 +4514,7 @@ h2.linklist-item-title {
   width: 100%;
   color: #252525; }
 
-.pure-g .page-form .pure-button, .pure-g .page-form input[type="submit"], .pure-g .page-form button, .pure-g .page-form .button {
+.pure-g .page-form .pure-button, .pure-g .page-form input[type="submit"], .pure-g .page-form button, .pure-g .page-form .button, .pure-button-shaarli {
   display: inline-block;
   position: relative;
   top: -1px;
@@ -4530,9 +4530,9 @@ h2.linklist-item-title {
   border-radius: 5px;
   font-size: 1.2em;
   font-weight: normal; }
-  .pure-g .page-form .pure-button .fa, .pure-g .page-form input[type="submit"] .fa, .pure-g .page-form button .fa, .pure-g .page-form .button .fa {
+  .pure-g .page-form .pure-button .fa, .pure-g .page-form input[type="submit"] .fa, .pure-g .page-form button .fa, .pure-g .page-form .button .fa, .pure-button-shaarli .fa {
     font-size: 20px; }
-  .pure-g .page-form .pure-button:hover, .pure-g .page-form input:hover[type="submit"], .pure-g .page-form button:hover, .pure-g .page-form .button:hover {
+  .pure-g .page-form .pure-button:hover, .pure-g .page-form input:hover[type="submit"], .pure-g .page-form button:hover, .pure-g .page-form .button:hover, .pure-button-shaarli:hover {
     background-color: var(--dark-main-color); }
 
 .pure-g .page-form {
@@ -4567,6 +4567,7 @@ h2.linklist-item-title {
   .pure-g .page-form input[type="password"]::-webkit-input-placeholder {
     color: #707070; }
   .pure-g .page-form textarea {
+    line-height: 1.5;
     padding: 15px 5px 3px 15px;
     min-height: 265px;
     resize: vertical;
@@ -4642,7 +4643,7 @@ form[name='linkform'].page-form {
   color: #252525; }
 
 .edit-link-container {
-  margin-bottom: 300px; }
+  margin-bottom: 32px; }
   .edit-link-container .created-date {
     float: right;
     margin-top: -52px;
@@ -5009,8 +5010,10 @@ form[name='linkform'].page-form {
     margin-left: 8px; }
   .linklist-item-infos {
     position: relative;
-    top: 4px;
-    right: -16px; }
+    top: 6px;
+    right: -16px;
+    display: flex;
+    justify-content: flex-end; }
   .linklist-filters {
     right: 8px; }
     .linklist-filters a {
@@ -5059,7 +5062,11 @@ form[name='linkform'].page-form {
       border-bottom-style: none; }
   .timezone-continent::after {
     white-space: pre;
-    content: '\a\a'; } }
+    content: '\a\a'; }
+  .pure-g .server-tables table {
+    margin: 16px -6px;
+    width: auto;
+    font-size: 12px; } }
 
 @media print {
   .shaarli-menu {

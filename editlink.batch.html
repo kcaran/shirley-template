@@ -15,17 +15,21 @@
 
 {include="page.header"}
 
-<div class="center">
+<div class="pure-g pure-g-full">
+<div class="pure-u-4-24"></div>
   <input type="submit" name="save_edit_batch" class="pure-button-shaarli" value="{'Save all'|t}">
 </div>
 
 {loop="$links"}
+  {$batchId=$key}
   {include="editlink"}
 {/loop}
 
-<div class="center">
+<div class="pure-g pure-g-full">
+<div class="pure-u-4-24"></div>
   <input type="submit" name="save_edit_batch" class="pure-button-shaarli" value="{'Save all'|t}">
 </div>
+
 
 {include="page.footer"}
 {if="$async_metadata"}<script src="{$asset_path}/js/metadata.min.js?v={$version_hash}#"></script>{/if}

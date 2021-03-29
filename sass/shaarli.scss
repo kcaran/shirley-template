@@ -1059,6 +1059,7 @@ h2.linklist-item-title {
   textarea {
     @extend %page-form-input;
 
+	line-height: 1.5;
     padding: 15px 5px 3px 15px;
     min-height: 265px;
     resize: vertical;
@@ -1193,7 +1194,7 @@ form {
 
 // EDIT LINK
 .edit-link-container {
-	margin-bottom: 300px;
+	margin-bottom: 32px;
   .created-date {
 	float: right;
     margin-top: -52px;
@@ -1641,6 +1642,10 @@ form {
 	}
 }
 
+.pure-button-shaarli {
+  @extend %page-form-button;
+}
+
 @media screen and (max-width: 64em) {
 	.pure-g-full {
 		width: 100%;
@@ -1753,8 +1758,10 @@ form {
 
 	.linklist-item-infos {
 		position: relative;
-		top: 4px;
+		top: 6px;
 		right: -16px;
+		display: flex;
+		justify-content: flex-end;
 	}
 
 	.linklist-filters {
@@ -1847,6 +1854,14 @@ form {
     &::after {
       white-space: pre;
       content: '\a\a';
+    }
+  }
+
+  .pure-g .server-tables {
+    table {
+      margin: 16px -6px;
+      width: auto;
+      font-size: 12px;
     }
   }
 }
