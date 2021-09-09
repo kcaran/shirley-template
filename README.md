@@ -2,12 +2,17 @@
 
 Shirley is a template theme for the [Shaarli](https://github.com/shaarli/Shaarli) bookmarking application.
 
-> Surely you can't be serious!
-> I'm not [Serious](https://github.com/mrjovanovic/serious-theme-shaarli), but you can call me Shirley!
+> *Surely you can't be serious!*
+>
+> *I'm not [Serious](https://github.com/mrjovanovic/serious-theme-shaarli), but you can call me Shirley!*
 
-Shirley is a full template inspired by the [Serious](https://github.com/mrjovanovic/serious-theme-shaarli) theme, but with full support for Shaarli 0.12.
+Shirley is a full template inspired by the [Serious](https://github.com/mrjovanovic/serious-theme-shaarli) theme, but updated with support for Shaarli 0.12.
 
 ## Screenshots
+
+[https://shirley.kcaran.com/tpl/shirley/screenshots/shirley_home.png]
+
+[https://shirley.kcaran.com/tpl/shirley/screenshots/shirley_home_mobile.png]
 
 ## Compatibility
 
