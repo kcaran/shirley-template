@@ -49,11 +49,11 @@
           {'for'|t} <em><strong>{$search_term}</strong></em>
         {/if}
         {if="!empty($search_tags)"}
-          {$exploded_tags=explode(' ', $search_tags)}
+          {$exploded_tags=tags_str2array($search_tags, $tags_separator)}
           {'tagged'|t}
           {loop="$exploded_tags"}
               <span class="label label-tag" title="{'Remove tag'|t}">
-				<a href="{$base_path}/remove-tag/{function="urlencode($value)"}" aria-label="{'Remove tag'|t}">
+				<a href="{$base_path}/remove-tag/{function="$search_tags_url.$key1"}" aria-label="{'Remove tag'|t}">
                    {$value}<span class="remove"><i class="fa fa-times" aria-hid
 den="true"></i></span>
                  </a>
@@ -88,6 +88,7 @@ den="true"></i></span>
       {$strAddTag=t('Add tag')}
       {$strToggleSticky=t('Toggle sticky')}
       {$strSticky=t('Sticky')}
+      {$strShaarePrivate=t('Share a private link')}
       {ignore}End of translations{/ignore}
       {loop="links"}
         <div class="anchor" id="{$value.shorturl}"></div>
@@ -95,9 +96,9 @@ den="true"></i></span>
 <div class="linklist-item pure-g {if="$value.class"} {$value.class}{/if}" data-id="{$value.id}">
 	<h2 class="linklist-item-title pure-u-1 pure-u-lg-16-24">
 		{if="strpos($value.url, $value.shorturl) === false"}
-		<a href="{$value.real_url}"><span class="linklist-link">{$value.title}</span></a>
+		<a href="{$value.real_url}"><span class="linklist-link">{$value.title_html}</span></a>
 		{else}
-		<span class="linklist-link">{$value.title}</span>
+		<span class="linklist-link">{$value.title_html}</span>
 		{/if}
 	</h2>
 
@@ -128,6 +129,12 @@ den="true"></i></span>
 			<a href="{$base_path}/shaare/{$value.shorturl}" class="fa fa-link" title="{$strPermalink}"></a>
 			</span>
 
+            {if="$is_logged_in && $value.private"}
+			<span class="linklist-item-infos-controls-item">
+            <a href="{$base_path}/admin/shaare/private/{$value.shorturl}?token={$token}" class="fa fa-share-alt" title="{$strShaarePrivate}"></a>
+			</span>
+            {/if}
+
 			<div class="linklist-item-infos-controls-item">
                  {if="isset($value.link_plugin)"}
                    {$link_plugin_counter=count($value.link_plugin)}
@@ -145,12 +152,16 @@ den="true"></i></span>
 	<div class="pure-u-1 pure-u-lg-16-24">
 
 	<div class="linklist-item-description">
-		{if="$thumbnails_enabled && !empty($value.thumbnail)"}
-		<div class="linklist-item-thumbnail" style="width:{$thumbnails_width}px;height:{$thumbnails_height}px;">
+		{if="$thumbnails_enabled && $value.thumbnail !== false"}
+		<div
+          class="linklist-item-thumbnail" {if="$value.thumbnail === null"}hidden{/if}"
+          style="width:{$thumbnails_width}px;height:{$thumbnails_height}px;"
+          {if="$value.thumbnail === null"}data-async-thumbnail="1"{/if}
+        >
 			<div class="thumbnail">
 				{ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
 				<a href="{$value.real_url}" aria-hidden="true" tabindex="-1">
-				<img data-src="{$base_path}/{$value.thumbnail}#" class="b-lazy"
+				<img data-src="{$root_path}/{$value.thumbnail}#" class="b-lazy"
 					src=""
 					alt="" width="{$thumbnails_width}" height="{$thumbnails_height}" /></a>
 			</div>
@@ -162,7 +173,7 @@ den="true"></i></span>
 
 	{if="strpos($value.url, $value.shorturl) === false"}
 	<div class="linklist-item-infos-url">
-		<a href="{$value.real_url}" aria-label="{$value.title}" title="{$value.title}">{$value.url}</a>
+		<a href="{$value.real_url}" aria-label="{$value.title}" title="{$value.title}">{$value.url_html}</a>
 	</div>
 	{/if}
 
@@ -185,7 +196,7 @@ den="true"></i></span>
 			{$tag_counter=count($value.taglist)}
 			{loop="value.taglist"}
 				<span class="label label-tag" title="{$strAddTag}">
-					<a href="{$base_path}/add-tag/{$value|urlencode}">{$value}</a>
+					<a href="{$base_path}/add-tag/{$value1.taglist_urlencoded.$key2}">{$value}</a>
 				</span>
 			{/loop}
 		{/if}
@@ -229,5 +240,6 @@ den="true"></i></span>
 
 {include="page.footer"}
 <script src="{$asset_path}/js/thumbnails.min.js?v={$version_hash}#"></script>
+{if="$is_logged_in && $async_metadata"}<script src="{$asset_path}/js/metadata.min.js?v={$version_hash}#"></script>{/if}
 </body>
 </html>

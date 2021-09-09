@@ -18,6 +18,10 @@
     <div class="tools-item">
       <a href="{$base_path}/admin/plugins" title="{'Enable, disable and configure plugins'|t}" class="pure-button">{'Plugin administration'|t}</a>
     </div>
+    <div class="tools-item">
+      <a href="{$base_path}/admin/server"
+         title="{'Check instance\'s server configuration'|t}" class="pure-button">{'Server administration'|t}</a>
+    </div>
     {if="!$openshaarli"}
       <div class="tools-item">
         <a href="{$base_path}/admin/password" title="{'Change your password'|t}" class="pure-button">{'Change password'|t}</a>
@@ -34,12 +38,6 @@
       <a href="{$base_path}/admin/export"
          title="{'Export Netscape HTML bookmarks (which can be imported in Firefox, Chrome, Opera, delicious...)'|t}" class="pure-button">{'Export database'|t}</a>
     </div>
-
-    {if="$thumbnails_enabled"}
-      <div class="tools-item">
-        <a href="{$base_path}/admin/thumbnails" title="{'Synchronize all link thumbnails'|t}" class="pure-button">{'Synchronize thumbnails'|t}</a>
-      </div>
-    {/if}
 
     {loop="$tools_plugin"}
       <div class="tools-item">
