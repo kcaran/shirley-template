@@ -90,11 +90,13 @@
           {'for'|t} <em><strong>{$search_term}</strong></em>
         {/if}
         {if="!empty($search_tags)"}
-          {$exploded_tags=explode(' ', $search_tags)}
+          {$exploded_tags=tags_str2array($search_tags, $tags_separator)}
           {'tagged'|t}
           {loop="$exploded_tags"}
               <span class="label label-tag" title="{'Remove tag'|t}">
-                <a href="?removetag={function="urlencode($value)"}" aria-label="{'Remove tag'|t}">{$value}<span class="remove"><i class="fa fa-times" aria-hidden="true"></i></span></a>
+                <a href="{$base_path}/remove-tag/{function="$search_tags_url.$key1"}" aria-label="{'Remove tag'|t}">
+                  {$value}<span class="remove"><i class="fa fa-times" aria-hidden="true"></i></span>
+                </a>
               </span>
           {/loop}
         {/if}
@@ -127,18 +129,23 @@
       {$strAddTag=t('Add tag')}
       {$strToggleSticky=t('Toggle sticky')}
       {$strSticky=t('Sticky')}
+      {$strShaarePrivate=t('Share a private link')}
       {ignore}End of translations{/ignore}
       {loop="links"}
         <div class="anchor" id="{$value.shorturl}"></div>
 
         <div class="linklist-item linklist-item{if="$value.class"} {$value.class}{/if}" data-id="{$value.id}">
           <div class="linklist-item-title">
-            {if="$thumbnails_enabled && !empty($value.thumbnail)"}
-              <div class="linklist-item-thumbnail" style="width:{$thumbnails_width}px;height:{$thumbnails_height}px;">
+            {if="$thumbnails_enabled && $value.thumbnail !== false"}
+              <div
+                class="linklist-item-thumbnail {if="$value.thumbnail === null"}hidden{/if}"
+                style="width:{$thumbnails_width}px;height:{$thumbnails_height}px;"
+                {if="$value.thumbnail === null"}data-async-thumbnail="1"{/if}
+              >
                 <div class="thumbnail">
                   {ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
                   <a href="{$value.real_url}" aria-hidden="true" tabindex="-1">
-                  <img data-src="{$value.thumbnail}#" class="b-lazy"
+                  <img data-src="{$root_path}/{$value.thumbnail}#" class="b-lazy"
                     src=""
                     alt="" width="{$thumbnails_width}" height="{$thumbnails_height}" />
                   </a>
@@ -156,14 +163,14 @@
             </div>
 
             <h2>
-              <a href="{$value.real_url}">
+              <a href="{$value.real_url}" class="linklist-real-url">
                 {if="strpos($value.url, $value.shorturl) === false"}
                   <i class="fa fa-external-link" aria-hidden="true"></i>
                 {else}
                   <i class="fa fa-sticky-note" aria-hidden="true"></i>
                 {/if}
 
-                <span class="linklist-link">{$value.title}</span>
+                <span class="linklist-link">{$value.title_html}</span>
               </a>
             </h2>
           </div>
@@ -181,7 +188,7 @@
                 {$tag_counter=count($value.taglist)}
                 {loop="value.taglist"}
                   <span class="label label-tag" title="{$strAddTag}">
-                    <a href="?addtag={$value|urlencode}">{$value}</a>
+                    <a href="{$base_path}/add-tag/{$value1.taglist_urlencoded.$key2}">{$value1.taglist_html.$key2}</a>
                   </span>
                   {if="$tag_counter - 1 != $counter"}&middot;{/if}
                 {/loop}
@@ -196,16 +203,16 @@
                       <input type="checkbox" class="link-checkbox" value="{$value.id}">
                     </span>
                     <span class="linklist-item-infos-controls-item ctrl-edit">
-                      <a href="?edit_link={$value.id}" aria-label="{$strEdit}" title="{$strEdit}"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
+                      <a href="{$base_path}/admin/shaare/{$value.id}" aria-label="{$strEdit}" title="{$strEdit}"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
                     </span>
                     <span class="linklist-item-infos-controls-item ctrl-delete">
-                      <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" aria-label="{$strDelete}"
+                      <a href="{$base_path}/admin/shaare/delete?id={$value.id}&amp;token={$token}" aria-label="{$strDelete}"
                          title="{$strDelete}" class="delete-link pure-u-0 pure-u-lg-visible confirm-delete">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                       </a>
                     </span>
                     <span class="linklist-item-infos-controls-item ctrl-pin">
-                      <a href="?do=pin&amp;id={$value.id}&amp;token={$token}"
+                      <a href="{$base_path}/admin/shaare/{$value.id}/pin?token={$token}"
                          title="{$strToggleSticky}" aria-label="{$strToggleSticky}" class="pin-link {if="$value.sticky"}pinned-link{/if} pure-u-0 pure-u-lg-visible">
                         <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                       </a>
@@ -222,7 +229,7 @@
                     </div>
                   {/if}
                 {/if}
-                <a href="?{$value.shorturl}" title="{$strPermalink}">
+                <a href="{$base_path}/shaare/{$value.shorturl}" title="{$strPermalink}">
                   {if="!$hide_timestamps || $is_logged_in"}
                     {$updated=$value.updated_timestamp ? $strEdited. format_date($value.updated) : $strPermalink}
                     <span class="linkdate" title="{$updated}">
@@ -234,6 +241,12 @@
                   {/if}
                   {$strPermalinkLc}
                 </a>
+
+                {if="$is_logged_in && $value.private"}
+                  <a href="{$base_path}/admin/shaare/private/{$value.shorturl}?token={$token}" title="{$strShaarePrivate}">
+                    <i class="fa fa-share-alt"></i>
+                  </a>
+                {/if}
 
                 <div class="pure-u-0 pure-u-lg-visible">
                   {if="isset($value.link_plugin)"}
@@ -249,7 +262,7 @@
                 {ignore}do not add space or line break between these div - Firefox issue{/ignore}
                 class="linklist-item-infos-url pure-u-lg-5-12 pure-u-1">
                 <a href="{$value.real_url}" aria-label="{$value.title}" title="{$value.title}">
-                  <i class="fa fa-link" aria-hidden="true"></i> {$value.url}
+                  <i class="fa fa-link" aria-hidden="true"></i> {$value.url_html}
                 </a>
                 <div class="linklist-item-buttons pure-u-0 pure-u-lg-visible">
                   <a href="#" aria-label="{$strFold}" title="{$strFold}" class="fold-button"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
@@ -265,12 +278,22 @@
                 {/if}
                 {if="$is_logged_in"}
                   &middot;
-                  <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" aria-label="{$strDelete}"
+                  <a href="{$base_path}/admin/shaare/delete?id={$value.id}&amp;token={$token}" aria-label="{$strDelete}"
                      title="{$strDelete}" class="delete-link confirm-delete">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                   </a>
                   &middot;
-                  <a href="?edit_link={$value.id}" aria-label="{$strEdit}" title="{$strEdit}"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
+                  <a href="{$base_path}/admin/shaare/{$value.id}" aria-label="{$strEdit}" title="{$strEdit}">
+                    <i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="{$base_path}/admin/shaare/{$value.id}/pin?token={$token}"
+                     aria-label="{$strToggleSticky}"
+                     title="{$strToggleSticky}"
+                     class="pin-link {if="$value.sticky"}pinned-link{/if}"
+                  >
+                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                  </a>
                 {/if}
               </div>
             </div>
@@ -295,6 +318,7 @@
 </div>
 
 {include="page.footer"}
-<script src="js/thumbnails.min.js?v={$version_hash}"></script>
+<script src="{$asset_path}/js/thumbnails.min.js?v={$version_hash}#"></script>
+{if="$is_logged_in && $async_metadata"}<script src="{$asset_path}/js/metadata.min.js?v={$version_hash}#"></script>{/if}
 </body>
 </html>
