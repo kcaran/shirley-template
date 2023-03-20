@@ -21,7 +21,7 @@
 <div>
           <label>
             <span class="label-name">{'Username'|t}</span>
-            <input type="text" name="setlogin" id="username">
+            <input type="text" name="setlogin" id="username" autocapitalize="off">
           </label>
 </div>
 
@@ -41,7 +41,7 @@
 
 <div>
           <label for="language">
-            <span class="label-name">{'Language'|t}</span>
+            <span class="label-name">{'Languages'|t}</span>
           <select name="language" id="language" class="align">
             {loop="$languages"}
               <option value="{$key}">
@@ -82,7 +82,7 @@
 <div>
 <label class="checkbox">
           <input type="checkbox" name="updateCheck" id="update" checked="checked">
-            <span class="label-name">{'Check updates'|t}</span><br>
+            <span class="label-name">{'Check for updates'|t}</span><br>
             <span class="label-desc">
               {'Notify me when a new release is ready'|t}
             </span>

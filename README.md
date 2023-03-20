@@ -16,7 +16,7 @@ Shirley is a full template inspired by the [Serious](https://github.com/mrjovano
 
 ## Compatibility
 
-Shirley Template has been tested and validated with **Shaarli 0.12.0-beta**.
+Shirley Template has been tested and validated with **Shaarli v0.12.2**.
 
 ## Installation
 
