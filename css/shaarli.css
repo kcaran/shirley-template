@@ -4424,6 +4424,9 @@ h2.linklist-item-title {
 .daily-entry-description .markdown ol li, .daily-entry-description .markdown ul li, .linklist-item-description .markdown ol li, .linklist-item-description .markdown ul li {
   margin: .5em 0 0; }
 
+.daily-entry-description .markdown img, .linklist-item-description .markdown img {
+  max-height: 400px; }
+
 .linklist-item-thumbnail {
   float: right;
   margin: 16px 0 16px 16px; }
