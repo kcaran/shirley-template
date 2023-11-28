@@ -551,8 +551,9 @@ pre {
 
   a {
     display: inline-block;
-    margin: 3px 4px;
-    padding: 5px 8px;
+    margin: 0 6px;
+    padding: 2px 8px;
+	font-size: 20px;
     text-decoration: none;
 	&:hover {
 		background-color: $white;
@@ -565,8 +566,8 @@ pre {
   }
 
   .filter-on {
-    background: $light-green;
-    color: var(--main-color);
+    background: $orange;
+    color: $dark-gray;
   }
 
   .filter-block {
@@ -697,15 +698,16 @@ pre {
 }
 
 .linklist-item-tags {
-	margin: 1em 0 1em 24px;
+	margin: 1em 0;
 	position: relative;
 	.ctrl-checkbox {
-		position: absolute;
-		left: -24px;
+		position: relative;
+		top: 7px;
 		margin-right: 8px;
-	}
-	.label-tag {
-		margin-bottom: 12px;
+		input[type="checkbox"] {
+			width: 24px;
+			height: 24px;
+		}
 	}
 }
 
@@ -918,8 +920,10 @@ h2.linklist-item-title {
 	}
 }
 
-// Replace QR Code png with icon
+// Replace QR Code png with icon - need important to override plugin
 .linkqrcode {
+	display: initial !important;
+	position: initial !important;
 	a {
 		&:before {
 			font-family: "ForkAwesome";
@@ -931,6 +935,12 @@ h2.linklist-item-title {
 			display: none;
 		}
 	}
+}
+
+#permalinkQrcode {
+	width: 240px !important;
+	height: 260px !important;
+	left: calc( 50% - 120px ) !important;
 }
 
 // Footer
@@ -1742,9 +1752,13 @@ form {
 	}
 
 	.subheader-form {
-		padding-top: 32px;
-		padding-bottom: 32px;
-		height: 84px;
+		height: 104px;
+		div > div {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 12px 8px;
+		}
 	}
 
 	.linklist-item {
@@ -1753,6 +1767,7 @@ form {
 
 	.linklist-paging {
 		padding: 0;
+		min-height: 48px;
 	}
 
 	.linklist-pages span:first-child {
@@ -1762,7 +1777,8 @@ form {
 	.linklist-item-infos {
 		position: relative;
 		top: 6px;
-		right: -16px;
+		right: 16px;
+		min-width: calc( 100% + 32px );
 		display: flex;
 		justify-content: flex-end;
 	}

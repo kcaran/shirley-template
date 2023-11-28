@@ -228,8 +228,8 @@ den="true"></i></span>
           <i class="fa fa-arrow-circle-left"></i>
         </a>
       {/if}
-      {if="$page_max>1"}<span class="strong">{$page_current} / {$page_max}</span>{/if}
-      {if="$previous_page_url"}
+      {if="$page_max > 1"}<span class="strong">{$page_current} / {$page_max}</span>{/if}
+      {if="$page_max > 1 && $previous_page_url"}
         <a href="{$previous_page_url}" class="paging_older">
           <i class="fa fa-arrow-circle-right"></i>
         </a>

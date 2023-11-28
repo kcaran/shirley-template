@@ -68,7 +68,7 @@
       <p class="{if="$retrieve_description"}{$asyncLoadClass}{/if}">
         <label for="lf_tags{$batchId}">{'Tags'|t}
         <input type="text" name="lf_tags" id="lf_tags{$batchId}" value="{$link.tags}" class="lf_input autofocus"
-          data-list="{loop="$tags"}{$key}, {/loop}" data-multiple data-autofirst autocomplete="off" >
+          data-list="{loop="$tags"}{$key}, {/loop}" data-multiple data-autofirst autocomplete="off" autocapitalize="off">
         </label>
       </p>
 

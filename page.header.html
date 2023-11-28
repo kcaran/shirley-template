@@ -82,26 +82,27 @@
            {if="!empty($search_term)"}
            value="{$search_term}"
            {/if}
-    >
+    autocapitalize="off">
     <input type="text" name="searchtags" class="searchtags" aria-label="{'Filter by tag'|t}" placeholder="{'Filter by tag'|t}"
            {if="!empty($search_tags)"}
            value="{$search_tags}"
            {/if}
-    autocomplete="off" data-multiple data-autofirst data-minChars="1"
+    autocomplete="off" autocapitalize="off"
+	data-multiple data-autofirst data-minChars="1"
     data-list="{loop="$tags"}{$key}, {/loop}"
     >
     <button type="submit" class="search-button" aria-label="{'Search'|t}"><i class="fa fa-search" aria-hidden="true"></i></button>
   </form>
 </div>
 
-{if="!empty( $links )"}
 {include="linklist.paging"}
-{/if}
 
 </div>
 </div>
 
 <main id="content" class="container" role="main">
+
+{if="$is_logged_in && $template === 'linklist'"}
   <div id="actions" class="subheader-form">
     <div class="pure-g pure-g-full">
       <div class="pure-u-1">
@@ -155,6 +156,7 @@
       </form>
     </div>
   {/loop}
+  {/if}
 
   {if="!$is_logged_in"}
     <form method="post" name="loginform">
