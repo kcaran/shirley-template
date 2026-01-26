@@ -65,11 +65,9 @@
           {/if}
       </ul>
       <div class="linkcount pure-u-1-6 pure-u-lg-visible">
-		{if="!empty($linkcount)"}
-		<span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
-		{if="$privateLinkcount>0"}
+		<span class="strong">{$linkcount - $privateLinkcount}</span> {function="t('shaare', 'shaares', $linkcount - $privateLinkcount )"}
+		{if="$is_logged_in && $privateLinkcount>0"}
 		&middot; <span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
-		{/if}
 		{/if}
 	</div>
       </div>
