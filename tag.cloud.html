@@ -20,7 +20,7 @@
                   value="{$search_tags}"
                  {/if}
           autocomplete="off" data-multiple data-autofirst data-minChars="1"
-          data-list="{loop="$tags"}{$key}, {/loop}"
+          data-list="{loop="$tags"}{$key|escape}, {/loop}"
           class="autofocus"
           >
 
